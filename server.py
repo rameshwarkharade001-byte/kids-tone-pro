@@ -130,7 +130,7 @@ def get_videos():
         'rhymes': 'Chiki Chum ChuChu TV Hindi Kids Rhymes'
     }
 
-    final_query = search if search else query_map.get(category, 'Kids Cartoon Hindi')
+    final_query = query + " full episode official hindi" # search if search else query_map.get(category, 'Kids Cartoon Hindi')
     videos = fetch_youtube_kids_pro(final_query, page=page)
     return jsonify({"status": "ok", "page": page, "count": len(videos), "videos": videos})
 
