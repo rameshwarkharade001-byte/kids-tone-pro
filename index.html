@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta name="monetag" content="4201f490572da9f87c8fd4d523a060e9">
-  <script>(function(s){s.dataset.zone='12330958',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-  <meta name="monetag" content="97d565e4a97631c7b6cc04e8fff83d8f">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Kids Tone - YouTube Kids Edition</title>
@@ -87,168 +84,6 @@
       100% { background-position: -200% 0; }
     }
   </style>
-
-<style id="landscapePlayerStyle">
-  .kids-landscape-active {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    width: 100vh !important;
-    height: 100vw !important;
-    max-width: none !important;
-    transform: translate(-50%, -50%) rotate(90deg) !important;
-    z-index: 99999 !important;
-    background: #000 !important;
-  }
-  @media (orientation: landscape) {
-    .kids-landscape-active {
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      transform: none !important;
-    }
-  }
-</style>
-<style id="kidsLandscapeForce">
-  .kids-landscape-on {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    width: 100vh !important;
-    height: 100vw !important;
-    max-width: none !important;
-    transform: translate(-50%, -50%) rotate(90deg) !important;
-    z-index: 999999 !important;
-    background: #000 !important;
-  }
-  @media (orientation: landscape) {
-    .kids-landscape-on {
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      transform: none !important;
-    }
-  }
-</style>
-
-<script id="kidsDirectVideoEngine">
-const KIDS_DIRECT_VIDEOS = [
-  { ytid: "7Y2yW-v5H0s", title: "Motu Patlu - Kung Fu Kings Special Episode | Hindi Cartoon", category: "Motu Patlu", duration: "18:45", views: "4.2M" },
-  { ytid: "4xDzrJKXOOY", title: "Motu Patlu - Samosa Factory Adventure | Full Episode", category: "Motu Patlu", duration: "14:20", views: "3.1M" },
-  { ytid: "9bZkp7q19f0", title: "Chhota Bheem - Dholakpur Ki Raksha | Superhit Episode", category: "Chhota Bheem", duration: "21:10", views: "5.8M" },
-  { ytid: "kJQP7kiw5Fk", title: "Chhota Bheem Aur Kirmada Ka Mukabla | Full Movie Special", category: "Chhota Bheem", duration: "24:05", views: "7.4M" },
-  { ytid: "JGwWNGJdvx8", title: "Doraemon New Episode in Hindi - Gadget Adventure", category: "Doraemon", duration: "22:30", views: "6.1M" },
-  { ytid: "fJ9rUzIMcZQ", title: "Doraemon Nobita Time Machine Trip | Hindi Cartoon", category: "Doraemon", duration: "19:50", views: "4.9M" },
-  { ytid: "OPf0YbXqDm0", title: "Taarak Mehta Ka Ooltah Chashmah - Jethalal Comedy Episode", category: "Taarak Mehta", duration: "20:15", views: "8.2M" },
-  { ytid: "RgKAFK5djSk", title: "Taarak Mehta Ka Ooltah Chashmah - Gokuldham Festival Special", category: "Taarak Mehta", duration: "21:40", views: "6.7M" },
-  { ytid: "XqZsoesa55w", title: "Baby Shark Dance & Kids Nursery Rhymes Collection", category: "Rhymes", duration: "12:15", views: "15M" },
-  { ytid: "e_04ZrNroTo", title: "Wheels on the Bus & Lakdi Ki Kathi Hindi Balgeet", category: "Rhymes", duration: "15:30", views: "9.3M" }
-];
-
-const _origFetch = window.fetch;
-window.fetch = async function(url, opts) {
-  if (typeof url === 'string' && url.includes('/api/videos')) {
-    try {
-      const res = await _origFetch(url, opts);
-      const ct = res.headers.get('content-type') || '';
-      if (res.ok && ct.includes('application/json')) return res;
-    } catch (e) {}
-    const u = new URL(url, window.location.origin);
-    const q = (u.searchParams.get('q') || u.searchParams.get('category') || '').toLowerCase();
-    let filtered = KIDS_DIRECT_VIDEOS;
-    if (q && q !== 'all' && q !== 'cartoons') {
-      const m = KIDS_DIRECT_VIDEOS.filter(v => v.title.toLowerCase().includes(q) || v.category.toLowerCase().includes(q));
-      if (m.length) filtered = m;
-    }
-    return new Response(JSON.stringify({ videos: filtered }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
-    });
-  }
-  return _origFetch(url, opts);
-};
-</script>
-
-<style id="cleanNativeLandscapeCSS">
-  .yt-native-landscape {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    width: 100vh !important;
-    height: 100vw !important;
-    max-width: none !important;
-    transform: translate(-50%, -50%) rotate(90deg) !important;
-    z-index: 999999 !important;
-    background: #000 !important;
-  }
-  @media (orientation: landscape) {
-    .yt-native-landscape {
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      transform: none !important;
-    }
-  }
-</style>
-<script id="cleanNativeLandscapeJS">
-  function onNativeYTFullscreen() {
-    const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
-    const box = document.getElementById('kidsVideoWrapper') || document.getElementById('kidsVideoBox') || (document.getElementById('ytKidsIframeTarget') && document.getElementById('ytKidsIframeTarget').parentElement);
-    if (!box) return;
-    if (fsEl) {
-      if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
-      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      box.classList.add('yt-native-landscape');
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('landscape').catch(() => {});
-      }
-    }
-  }
-  document.addEventListener('fullscreenchange', onNativeYTFullscreen);
-  document.addEventListener('webkitfullscreenchange', onNativeYTFullscreen);
-</script>
-<style id="cleanNativeLandscapeCSS">
-  .yt-native-landscape {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    width: 100vh !important;
-    height: 100vw !important;
-    max-width: none !important;
-    transform: translate(-50%, -50%) rotate(90deg) !important;
-    z-index: 999999 !important;
-    background: #000 !important;
-  }
-  @media (orientation: landscape) {
-    .yt-native-landscape {
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      transform: none !important;
-    }
-  }
-</style>
-<script id="cleanNativeLandscapeJS">
-  function onNativeYTFullscreen() {
-    const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
-    const box = document.getElementById('kidsVideoWrapper') || document.getElementById('kidsVideoBox') || (document.getElementById('ytKidsIframeTarget') && document.getElementById('ytKidsIframeTarget').parentElement);
-    if (!box) return;
-    if (fsEl) {
-      if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
-      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      box.classList.add('yt-native-landscape');
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('landscape').catch(() => {});
-      }
-    }
-  }
-  document.addEventListener('fullscreenchange', onNativeYTFullscreen);
-  document.addEventListener('webkitfullscreenchange', onNativeYTFullscreen);
-</script>
 </head>
 <body>
 
@@ -627,17 +462,11 @@ window.fetch = async function(url, opts) {
       <button onclick="activateKidsLock()" class="px-3.5 py-2 rounded-full bg-amber-400 text-slate-950 kids-font text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition">
         <i data-lucide="lock" class="w-4 h-4"></i>
         <span>Screen Lock</span>
-    </button>
-    
-    
+      </button>
     </div>
 
     <!-- Video Screen Wrapper -->
-    <div id="kidsVideoWrapper" class="relative w-full max-w-4xl mx-auto aspect-video bg-black shadow-xl">
-    <button id="exitLandscapeBtn" onclick="toggleKidsLandscape(false)" class="hidden absolute top-3 right-3 z-40 px-3 py-1.5 rounded-full bg-black/75 text-white kids-font text-xs font-bold flex items-center gap-1.5 border border-white/25 shadow-lg">
-      <i data-lucide="minimize-2" class="w-3.5 h-3.5"></i>
-      <span>Exit Full</span>
-    </button>
+    <div class="relative w-full max-w-4xl mx-auto aspect-video bg-black shadow-xl">
       <div id="ytKidsIframeTarget" class="w-full h-full"></div>
 
       <!-- Silent Auto-Skip Toast (No Ugly Browser Alert Box!) -->
@@ -705,7 +534,6 @@ window.fetch = async function(url, opts) {
             rel: 0,
             modestbranding: 1,
             playsinline: 1,
-          fs: 1,
             iv_load_policy: 3
           },
           events: {
@@ -746,8 +574,7 @@ window.fetch = async function(url, opts) {
       if (ytKidsPlayer && typeof ytKidsPlayer.stopVideo === 'function') {
         ytKidsPlayer.stopVideo();
       }
-      toggleKidsLandscape(false);
-  document.getElementById('kidsPlayerModal').classList.add('hidden');
+      document.getElementById('kidsPlayerModal').classList.add('hidden');
     }
 
     function activateKidsLock() {

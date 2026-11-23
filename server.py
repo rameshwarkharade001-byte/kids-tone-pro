@@ -2,8 +2,8 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import yt_dlp
 import requests
-app = Flask(__name__, static_folder=".")
 
+app = Flask(__name__, static_folder='.')
 CORS(app)
 
 YOUTUBE_API_KEY = ""
@@ -37,8 +37,6 @@ def fetch_youtube_kids_pro(query, page=1):
                 title = item["snippet"]["title"]
                 videos.append({"ytId": vid, "title": title, "duration": "HD"})
             if videos:
-            blocked_channels = ("sony sab", "set india", "sony liv", "sonyliv", "disney india", "hungama")
-            videos = [v for v in videos if not any(b in (v.get("channel", "") + " " + v.get("title", "")).lower() for b in blocked_channels)]
                 SEARCH_CACHE[cache_key] = videos
                 return videos
         except Exception as e:
@@ -86,8 +84,6 @@ def fetch_youtube_kids_pro(query, page=1):
         print("Fetch error:", e)
 
     if videos:
-    blocked_channels = ("sony sab", "set india", "sony liv", "sonyliv", "disney india", "hungama")
-    videos = [v for v in videos if not any(b in (v.get("channel", "") + " " + v.get("title", "")).lower() for b in blocked_channels)]
         SEARCH_CACHE[cache_key] = videos
     return videos
 
@@ -134,11 +130,7 @@ def get_videos():
         'rhymes': 'Chiki Chum ChuChu TV Hindi Kids Rhymes'
     }
 
-    clean_s = search.lower()
-    if any(k in clean_s for k in ("taarak", "tarak", "तारक", "mehta", "मेहता")):
-        final_query = "Taarak Mehta Ka Chhota Chashmah full episode Hindi"
-    else:
-        final_query = search if search else query_map.get(category, 'Kids Cartoon Hindi')
+    final_query = search if search else query_map.get(category, 'Kids Cartoon Hindi')
     videos = fetch_youtube_kids_pro(final_query, page=page)
     return jsonify({"status": "ok", "page": page, "count": len(videos), "videos": videos})
 
