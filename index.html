@@ -556,7 +556,19 @@
   <script src="https://www.youtube.com/iframe_api"></script>
 
   <script>
-    let ytKidsPlayer = null;
+    
+function handleNativeYouTubeFullscreen() {
+  const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+  if (fsEl) {
+    if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    toggleKidsLandscape(true);
+  }
+}
+document.addEventListener('fullscreenchange', handleNativeYouTubeFullscreen);
+document.addEventListener('webkitfullscreenchange', handleNativeYouTubeFullscreen);
+
+let ytKidsPlayer = null;
     let activePlayingId = '';
     let activePlayingCategory = 'Cartoons';
     let screenLockedState = false;
