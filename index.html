@@ -580,6 +580,20 @@
 
       renderWatchNextList(ytId);
       setTimeout(() => {
+        const box = document.getElementById('ytKidsIframeTarget');
+        const parent = box ? box.parentElement : null;
+        if (parent && !parent.querySelector('#diagInfo')) {
+          const d = document.createElement('div');
+          d.id = 'diagInfo';
+          d.style.cssText = 'position:absolute;top:6px;left:6px;z-index:9999;background:rgba(0,0,0,0.8);color:#0f0;padding:4px 8px;font-size:10px;border-radius:4px;max-width:85%;word-break:break-all;';
+          const ifr = box ? box.querySelector('iframe') : null;
+          d.innerText = ifr ? ('IFR SRC: ' + ifr.src) : ('NO IFRAME | box=' + (box ? box.offsetHeight : -1));
+          parent.style.position = 'relative';
+          parent.appendChild(d);
+        }
+      }, 250);
+
+      setTimeout(() => {
         const w = document.getElementById('kidsVideoWrapper') || document.getElementById('ytKidsIframeTarget')?.parentElement;
         if (w && ytId && !w.querySelector('.yt-direct-open-btn')) {
           const btn = document.createElement('a');
