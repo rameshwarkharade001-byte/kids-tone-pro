@@ -2,8 +2,8 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import yt_dlp
 import requests
+app = Flask(__name__, static_folder=".")
 
-app = Flask(__name__, static_folder='.')
 CORS(app)
 
 YOUTUBE_API_KEY = ""
