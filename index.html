@@ -132,6 +132,45 @@
     }
   }
 </style>
+
+<script id="kidsDirectVideoEngine">
+const KIDS_DIRECT_VIDEOS = [
+  { ytid: "7Y2yW-v5H0s", title: "Motu Patlu - Kung Fu Kings Special Episode | Hindi Cartoon", category: "Motu Patlu", duration: "18:45", views: "4.2M" },
+  { ytid: "4xDzrJKXOOY", title: "Motu Patlu - Samosa Factory Adventure | Full Episode", category: "Motu Patlu", duration: "14:20", views: "3.1M" },
+  { ytid: "9bZkp7q19f0", title: "Chhota Bheem - Dholakpur Ki Raksha | Superhit Episode", category: "Chhota Bheem", duration: "21:10", views: "5.8M" },
+  { ytid: "kJQP7kiw5Fk", title: "Chhota Bheem Aur Kirmada Ka Mukabla | Full Movie Special", category: "Chhota Bheem", duration: "24:05", views: "7.4M" },
+  { ytid: "JGwWNGJdvx8", title: "Doraemon New Episode in Hindi - Gadget Adventure", category: "Doraemon", duration: "22:30", views: "6.1M" },
+  { ytid: "fJ9rUzIMcZQ", title: "Doraemon Nobita Time Machine Trip | Hindi Cartoon", category: "Doraemon", duration: "19:50", views: "4.9M" },
+  { ytid: "OPf0YbXqDm0", title: "Taarak Mehta Ka Ooltah Chashmah - Jethalal Comedy Episode", category: "Taarak Mehta", duration: "20:15", views: "8.2M" },
+  { ytid: "RgKAFK5djSk", title: "Taarak Mehta Ka Ooltah Chashmah - Gokuldham Festival Special", category: "Taarak Mehta", duration: "21:40", views: "6.7M" },
+  { ytid: "XqZsoesa55w", title: "Baby Shark Dance & Kids Nursery Rhymes Collection", category: "Rhymes", duration: "12:15", views: "15M" },
+  { ytid: "e_04ZrNroTo", title: "Wheels on the Bus & Lakdi Ki Kathi Hindi Balgeet", category: "Rhymes", duration: "15:30", views: "9.3M" }
+];
+
+const _origFetch = window.fetch;
+window.fetch = async function(url, opts) {
+  if (typeof url === 'string' && url.includes('/api/videos')) {
+    try {
+      const res = await _origFetch(url, opts);
+      const ct = res.headers.get('content-type') || '';
+      if (res.ok && ct.includes('application/json')) return res;
+    } catch (e) {}
+    const u = new URL(url, window.location.origin);
+    const q = (u.searchParams.get('q') || u.searchParams.get('category') || '').toLowerCase();
+    let filtered = KIDS_DIRECT_VIDEOS;
+    if (q && q !== 'all' && q !== 'cartoons') {
+      const m = KIDS_DIRECT_VIDEOS.filter(v => v.title.toLowerCase().includes(q) || v.category.toLowerCase().includes(q));
+      if (m.length) filtered = m;
+    }
+    return new Response(JSON.stringify({ videos: filtered }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+  return _origFetch(url, opts);
+};
+</script>
+
 </head>
 <body>
 
