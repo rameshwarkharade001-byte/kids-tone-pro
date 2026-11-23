@@ -327,7 +327,7 @@
             <div onclick="launchKidsPlayer('${v.ytId}', '${v.title.replace(/'/g, "\\'")}', '${badgeText}')" class="yt-card overflow-hidden cursor-pointer group">
               <div class="relative aspect-video bg-slate-200 overflow-hidden">
                 <img 
-                  src="https://img.youtube.com/vi/${v.ytId}/hqdefault.jpg" 
+                  src="https://i.ytimg.com/vi/${v.ytId}/hqdefault.jpg" 
                   alt="${v.title}" 
                   class="w-full h-full object-cover group-hover:scale-105 transition duration-300" 
                   loading="lazy"
@@ -573,7 +573,8 @@
             rel: 0,
             modestbranding: 1,
             playsinline: 1,
-            iv_load_policy: 3
+            iv_load_policy: 3,
+          fs: 1
           },
           events: {
             onStateChange: function(event) {
@@ -653,7 +654,7 @@
       target.innerHTML = items.map(v => `
         <div onclick="launchKidsPlayer('${v.ytId}', '${v.title.replace(/'/g, "\\'")}', '${activePlayingCategory}')" class="yt-card p-2.5 flex gap-3 items-center cursor-pointer">
           <div class="relative w-32 h-20 rounded-xl overflow-hidden bg-slate-200 shrink-0">
-            <img src="https://img.youtube.com/vi/${v.ytId}/mqdefault.jpg" class="w-full h-full object-cover" loading="lazy" />
+            <img src="https://i.ytimg.com/vi/${v.ytId}/mqdefault.jpg" class="w-full h-full object-cover" loading="lazy" />
             <div class="absolute inset-0 flex items-center justify-center bg-black/15">
               <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center">
                 <i data-lucide="play" class="w-4 h-4 text-white fill-white ml-0.5"></i>
@@ -898,7 +899,7 @@
       return videos.map(v => `
         <div onclick="launchKidsPlayer('${v.ytId}', '${v.title.replace(/'/g, "\\'")}', '${badgeText}')" class="yt-card overflow-hidden cursor-pointer group">
           <div class="relative aspect-video bg-slate-200 overflow-hidden">
-            <img src="https://img.youtube.com/vi/${v.ytId}/hqdefault.jpg" alt="${v.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
+            <img src="https://i.ytimg.com/vi/${v.ytId}/hqdefault.jpg" alt="${v.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
             <span class="absolute bottom-2.5 right-2.5 bg-slate-900/85 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg">${v.duration || 'HD'}</span>
             <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition">
               <div class="w-14 h-14 rounded-full bg-red-600/95 flex items-center justify-center shadow-xl border-2 border-white">
@@ -1141,7 +1142,7 @@
         return `
           <div onclick="launchKidsPlayer('${v.ytId}', '${safeTitle}', '${badgeText}')" class="yt-card overflow-hidden cursor-pointer group">
             <div class="relative aspect-video bg-slate-200 overflow-hidden">
-              <img src="https://img.youtube.com/vi/${v.ytId}/hqdefault.jpg" alt="${v.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
+              <img src="https://i.ytimg.com/vi/${v.ytId}/hqdefault.jpg" alt="${v.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
               
               <!-- Heart Favorite Button -->
               <button onclick="toggleFavoriteCartoon(event, '${v.ytId}', '${safeTitle}', '${badgeText}')" class="absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-slate-900/65 backdrop-blur-sm flex items-center justify-center active:scale-90 transition">
@@ -1261,36 +1262,36 @@
   <script>
     // 1. Character Visual Avatars (Real YouTube Show Thumbnails + Clean Fallback)
     const characterVisuals = [
-      { id: 'all', name: 'All Shows', bg: 'from-red-500 to-amber-500', code: 'ALL', img: 'https://img.youtube.com/vi/M7lc1UVf-VE/mqdefault.jpg' },
-      { id: 'motu', name: 'Motu Patlu', bg: 'from-amber-400 to-orange-600', code: 'MP', img: 'https://img.youtube.com/vi/g7x5P_X2E2A/mqdefault.jpg' },
-      { id: 'bheem', name: 'Chhota Bheem', bg: 'from-orange-500 to-red-600', code: 'CB', img: 'https://img.youtube.com/vi/0K1H3q3R4L0/mqdefault.jpg' },
-      { id: 'doraemon', name: 'Doraemon', bg: 'from-sky-500 to-blue-700', code: 'DR', img: 'https://img.youtube.com/vi/aqz-KE-bpKQ/mqdefault.jpg' },
-      { id: 'shinchan', name: 'Shinchan', bg: 'from-red-500 to-yellow-500', code: 'SC', img: 'https://img.youtube.com/vi/EngW7tLk6R8/mqdefault.jpg' },
-      { id: 'oggy', name: 'Oggy', bg: 'from-cyan-400 to-blue-600', code: 'OG', img: 'https://img.youtube.com/vi/BstW5K1G57I/mqdefault.jpg' },
-      { id: 'funnykids', name: 'Funny Kids', bg: 'from-pink-500 to-amber-400', code: 'FK', img: 'https://img.youtube.com/vi/F4tHL8reNCs/mqdefault.jpg' },
-      { id: 'masha', name: 'Masha & Bear', bg: 'from-pink-500 to-rose-600', code: 'MB', img: 'https://img.youtube.com/vi/e_04ZrNroTo/mqdefault.jpg' },
-      { id: 'singham', name: 'Little Singham', bg: 'from-amber-500 to-red-700', code: 'LS', img: 'https://img.youtube.com/vi/u4_S0iT4F8c/mqdefault.jpg' },
-      { id: 'rudra', name: 'Rudra', bg: 'from-purple-500 to-pink-600', code: 'RD', img: 'https://img.youtube.com/vi/f4Q3dG9E_lI/mqdefault.jpg' },
-      { id: 'vir', name: 'Vir Robot Boy', bg: 'from-rose-500 to-pink-600', code: 'VR', img: 'https://img.youtube.com/vi/u4_S0iT4F8c/mqdefault.jpg' },
-      { id: 'gattu', name: 'Gattu Battu', bg: 'from-emerald-400 to-teal-600', code: 'GB', img: 'https://img.youtube.com/vi/f4Q3dG9E_lI/mqdefault.jpg' },
-      { id: 'pakdam', name: 'Pakdam Pakdai', bg: 'from-indigo-500 to-purple-700', code: 'PP', img: 'https://img.youtube.com/vi/BstW5K1G57I/mqdefault.jpg' },
-      { id: 'roll21', name: 'Roll No 21', bg: 'from-blue-500 to-cyan-600', code: 'R21', img: 'https://img.youtube.com/vi/75p-N9YKqNo/mqdefault.jpg' },
-      { id: 'hattori', name: 'Ninja Hattori', bg: 'from-blue-600 to-indigo-800', code: 'NH', img: 'https://img.youtube.com/vi/hq3yfQnllfQ/mqdefault.jpg' },
-      { id: 'taarak', name: 'Taarak Mehta', bg: 'from-yellow-400 to-amber-600', code: 'TM', img: 'https://img.youtube.com/vi/yCjJyiqpAuU/mqdefault.jpg' },
-      { id: 'paw', name: 'Paw Patrol', bg: 'from-sky-400 to-red-500', code: 'PW', img: 'https://img.youtube.com/vi/e_04ZrNroTo/mqdefault.jpg' },
-      { id: 'mickey', name: 'Mickey Mouse', bg: 'from-red-600 to-slate-800', code: 'MM', img: 'https://img.youtube.com/vi/hq3yfQnllfQ/mqdefault.jpg' },
-      { id: 'spongebob', name: 'SpongeBob', bg: 'from-yellow-400 to-amber-500', code: 'SB', img: 'https://img.youtube.com/vi/yCjJyiqpAuU/mqdefault.jpg' },
-      { id: 'ben10', name: 'Ben 10', bg: 'from-green-500 to-emerald-700', code: 'B10', img: 'https://img.youtube.com/vi/aqz-KE-bpKQ/mqdefault.jpg' },
-      { id: 'mrbean', name: 'Mr Bean', bg: 'from-stone-500 to-amber-700', code: 'BN', img: 'https://img.youtube.com/vi/EngW7tLk6R8/mqdefault.jpg' },
-      { id: 'tomjerry', name: 'Tom & Jerry', bg: 'from-slate-500 to-orange-600', code: 'TJ', img: 'https://img.youtube.com/vi/BstW5K1G57I/mqdefault.jpg' },
-      { id: 'krishna', name: 'Little Krishna', bg: 'from-sky-400 to-indigo-600', code: 'LK', img: 'https://img.youtube.com/vi/0K1H3q3R4L0/mqdefault.jpg' },
-      { id: 'ganesh', name: 'Bal Ganesh', bg: 'from-orange-400 to-amber-600', code: 'BG', img: 'https://img.youtube.com/vi/0K1H3q3R4L0/mqdefault.jpg' },
-      { id: 'akbar', name: 'Akbar Birbal', bg: 'from-teal-500 to-emerald-700', code: 'AB', img: 'https://img.youtube.com/vi/75p-N9YKqNo/mqdefault.jpg' },
-      { id: 'tenali', name: 'Tenali Rama', bg: 'from-amber-500 to-yellow-600', code: 'TR', img: 'https://img.youtube.com/vi/75p-N9YKqNo/mqdefault.jpg' },
-      { id: 'peppa', name: 'Peppa Pig', bg: 'from-pink-400 to-rose-500', code: 'PG', img: 'https://img.youtube.com/vi/e_04ZrNroTo/mqdefault.jpg' },
-      { id: 'toys', name: 'Toys & Craft', bg: 'from-violet-500 to-fuchsia-600', code: 'TY', img: 'https://img.youtube.com/vi/F4tHL8reNCs/mqdefault.jpg' },
-      { id: 'marathi', name: 'Marathi Balgeet', bg: 'from-orange-500 to-amber-500', code: 'MR', img: 'https://img.youtube.com/vi/F4tHL8reNCs/mqdefault.jpg' },
-      { id: 'rhymes', name: 'Chiki Chum', bg: 'from-fuchsia-500 to-pink-600', code: 'CC', img: 'https://img.youtube.com/vi/F4tHL8reNCs/mqdefault.jpg' }
+      { id: 'all', name: 'All Shows', bg: 'from-red-500 to-amber-500', code: 'ALL', img: 'https://i.ytimg.com/vi/M7lc1UVf-VE/mqdefault.jpg' },
+      { id: 'motu', name: 'Motu Patlu', bg: 'from-amber-400 to-orange-600', code: 'MP', img: 'https://i.ytimg.com/vi/g7x5P_X2E2A/mqdefault.jpg' },
+      { id: 'bheem', name: 'Chhota Bheem', bg: 'from-orange-500 to-red-600', code: 'CB', img: 'https://i.ytimg.com/vi/0K1H3q3R4L0/mqdefault.jpg' },
+      { id: 'doraemon', name: 'Doraemon', bg: 'from-sky-500 to-blue-700', code: 'DR', img: 'https://i.ytimg.com/vi/aqz-KE-bpKQ/mqdefault.jpg' },
+      { id: 'shinchan', name: 'Shinchan', bg: 'from-red-500 to-yellow-500', code: 'SC', img: 'https://i.ytimg.com/vi/EngW7tLk6R8/mqdefault.jpg' },
+      { id: 'oggy', name: 'Oggy', bg: 'from-cyan-400 to-blue-600', code: 'OG', img: 'https://i.ytimg.com/vi/BstW5K1G57I/mqdefault.jpg' },
+      { id: 'funnykids', name: 'Funny Kids', bg: 'from-pink-500 to-amber-400', code: 'FK', img: 'https://i.ytimg.com/vi/F4tHL8reNCs/mqdefault.jpg' },
+      { id: 'masha', name: 'Masha & Bear', bg: 'from-pink-500 to-rose-600', code: 'MB', img: 'https://i.ytimg.com/vi/e_04ZrNroTo/mqdefault.jpg' },
+      { id: 'singham', name: 'Little Singham', bg: 'from-amber-500 to-red-700', code: 'LS', img: 'https://i.ytimg.com/vi/u4_S0iT4F8c/mqdefault.jpg' },
+      { id: 'rudra', name: 'Rudra', bg: 'from-purple-500 to-pink-600', code: 'RD', img: 'https://i.ytimg.com/vi/f4Q3dG9E_lI/mqdefault.jpg' },
+      { id: 'vir', name: 'Vir Robot Boy', bg: 'from-rose-500 to-pink-600', code: 'VR', img: 'https://i.ytimg.com/vi/u4_S0iT4F8c/mqdefault.jpg' },
+      { id: 'gattu', name: 'Gattu Battu', bg: 'from-emerald-400 to-teal-600', code: 'GB', img: 'https://i.ytimg.com/vi/f4Q3dG9E_lI/mqdefault.jpg' },
+      { id: 'pakdam', name: 'Pakdam Pakdai', bg: 'from-indigo-500 to-purple-700', code: 'PP', img: 'https://i.ytimg.com/vi/BstW5K1G57I/mqdefault.jpg' },
+      { id: 'roll21', name: 'Roll No 21', bg: 'from-blue-500 to-cyan-600', code: 'R21', img: 'https://i.ytimg.com/vi/75p-N9YKqNo/mqdefault.jpg' },
+      { id: 'hattori', name: 'Ninja Hattori', bg: 'from-blue-600 to-indigo-800', code: 'NH', img: 'https://i.ytimg.com/vi/hq3yfQnllfQ/mqdefault.jpg' },
+      { id: 'taarak', name: 'Taarak Mehta', bg: 'from-yellow-400 to-amber-600', code: 'TM', img: 'https://i.ytimg.com/vi/yCjJyiqpAuU/mqdefault.jpg' },
+      { id: 'paw', name: 'Paw Patrol', bg: 'from-sky-400 to-red-500', code: 'PW', img: 'https://i.ytimg.com/vi/e_04ZrNroTo/mqdefault.jpg' },
+      { id: 'mickey', name: 'Mickey Mouse', bg: 'from-red-600 to-slate-800', code: 'MM', img: 'https://i.ytimg.com/vi/hq3yfQnllfQ/mqdefault.jpg' },
+      { id: 'spongebob', name: 'SpongeBob', bg: 'from-yellow-400 to-amber-500', code: 'SB', img: 'https://i.ytimg.com/vi/yCjJyiqpAuU/mqdefault.jpg' },
+      { id: 'ben10', name: 'Ben 10', bg: 'from-green-500 to-emerald-700', code: 'B10', img: 'https://i.ytimg.com/vi/aqz-KE-bpKQ/mqdefault.jpg' },
+      { id: 'mrbean', name: 'Mr Bean', bg: 'from-stone-500 to-amber-700', code: 'BN', img: 'https://i.ytimg.com/vi/EngW7tLk6R8/mqdefault.jpg' },
+      { id: 'tomjerry', name: 'Tom & Jerry', bg: 'from-slate-500 to-orange-600', code: 'TJ', img: 'https://i.ytimg.com/vi/BstW5K1G57I/mqdefault.jpg' },
+      { id: 'krishna', name: 'Little Krishna', bg: 'from-sky-400 to-indigo-600', code: 'LK', img: 'https://i.ytimg.com/vi/0K1H3q3R4L0/mqdefault.jpg' },
+      { id: 'ganesh', name: 'Bal Ganesh', bg: 'from-orange-400 to-amber-600', code: 'BG', img: 'https://i.ytimg.com/vi/0K1H3q3R4L0/mqdefault.jpg' },
+      { id: 'akbar', name: 'Akbar Birbal', bg: 'from-teal-500 to-emerald-700', code: 'AB', img: 'https://i.ytimg.com/vi/75p-N9YKqNo/mqdefault.jpg' },
+      { id: 'tenali', name: 'Tenali Rama', bg: 'from-amber-500 to-yellow-600', code: 'TR', img: 'https://i.ytimg.com/vi/75p-N9YKqNo/mqdefault.jpg' },
+      { id: 'peppa', name: 'Peppa Pig', bg: 'from-pink-400 to-rose-500', code: 'PG', img: 'https://i.ytimg.com/vi/e_04ZrNroTo/mqdefault.jpg' },
+      { id: 'toys', name: 'Toys & Craft', bg: 'from-violet-500 to-fuchsia-600', code: 'TY', img: 'https://i.ytimg.com/vi/F4tHL8reNCs/mqdefault.jpg' },
+      { id: 'marathi', name: 'Marathi Balgeet', bg: 'from-orange-500 to-amber-500', code: 'MR', img: 'https://i.ytimg.com/vi/F4tHL8reNCs/mqdefault.jpg' },
+      { id: 'rhymes', name: 'Chiki Chum', bg: 'from-fuchsia-500 to-pink-600', code: 'CC', img: 'https://i.ytimg.com/vi/F4tHL8reNCs/mqdefault.jpg' }
     ];
 
     // 2. Add Night Mode Toggle & "Funny Kids" Tab in Header
@@ -1418,7 +1419,7 @@
       if (isFirstLoad && !activeIsCustom && currentFetchedList.length > 0) {
         const charObj = characterVisuals.find(x => x.id === selectedShow);
         if (charObj) {
-          charObj.img = `https://img.youtube.com/vi/${currentFetchedList[0].ytId}/mqdefault.jpg`;
+          charObj.img = `https://i.ytimg.com/vi/${currentFetchedList[0].ytId}/mqdefault.jpg`;
         }
       }
     };
@@ -1487,7 +1488,7 @@
 
       // Automatically save the real fetched cartoon image into that character's bubble!
       if (!isCustomQuery && currentFetchedList.length > 0 && selectedShow !== 'all') {
-        const liveImgUrl = `https://img.youtube.com/vi/${currentFetchedList[0].ytId}/mqdefault.jpg`;
+        const liveImgUrl = `https://i.ytimg.com/vi/${currentFetchedList[0].ytId}/mqdefault.jpg`;
         if (savedBubbleThumbs[selectedShow] !== liveImgUrl) {
           savedBubbleThumbs[selectedShow] = liveImgUrl;
           localStorage.setItem('kidsToneBubbleThumbs', JSON.stringify(savedBubbleThumbs));
