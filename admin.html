@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Kids Tone - Client Admin Panel</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      background-color: #090D16;
+      background-image: radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.12) 0%, transparent 45%);
+      color: #FFFFFF;
+      font-family: 'Poppins', sans-serif;
+      padding-bottom: 50px;
+    }
+    .kids-font { font-family: 'Fredoka', sans-serif; }
+    .glass-card {
+      background: rgba(20, 29, 49, 0.85);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .tap-effect:active { transform: scale(0.95); transition: transform 0.1s ease; }
+  </style>
+</head>
+<body class="px-4 pt-4 max-w-xl mx-auto">
+
+  <!-- ADMIN HEADER -->
+  <header class="glass-card rounded-2xl p-4 flex items-center justify-between border border-cyan-500/30 mb-5">
+    <div>
+      <h1 class="kids-font text-xl font-bold text-cyan-300">Kids Tone Admin</h1>
+      <p class="text-xs text-slate-400">YouTube Cartoons & Shorts Manager</p>
+    </div>
+    <a href="index.html" class="px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-xs font-bold flex items-center gap-1.5 tap-effect">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      <span>Open App</span>
+    </a>
+  </header>
+
+  <!-- ADD NEW CARTOON / SHORT FORM -->
+  <section class="glass-card rounded-3xl p-5 border border-white/10 space-y-4">
+    <h2 class="kids-font text-lg font-bold text-yellow-300 flex items-center gap-2">
+      <i data-lucide="plus-circle" class="w-5 h-5"></i>
+      <span>Add New Cartoon / Rhyme / Short</span>
+    </h2>
+
+    <!-- Step 1: YouTube URL -->
+    <div>
+      <label class="block text-xs font-semibold text-slate-300 mb-1">1. Paste YouTube Video or Shorts Link</label>
+      <div class="flex gap-2">
+        <input type="text" id="ytUrlInput" oninput="extractYtId()" placeholder="https://youtube.com/watch?v=... किंवा Shorts लिंक" class="flex-1 bg-slate-900 border border-cyan-500/40 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400" />
+        <button onclick="testEmbedVideo()" class="px-3.5 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-bold text-xs shrink-0 tap-effect">
+          Test Play
+        </button>
+      </div>
+      <p id="extractedIdStatus" class="text-[11px] text-cyan-400 mt-1">Video ID: Not detected yet</p>
+    </div>
+
+    <!-- Live Embed Preview Box -->
+    <div id="previewBox" class="hidden rounded-2xl overflow-hidden border border-amber-400/50 bg-black aspect-video">
+      <iframe id="testIframe" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Step 2: Content Type -->
+    <div class="grid grid-cols-3 gap-2">
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1">2. Section Type</label>
+        <select id="contentType" onchange="toggleCategorySelect()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none">
+          <option value="cartoon">Cartoon Show</option>
+          <option value="rhyme">Kids Rhyme</option>
+          <option value="short">Kids Short (9:16)</option>
+        </select>
+      </div>
+
+      <!-- Step 3: Cartoon Character -->
+      <div id="charSelectDiv" class="col-span-2">
+        <label class="block text-xs font-semibold text-slate-300 mb-1">3. Select Cartoon Character</label>
+        <select id="charCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none">
+          <option value="motu">Motu Patlu</option>
+          <option value="bheem">Chhota Bheem</option>
+          <option value="oggy">Oggy & Cockroaches</option>
+          <option value="vir">Vir The Robot Boy</option>
+          <option value="gattu">Gattu Battu</option>
+          <option value="pakdam">Pakdam Pakdai</option>
+          <option value="shinchan">Shinchan</option>
+          <option value="taarak">Taarak Mehta (KKC)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Step 4: Episode Title & Duration -->
+    <div class="grid grid-cols-3 gap-2">
+      <div class="col-span-2">
+        <label class="block text-xs font-semibold text-slate-300 mb-1">4. Episode / Rhyme Title</label>
+        <input type="text" id="videoTitleInput" placeholder="उदा. Motu Patlu New Episode Hindi" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none" />
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1">Duration</label>
+        <input type="text" id="videoDurationInput" value="11:00" placeholder="10:30" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none" />
+      </div>
+    </div>
+
+    <button onclick="saveNewContent()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/30 tap-effect">
+      Save & Publish to Kids Tone App
+    </button>
+  </section>
+
+  <!-- MANAGE EXISTING VIDEOS LIST -->
+  <section class="glass-card rounded-3xl p-5 border border-white/10 mt-5">
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="kids-font text-base font-bold text-white">Published Videos & Shorts</h2>
+      <span id="totalCountBadge" class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300">0 Items</span>
+    </div>
+    <div id="adminItemsList" class="space-y-2.5 max-h-96 overflow-y-auto pr-1"></div>
+  </section>
+
+  <!-- FIREBASE CLOUD CONFIG (OPTIONAL FOR MULTI-DEVICE SYNC) -->
+  <section class="glass-card rounded-3xl p-5 border border-white/10 mt-5">
+    <h2 class="kids-font text-sm font-bold text-amber-300 mb-1">Cloud Sync Settings (Firebase)</h2>
+    <p class="text-[11px] text-slate-400 mb-3">सर्व युजर्सच्या मोबाईलवर रिअल-टाइम अपडेटसाठी Firebase Config JSON पेस्ट करा:</p>
+    <textarea id="firebaseJsonInput" rows="3" placeholder='{"apiKey":"...","authDomain":"...","projectId":"..."}' class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-[11px] text-cyan-200 font-mono focus:outline-none"></textarea>
+    <button onclick="saveFirebaseConfig()" class="mt-2 px-4 py-2 rounded-xl bg-slate-800 border border-cyan-500/40 text-cyan-300 text-xs font-bold tap-effect">
+      Save Cloud Config
+    </button>
+  </section>
+
+  <script>
+    lucide.createIcons();
+    let detectedYtId = '';
+
+    // Extract YouTube ID from any URL format (watch, youtu.be, shorts, embed)
+    function extractYtId() {
+      const url = document.getElementById('ytUrlInput').value.trim();
+      const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+      const match = url.match(regex);
+      if (match && match[1]) {
+        detectedYtId = match[1];
+        document.getElementById('extractedIdStatus').innerText = `Detected Video ID: ${detectedYtId} (Ready)`;
+        document.getElementById('extractedIdStatus').className = 'text-[11px] text-emerald-400 mt-1 font-semibold';
+      } else {
+        detectedYtId = '';
+        document.getElementById('extractedIdStatus').innerText = 'Video ID: Invalid or empty YouTube link';
+        document.getElementById('extractedIdStatus').className = 'text-[11px] text-rose-400 mt-1';
+      }
+    }
+
+    // Test if video allows In-App Embedding
+    function testEmbedVideo() {
+      if (!detectedYtId) {
+        alert('आधी वैध (Valid) YouTube लिंक पेस्ट करा!');
+        return;
+      }
+      const box = document.getElementById('previewBox');
+      box.classList.remove('hidden');
+      document.getElementById('testIframe').src = `https://www.youtube.com/embed/${detectedYtId}?autoplay=1&rel=0`;
+    }
+
+    function toggleCategorySelect() {
+      const type = document.getElementById('contentType').value;
+      const charDiv = document.getElementById('charSelectDiv');
+      charDiv.style.display = (type === 'rhyme') ? 'none' : 'block';
+    }
+
+    function saveNewContent() {
+      if (!detectedYtId) {
+        alert('कृपया आधी वैध YouTube लिंक टाका!');
+        return;
+      }
+      const type = document.getElementById('contentType').value;
+      const category = (type === 'rhyme') ? 'rhymes' : document.getElementById('charCategory').value;
+      const title = document.getElementById('videoTitleInput').value.trim() || `${category.toUpperCase()} Special Episode`;
+      const duration = document.getElementById('videoDurationInput').value.trim() || 'HD';
+
+      if (type === 'short') {
+        const shorts = JSON.parse(localStorage.getItem('kidsToneShorts') || '[]');
+        shorts.unshift({
+          id: 's_' + Date.now(),
+          ytId: detectedYtId,
+          title: title,
+          category: category.toUpperCase()
+        });
+        localStorage.setItem('kidsToneShorts', JSON.stringify(shorts));
+      } else {
+        const videos = JSON.parse(localStorage.getItem('kidsToneVideos') || '[]');
+        videos.unshift({
+          id: 'v_' + Date.now(),
+          ytId: detectedYtId,
+          title: title,
+          category: category,
+          type: type,
+          duration: duration
+        });
+        localStorage.setItem('kidsToneVideos', JSON.stringify(videos));
+      }
+
+      alert('व्हिडिओ यशस्वीरित्या Kids Tone ॲपमध्ये सेव्ह झाला!');
+      document.getElementById('ytUrlInput').value = '';
+      document.getElementById('videoTitleInput').value = '';
+      document.getElementById('previewBox').classList.add('hidden');
+      detectedYtId = '';
+      renderAdminList();
+    }
+
+    function renderAdminList() {
+      const videos = JSON.parse(localStorage.getItem('kidsToneVideos') || '[]');
+      const shorts = JSON.parse(localStorage.getItem('kidsToneShorts') || '[]');
+      const listEl = document.getElementById('adminItemsList');
+
+      document.getElementById('totalCountBadge').innerText = `${videos.length + shorts.length} Items`;
+
+      let html = '';
+      videos.forEach((v, idx) => {
+        html += `
+          <div class="bg-slate-900/90 border border-white/10 rounded-xl p-2.5 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <img src="https://img.youtube.com/vi/${v.ytId}/default.jpg" class="w-14 h-10 rounded-lg object-cover shrink-0" />
+              <div class="min-w-0">
+                <span class="text-[10px] font-bold text-cyan-400 uppercase">${v.type} • ${v.category}</span>
+                <p class="text-xs font-semibold text-white truncate">${v.title}</p>
+              </div>
+            </div>
+            <button onclick="deleteItem('video', ${idx})" class="p-2 text-rose-400 hover:bg-rose-500/20 rounded-lg shrink-0">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+      });
+
+      shorts.forEach((s, idx) => {
+        html += `
+          <div class="bg-slate-900/90 border border-pink-500/20 rounded-xl p-2.5 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <img src="https://img.youtube.com/vi/${s.ytId}/default.jpg" class="w-14 h-10 rounded-lg object-cover shrink-0" />
+              <div class="min-w-0">
+                <span class="text-[10px] font-bold text-pink-400 uppercase">SHORT • ${s.category}</span>
+                <p class="text-xs font-semibold text-white truncate">${s.title}</p>
+              </div>
+            </div>
+            <button onclick="deleteItem('short', ${idx})" class="p-2 text-rose-400 hover:bg-rose-500/20 rounded-lg shrink-0">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+      });
+
+      listEl.innerHTML = html || '<p class="text-xs text-slate-400 text-center py-4">अजून कस्टम व्हिडिओ ॲड केलेले नाहीत.</p>';
+      lucide.createIcons();
+    }
+
+    function deleteItem(kind, index) {
+      if (kind === 'video') {
+        const videos = JSON.parse(localStorage.getItem('kidsToneVideos') || '[]');
+        videos.splice(index, 1);
+        localStorage.setItem('kidsToneVideos', JSON.stringify(videos));
+      } else {
+        const shorts = JSON.parse(localStorage.getItem('kidsToneShorts') || '[]');
+        shorts.splice(index, 1);
+        localStorage.setItem('kidsToneShorts', JSON.stringify(shorts));
+      }
+      renderAdminList();
+    }
+
+    function saveFirebaseConfig() {
+      try {
+        const cfg = JSON.parse(document.getElementById('firebaseJsonInput').value);
+        localStorage.setItem('kidsToneFirebaseConfig', JSON.stringify(cfg));
+        alert('Firebase Cloud Config सेव्ह झाले!');
+      } catch (e) {
+        alert('कृपया वैध (Valid) JSON पेस्ट करा!');
+      }
+    }
+
+    renderAdminList();
+  </script>
+</body>
+</html>
