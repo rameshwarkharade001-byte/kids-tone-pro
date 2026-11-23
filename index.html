@@ -110,6 +110,28 @@
     }
   }
 </style>
+<style id="kidsLandscapeForce">
+  .kids-landscape-on {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 100vh !important;
+    height: 100vw !important;
+    max-width: none !important;
+    transform: translate(-50%, -50%) rotate(90deg) !important;
+    z-index: 999999 !important;
+    background: #000 !important;
+  }
+  @media (orientation: landscape) {
+    .kids-landscape-on {
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      transform: none !important;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -488,6 +510,10 @@
       <button onclick="activateKidsLock()" class="px-3.5 py-2 rounded-full bg-amber-400 text-slate-950 kids-font text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition">
         <i data-lucide="lock" class="w-4 h-4"></i>
         <span>Screen Lock</span>
+    </button>
+    <button id="kidsFullBtn" onclick="toggleKidsLandscape()" class="px-3 py-2 rounded-2xl bg-sky-500 text-white kids-font text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition">
+      <i data-lucide="maximize-2" class="w-4 h-4"></i>
+      <span>Full Screen</span>
     </button>
     <button id="landscapeToggleBtn" onclick="toggleKidsLandscape()" class="px-3 py-2 rounded-2xl bg-sky-500 text-white kids-font text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition">
       <i data-lucide="maximize-2" class="w-4 h-4"></i>
