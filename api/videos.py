@@ -5,36 +5,23 @@ import json
 import re
 
 QUERY_MAP = {
-    "all": "Motu Patlu Chhota Bheem Doraemon Oggy Hindi Cartoon Full Episode",
-    "motu": "Motu Patlu cartoon full episode hindi",
-    "bheem": "Chhota Bheem cartoon full episode hindi",
-    "doraemon": "Doraemon cartoon hindi episode",
-    "shinchan": "Shinchan cartoon hindi episode",
-    "oggy": "Oggy and the Cockroaches hindi cartoon",
-    "funnykids": "Funny Kids Comedy Videos Nastya Diana Vlad Niki",
-    "masha": "Masha and the Bear Hindi cartoon",
-    "singham": "Little Singham cartoon hindi",
-    "rudra": "Rudra Boom Chik Chik Boom cartoon hindi",
-    "vir": "Vir The Robot Boy cartoon hindi",
-    "gattu": "Gattu Battu cartoon hindi",
-    "pakdam": "Pakdam Pakdai cartoon hindi",
-    "roll21": "Roll No 21 cartoon hindi",
-    "shiva": "Shiva cartoon hindi full episode",
-    "taarak": "Taarak Mehta Ka Chhota Chashmah cartoon",
-    "paw": "Paw Patrol Hindi cartoon",
-    "mickey": "Mickey Mouse Clubhouse Hindi cartoon",
-    "spongebob": "SpongeBob SquarePants Hindi cartoon",
-    "ben10": "Ben 10 cartoon hindi",
-    "mrbean": "Mr Bean animated cartoon",
-    "tomjerry": "Tom and Jerry cartoon",
-    "krishna": "Little Krishna Balram cartoon",
-    "ganesh": "Bal Ganesh animated cartoon",
-    "akbar": "Akbar Birbal hindi cartoon stories",
-    "tenali": "Tenali Rama hindi cartoon stories",
-    "panchatantra": "Panchatantra cartoon hindi",
-    "toys": "Kids Toys Unboxing Slime Craft Magic",
-    "marathi": "Marathi Balgeet Goshti cartoon",
-    "rhymes": "Chiki Chun ChuChu TV Hindi Kids Rhymes"
+    "all": "Motu Patlu Chhota Bheem Doraemon Hindi Cartoon",
+    "motu": "Motu Patlu Hindi Cartoon",
+    "bheem": "Chhota Bheem Hindi Cartoon",
+    "doraemon": "Doraemon Hindi Cartoon",
+    "shinchan": "Shinchan Hindi Cartoon",
+    "oggy": "Oggy and the Cockroaches Hindi",
+    "funnykids": "Funny Kids Comedy Videos",
+    "masha": "Masha and the Bear Hindi",
+    "singham": "Little Singham Hindi",
+    "rudra": "Rudra Cartoon Hindi",
+    "vir": "Vir The Robot Boy Hindi",
+    "gattu": "Gattu Battu Hindi",
+    "pakdam": "Pakdam Pakdai Hindi",
+    "roll21": "Roll No 21 Hindi",
+    "shiva": "Shiva Cartoon Hindi",
+    "taarak": "Taarak Mehta Ka Chhota Chashmah",
+    "rhymes": "Hindi Nursery Rhymes Kids"
 }
 
 class handler(BaseHTTPRequestHandler):
@@ -43,45 +30,52 @@ class handler(BaseHTTPRequestHandler):
         params = parse_qs(parsed.query)
         cat = (params.get('category') or ['all'])[0].strip().lower()
         q_raw = (params.get('q') or [''])[0].strip()
-        final_query = f"{q_raw} cartoon hindi" if q_raw else QUERY_MAP.get(cat, "Motu Patlu Chhota Bheem Hindi Cartoon")
+        final_query = q_raw if q_raw else QUERY_MAP.get(cat, "Motu Patlu Chhota Bheem Hindi Cartoon")
 
         videos = []
         seen = set()
-        try:
-            url = f"https://www.youtube.com/results?search_query={quote(final_query)}"
-            req = urllib.request.Request(url, headers={
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-                'Accept-Language': 'en-US,en;q=0.9'
-            })
-            html = urllib.request.urlopen(req, timeout=9).read().decode('utf-8', errors='ignore')
-            blocks = html.split('"videoRenderer":{"videoId":"')
-            for blk in blocks[1:]:
-                vid = blk[:11]
-                if not re.match(r'^[a-zA-Z0-9_-]{11}$', vid) or vid in seen:
-                    continue
-                t_m = re.search(r'"title":\{"runs":\[\{"text":"(.*?)"\}', blk)
-                d_m = re.search(r'"lengthText":\{.*?"simpleText":"([0-9:]+)"', blk)
-                if not t_m or not d_m:
-                    continue
-                title = bytes(t_m.group(1), 'utf-8').decode('unicode_escape', errors='ignore')
-                dur = d_m.group(1)
-                if '#shorts' in title.lower():
-                    continue
-                seen.add(vid)
-                videos.append({
-                    'ytid': vid,
-                    'title': title,
-                    'category': cat.title(),
-                    'duration': dur,
-                    'views': 'Kids Safe'
-                })
-                if len(videos) >= 18:
+        # Use Piped public API instances (never blocked by YouTube, returns exact 11-char IDs & clean UTF-8 titles)
+        instances = [
+            "https://pipedapi.kavin.rocks",
+            "https://pipedapi.adminforge.de",
+            "https://api.piped.yt"
+        ]
+        for base in instances:
+            try:
+                api_url = f"{base}/search?q={quote(final_query)}&filter=videos"
+                req = urllib.request.Request(api_url, headers={'User-Agent': 'Mozilla/5.0'})
+                raw = urllib.request.urlopen(req, timeout=7).read().decode('utf-8')
+                data = json.loads(raw)
+                items = data.get('items', [])
+                for it in items:
+                    url_part = it.get('url', '')
+                    m = re.search(r'v=([a-zA-Z0-9_-]{11})', url_part)
+                    if not m:
+                        continue
+                    vid = m.group(1)
+                    if vid in seen:
+                        continue
+                    dur_sec = it.get('duration', 0)
+                    if not isinstance(dur_sec, int) or dur_sec < 90:
+                        continue
+                    mins, secs = divmod(dur_sec, 60)
+                    seen.add(vid)
+                    videos.append({
+                        'ytid': vid,
+                        'title': it.get('title', 'Kids Cartoon'),
+                        'category': cat.title(),
+                        'duration': f"{mins}:{secs:02d}",
+                        'views': 'Kids Safe'
+                    })
+                    if len(videos) >= 18:
+                        break
+                if videos:
                     break
-        except Exception:
-            pass
+            except Exception:
+                continue
 
         self.send_response(200)
-        self.send_header('Content-Type', 'application/json')
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
-        self.wfile.write(json.dumps({'status': 'ok', 'videos': videos}).encode('utf-8'))
+        self.wfile.write(json.dumps({'status': 'ok', 'videos': videos}, ensure_ascii=False).encode('utf-8'))
