@@ -1,3 +1,4 @@
+import urllib.request
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 import json
@@ -27,6 +28,28 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
         params = parse_qs(parsed.query)
+        thumb_id = (params.get('thumb') or [''])[0].strip()
+        if thumb_id:
+            for quality in ('hqdefault.jpg', 'mqdefault.jpg', '0.jpg'):
+                try:
+                    req = urllib.request.Request(
+                        f"https://i.ytimg.com/vi/{thumb_id}/{quality}",
+                        headers={'User-Agent': 'Mozilla/5.0'}
+                    )
+                    with urllib.request.urlopen(req, timeout=5) as resp:
+                        img_bytes = resp.read()
+                        if len(img_bytes) > 2000:
+                            self.send_response(200)
+                            self.send_header('Content-Type', 'image/jpeg')
+                            self.send_header('Cache-Control', 'public, max-age=86400')
+                            self.end_headers()
+                            self.wfile.write(img_bytes)
+                            return
+                except Exception:
+                    continue
+            self.send_response(404)
+            self.end_headers()
+            return
         cat = (params.get('category') or ['all'])[0].strip().lower()
         q = (params.get('q') or [''])[0].strip()
         final_query = q if q else QUERY_MAP.get(cat, "Kids Cartoon Hindi")
