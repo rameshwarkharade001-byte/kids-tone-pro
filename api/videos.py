@@ -54,37 +54,29 @@ class handler(BaseHTTPRequestHandler):
                 'Accept-Language': 'en-US,en;q=0.9'
             })
             html = urllib.request.urlopen(req, timeout=9).read().decode('utf-8', errors='ignore')
-            m = re.search(r'var ytInitialData = (\{.*?\});</script>', html)
-            if m:
-                data = json.loads(m.group(1))
-                sections = data['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents']
-                for sec in sections:
-                    items = sec.get('itemSectionRenderer', {}).get('contents', [])
-                    for item in items:
-                        vr = item.get('videoRenderer')
-                        if not vr:
-                            continue
-                        vid = vr.get('videoId', '')
-                        if not re.match(r'^[a-zA-Z0-9_-]{11}$', vid) or vid in seen:
-                            continue
-                        dur = vr.get('lengthText', {}).get('simpleText', '')
-                        if not dur or ':' not in dur:
-                            continue
-                        title = ''.join(r.get('text', '') for r in vr.get('title', {}).get('runs', []))
-                        if not title or '#shorts' in title.lower():
-                            continue
-                        seen.add(vid)
-                        videos.append({
-                            'ytid': vid,
-                            'title': title,
-                            'category': cat.title(),
-                            'duration': dur,
-                            'views': 'Kids Safe'
-                        })
-                        if len(videos) >= 18:
-                            break
-                    if len(videos) >= 18:
-                        break
+            blocks = html.split('"videoRenderer":{"videoId":"')
+            for blk in blocks[1:]:
+                vid = blk[:11]
+                if not re.match(r'^[a-zA-Z0-9_-]{11}$', vid) or vid in seen:
+                    continue
+                t_m = re.search(r'"title":\{"runs":\[\{"text":"(.*?)"\}', blk)
+                d_m = re.search(r'"lengthText":\{.*?"simpleText":"([0-9:]+)"', blk)
+                if not t_m or not d_m:
+                    continue
+                title = bytes(t_m.group(1), 'utf-8').decode('unicode_escape', errors='ignore')
+                dur = d_m.group(1)
+                if '#shorts' in title.lower():
+                    continue
+                seen.add(vid)
+                videos.append({
+                    'ytid': vid,
+                    'title': title,
+                    'category': cat.title(),
+                    'duration': dur,
+                    'views': 'Kids Safe'
+                })
+                if len(videos) >= 18:
+                    break
         except Exception:
             pass
 
