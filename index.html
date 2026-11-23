@@ -171,6 +171,45 @@ window.fetch = async function(url, opts) {
 };
 </script>
 
+<style id="cleanNativeLandscapeCSS">
+  .yt-native-landscape {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 100vh !important;
+    height: 100vw !important;
+    max-width: none !important;
+    transform: translate(-50%, -50%) rotate(90deg) !important;
+    z-index: 999999 !important;
+    background: #000 !important;
+  }
+  @media (orientation: landscape) {
+    .yt-native-landscape {
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      transform: none !important;
+    }
+  }
+</style>
+<script id="cleanNativeLandscapeJS">
+  function onNativeYTFullscreen() {
+    const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    const box = document.getElementById('kidsVideoWrapper') || document.getElementById('kidsVideoBox') || (document.getElementById('ytKidsIframeTarget') && document.getElementById('ytKidsIframeTarget').parentElement);
+    if (!box) return;
+    if (fsEl) {
+      if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      box.classList.add('yt-native-landscape');
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(() => {});
+      }
+    }
+  }
+  document.addEventListener('fullscreenchange', onNativeYTFullscreen);
+  document.addEventListener('webkitfullscreenchange', onNativeYTFullscreen);
+</script>
 </head>
 <body>
 
@@ -550,14 +589,8 @@ window.fetch = async function(url, opts) {
         <i data-lucide="lock" class="w-4 h-4"></i>
         <span>Screen Lock</span>
     </button>
-    <button id="kidsFullBtn" onclick="toggleKidsLandscape()" class="px-3 py-2 rounded-2xl bg-sky-500 text-white kids-font text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition">
-      <i data-lucide="maximize-2" class="w-4 h-4"></i>
-      <span>Full Screen</span>
-    </button>
-    <button id="landscapeToggleBtn" onclick="toggleKidsLandscape()" class="px-3 py-2 rounded-2xl bg-sky-500 text-white kids-font text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition">
-      <i data-lucide="maximize-2" class="w-4 h-4"></i>
-      <span>Full Screen</span>
-      </button>
+    
+    
     </div>
 
     <!-- Video Screen Wrapper -->
@@ -633,7 +666,7 @@ window.fetch = async function(url, opts) {
             rel: 0,
             modestbranding: 1,
             playsinline: 1,
-          fs: 0,
+          fs: 1,
             iv_load_policy: 3
           },
           events: {
