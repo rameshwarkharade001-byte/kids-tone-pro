@@ -87,6 +87,29 @@
       100% { background-position: -200% 0; }
     }
   </style>
+
+<style id="landscapePlayerStyle">
+  .kids-landscape-active {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 100vh !important;
+    height: 100vw !important;
+    max-width: none !important;
+    transform: translate(-50%, -50%) rotate(90deg) !important;
+    z-index: 99999 !important;
+    background: #000 !important;
+  }
+  @media (orientation: landscape) {
+    .kids-landscape-active {
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      transform: none !important;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -469,7 +492,11 @@
     </div>
 
     <!-- Video Screen Wrapper -->
-    <div class="relative w-full max-w-4xl mx-auto aspect-video bg-black shadow-xl">
+    <div id="kidsVideoWrapper" class="relative w-full max-w-4xl mx-auto aspect-video bg-black shadow-xl">
+    <button id="exitLandscapeBtn" onclick="toggleKidsLandscape(false)" class="hidden absolute top-3 right-3 z-40 px-3 py-1.5 rounded-full bg-black/75 text-white kids-font text-xs font-bold flex items-center gap-1.5 border border-white/25 shadow-lg">
+      <i data-lucide="minimize-2" class="w-3.5 h-3.5"></i>
+      <span>Exit Full</span>
+    </button>
       <div id="ytKidsIframeTarget" class="w-full h-full"></div>
 
       <!-- Silent Auto-Skip Toast (No Ugly Browser Alert Box!) -->
@@ -537,6 +564,7 @@
             rel: 0,
             modestbranding: 1,
             playsinline: 1,
+          fs: 1,
             iv_load_policy: 3
           },
           events: {
@@ -577,7 +605,8 @@
       if (ytKidsPlayer && typeof ytKidsPlayer.stopVideo === 'function') {
         ytKidsPlayer.stopVideo();
       }
-      document.getElementById('kidsPlayerModal').classList.add('hidden');
+      toggleKidsLandscape(false);
+  document.getElementById('kidsPlayerModal').classList.add('hidden');
     }
 
     function activateKidsLock() {
