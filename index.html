@@ -1761,3 +1761,125 @@
   });
 })();
 </script>
+
+
+<script id="youtubeSpeedAndInfiniteScroll">
+(function() {
+  const apiCache = new Map();
+  let isFetchingMore = false;
+  let seenIds = new Set();
+
+  const baseQueries = {
+    all: ["motu patlu chhota bheem doraemon hindi cartoon", "shinchan oggy rudra hindi cartoon", "hindi cartoon full episodes kids", "indian kids cartoon movie hindi"],
+    motu: ["motu patlu hindi cartoon episodes", "motu patlu comedy movie hindi", "motu patlu new episodes 2025", "motu patlu furfuri nagar"],
+    bheem: ["chhota bheem hindi cartoon episodes", "chhota bheem movie hindi", "chhota bheem new episodes", "mighty little bheem hindi"],
+    doraemon: ["doraemon hindi cartoon episodes", "doraemon new episodes hindi", "doraemon movie hindi", "doraemon nobita funny hindi"],
+    shinchan: ["shinchan hindi cartoon episodes", "shinchan funny episodes hindi"],
+    oggy: ["oggy and the cockroaches hindi episodes", "oggy funny hindi cartoon"]
+  };
+
+  async function fetchCachedVideos(q, page) {
+    const key = q + "::" + page;
+    if (apiCache.has(key)) return apiCache.get(key);
+    const res = await fetch(`/api/videos?q=${encodeURIComponent(q)}&page=${page}`);
+    if (!res.ok) return [];
+    const data = await res.json();
+    const raw = Array.isArray(data) ? data : (data.videos || data.items || []);
+    const clean = raw
+      .filter(v => v && (v.ytid || v.videoId || v.id))
+      .map(v => ({
+        ytid: v.ytid || v.videoId || v.id,
+        title: v.title || "Kids Cartoon Episode",
+        duration: v.duration || "HD"
+      }));
+    apiCache.set(key, clean);
+    return clean;
+  }
+
+  window.appendMoreEpisodes = async function(isFirstLoad = false) {
+    if (isFetchingMore && !isFirstLoad) return;
+    const grid = document.getElementById("infiniteCardsGrid");
+    const badge = document.getElementById("loadedCounterBadge");
+    if (!grid) return;
+
+    isFetchingMore = true;
+    const param = (typeof activeParam !== "undefined" && activeParam) ? activeParam : "all";
+    const isCustom = (typeof activeIsCustom !== "undefined") ? activeIsCustom : false;
+    const page = isFirstLoad ? 1 : ((typeof currentPageNum !== "undefined" && currentPageNum) ? currentPageNum : 2);
+
+    if (isFirstLoad) {
+      seenIds = new Set();
+      if (typeof currentPageNum !== "undefined") currentPageNum = 1;
+    }
+
+    const qList = baseQueries[param] || [param + " hindi cartoon episodes", param + " funny cartoon", param + " full movie hindi"];
+    const q = isCustom ? (page === 1 ? param : param + " episodes " + page) : qList[(page - 1) % qList.length];
+
+    let videos = [];
+    try {
+      videos = await fetchCachedVideos(q, page);
+    } catch (e) {}
+
+    // Remove duplicates
+    const freshVideos = videos.filter(v => {
+      if (seenIds.has(v.ytid)) return false;
+      seenIds.add(v.ytid);
+      return true;
+    });
+
+    if (typeof currentFetchedList !== "undefined") {
+      currentFetchedList = isFirstLoad ? freshVideos : currentFetchedList.concat(freshVideos);
+    }
+
+    const label = (typeof activeBadgeLabel !== "undefined" && activeBadgeLabel) ? activeBadgeLabel : "All Shows";
+    const cardsHtml = freshVideos.map(v => {
+      const safeTitle = (v.title || "").replace(/'/g, "\'").replace(/"/g, "&quot;");
+      return `
+        <div onclick="if(typeof launchKidsPlayer==='function') launchKidsPlayer('${v.ytid}','${safeTitle}','${label}');" class="yt-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden cursor-pointer">
+          <div class="relative aspect-video bg-slate-200">
+            <img loading="lazy" src="https://i.ytimg.com/vi/${v.ytid}/hqdefault.jpg" alt="${safeTitle}" class="w-full h-full object-cover">
+            <span class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-bold px-2 py-0.5 rounded">${v.duration}</span>
+          </div>
+          <div class="p-3">
+            <div class="text-xs font-extrabold text-sky-600 uppercase mb-1">${label}</div>
+            <div class="font-bold text-slate-900 text-sm line-clamp-2">${v.title}</div>
+          </div>
+        </div>`;
+    }).join("");
+
+    if (isFirstLoad) grid.innerHTML = cardsHtml || grid.innerHTML;
+    else if (cardsHtml) grid.insertAdjacentHTML("beforeend", cardsHtml);
+
+    if (badge) {
+      badge.innerText = seenIds.size + "+ Episodes";
+    }
+    if (typeof currentPageNum !== "undefined") currentPageNum = page + 1;
+    isFetchingMore = false;
+  };
+
+  // Auto Infinite Scroll like YouTube
+  function setupAutoScroll() {
+    const loader = document.getElementById("infiniteLoaderBar");
+    if (!loader || loader.dataset.observed) return;
+    loader.dataset.observed = "1";
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isFetchingMore) {
+        appendMoreEpisodes(false);
+      }
+    }, { rootMargin: "350px" });
+    obs.observe(loader);
+  }
+
+  // Background prefetch popular shows so switching tabs is instant!
+  window.addEventListener("load", () => {
+    setInterval(setupAutoScroll, 1000);
+    setTimeout(() => {
+      ["motu", "bheem", "doraemon"].forEach((k, idx) => {
+        setTimeout(() => {
+          fetchCachedVideos(baseQueries[k][0], 1).catch(() => {});
+        }, (idx + 1) * 900);
+      });
+    }, 1500);
+  });
+})();
+</script>
