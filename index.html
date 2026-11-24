@@ -1674,3 +1674,90 @@
 
     lucide.createIcons();
   </script>
+
+
+<script id="fixAppendMoreEpisodesFinal">
+(function() {
+  const fallbackList = [
+    { ytid: "aqz-KE-bpKQ", title: "Big Buck Bunny - Full Kids Cartoon Movie", duration: "10:34" },
+    { ytid: "tgbNymZ7vqY", title: "Funny Muppets Cartoon Comedy Show", duration: "04:46" },
+    { ytid: "YE7VzlLtp-4", title: "Kids Animated Fun Adventure", duration: "09:56" },
+    { ytid: "M7lc1UVf-VE", title: "Kids Tone Special Animated Clip", duration: "04:12" }
+  ];
+
+  const queryMap = {
+    all: "motu patlu chhota bheem doraemon hindi cartoon",
+    motu: "motu patlu hindi cartoon episodes",
+    bheem: "chhota bheem hindi cartoon episodes",
+    doraemon: "doraemon hindi cartoon episodes"
+  };
+
+  window.appendMoreEpisodes = async function(isFirstLoad = false) {
+    const grid = document.getElementById("infiniteCardsGrid");
+    const badge = document.getElementById("loadedCounterBadge");
+    if (!grid) return;
+
+    const param = (typeof activeParam !== "undefined" && activeParam) ? activeParam : "all";
+    const isCustom = (typeof activeIsCustom !== "undefined") ? activeIsCustom : false;
+    const q = isCustom ? param : (queryMap[param] || queryMap.all);
+    const page = (typeof currentPageNum !== "undefined") ? currentPageNum : 1;
+
+    let videos = [];
+    try {
+      const res = await fetch(`/api/videos?q=${encodeURIComponent(q)}&page=${page}`);
+      if (res.ok) {
+        const data = await res.json();
+        const raw = Array.isArray(data) ? data : (data.videos || data.items || []);
+        videos = raw.filter(v => v && (v.ytid || v.videoId || v.id)).map(v => ({
+          ytid: v.ytid || v.videoId || v.id,
+          title: v.title || "Kids Cartoon Episode",
+          duration: v.duration || "HD"
+        }));
+      }
+    } catch (e) {
+      console.error("API fetch failed, using fallback:", e);
+    }
+
+    if (videos.length === 0 && isFirstLoad) {
+      videos = fallbackList;
+    }
+
+    if (typeof currentFetchedList !== "undefined") {
+      if (isFirstLoad) currentFetchedList = videos;
+      else currentFetchedList = currentFetchedList.concat(videos);
+    }
+
+    const label = (typeof activeBadgeLabel !== "undefined" && activeBadgeLabel) ? activeBadgeLabel : "All Shows";
+    const cardsHtml = videos.map(v => {
+      const safeTitle = (v.title || "").replace(/'/g, "\'").replace(/"/g, "&quot;");
+      return `
+        <div onclick="if(typeof launchKidsPlayer==='function') launchKidsPlayer('${v.ytid}','${safeTitle}','${label}');" class="yt-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden cursor-pointer">
+          <div class="relative aspect-video bg-slate-200">
+            <img src="https://i.ytimg.com/vi/${v.ytid}/hqdefault.jpg" alt="${safeTitle}" class="w-full h-full object-cover">
+            <span class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-bold px-2 py-0.5 rounded">${v.duration}</span>
+          </div>
+          <div class="p-3">
+            <div class="text-xs font-extrabold text-sky-600 uppercase mb-1">${label}</div>
+            <div class="font-bold text-slate-900 text-sm line-clamp-2">${v.title}</div>
+          </div>
+        </div>`;
+    }).join("");
+
+    if (isFirstLoad) grid.innerHTML = cardsHtml;
+    else grid.insertAdjacentHTML("beforeend", cardsHtml);
+
+    if (badge) {
+      const total = (typeof currentFetchedList !== "undefined" && currentFetchedList.length) ? currentFetchedList.length : videos.length;
+      badge.innerText = total + "+ Episodes";
+    }
+    if (typeof currentPageNum !== "undefined") currentPageNum++;
+  };
+
+  // Trigger clean reload right away
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      if (typeof appendMoreEpisodes === "function") appendMoreEpisodes(true);
+    }, 300);
+  });
+})();
+</script>
