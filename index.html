@@ -188,6 +188,12 @@
     border-color: transparent;
   }
 </style>
+<style id="hideExternalAndNextBtns">
+  .yt-direct-open-btn, .yt-next-btn, a[href*="youtube.com/watch"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+</style>
 </head>
 <body>
 
@@ -643,22 +649,7 @@
       setTimeout(() => {
         const w = document.getElementById('kidsVideoWrapper') || document.getElementById('ytKidsIframeTarget')?.parentElement;
         if (w && ytId && !w.querySelector('.yt-direct-open-btn')) {
-          const btn = document.createElement('a');
-          btn.className = 'yt-direct-open-btn';
-          btn.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(ytId);
-          btn.target = '_blank';
-          btn.rel = 'noopener noreferrer';
-          btn.innerText = 'YouTube वर थेट पहा';
-          const nxt = document.createElement('button');
-          nxt.className = 'yt-next-btn';
-          nxt.type = 'button';
-          nxt.innerText = 'पुढचा व्हिडिओ →';
-          nxt.style.cssText = 'position:absolute;bottom:10px;left:10px;z-index:9999;background:#111827;color:#fff;padding:6px 12px;border-radius:8px;font-weight:bold;font-size:12px;border:1px solid rgba(255,255,255,0.25);cursor:pointer;';
-          nxt.onclick = function(e) { e.stopPropagation(); if (typeof playNextAvailableCartoon === 'function') playNextAvailableCartoon(); };
-          if (!w.querySelector('.yt-next-btn')) w.appendChild(nxt);
-          btn.style.cssText = 'position:absolute;bottom:10px;right:10px;z-index:9999;background:#ff0000;color:#fff;padding:6px 12px;border-radius:8px;font-weight:bold;font-size:12px;text-decoration:none;';
-          w.style.position = 'relative';
-          w.appendChild(btn);
+          
         }
         const box = document.getElementById('ytKidsIframeTarget');
         if (box && ytId) {
