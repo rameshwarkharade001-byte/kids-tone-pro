@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050816"/>
+      <stop offset="50%" stop-color="#0b132b"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- 3D Dark Grid Background -->
+  <rect width="900" height="340" rx="20" fill="url(#bg)" stroke="#1e293b" stroke-width="2"/>
+  <g stroke="#1e293b" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="68" x2="900" y2="68"/>
+    <line x1="0" y1="136" x2="900" y2="136"/>
+    <line x1="0" y1="204" x2="900" y2="204"/>
+    <line x1="0" y1="272" x2="900" y2="272"/>
+    <line x1="180" y1="0" x2="180" y2="340"/>
+    <line x1="360" y1="0" x2="360" y2="340"/>
+    <line x1="540" y1="0" x2="540" y2="340"/>
+    <line x1="720" y1="0" x2="720" y2="340"/>
+  </g>
+
+  <!-- 3D Isometric Cube 1: Client UI & APK -->
+  <g transform="translate(150, 165)" filter="url(#glow)">
+    <polygon points="0,-55 75,-20 0,15 -75,-20" fill="url(#neonCyan)" opacity="0.95"/>
+    <polygon points="-75,-20 0,15 0,85 -75,50" fill="#0369a1" opacity="0.9"/>
+    <polygon points="0,15 75,-20 75,50 0,85" fill="#1d4ed8" opacity="0.9"/>
+    <text x="0" y="-16" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">WEB + APK</text>
+    <text x="0" y="108" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">1. CLIENT LAYER</text>
+  </g>
+
+  <!-- Neon 3D Connector 1 -->
+  <path d="M 235 165 L 365 165" stroke="#38bdf8" stroke-width="3" stroke-dasharray="8,6"/>
+  <polygon points="370,165 358,159 358,171" fill="#38bdf8"/>
+
+  <!-- 3D Isometric Cube 2: Edge Cache & Streaming Engine -->
+  <g transform="translate(450, 165)" filter="url(#glow)">
+    <polygon points="0,-65 85,-25 0,15 -85,-25" fill="url(#neonPurple)" opacity="0.95"/>
+    <polygon points="-85,-25 0,15 0,95 -85,55" fill="#5b21b6" opacity="0.9"/>
+    <polygon points="0,15 85,-25 85,55 0,95" fill="#6d28d9" opacity="0.9"/>
+    <text x="0" y="-20" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">EDGE CACHE</text>
+    <text x="0" y="118" fill="#c084fc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">2. VERCEL ENGINE</text>
+  </g>
+
+  <!-- Neon 3D Connector 2 -->
+  <path d="M 545 165 L 665 165" stroke="#34d399" stroke-width="3" stroke-dasharray="8,6"/>
+  <polygon points="670,165 658,159 658,171" fill="#34d399"/>
+
+  <!-- 3D Isometric Cube 3: Interactive Tools & Media -->
+  <g transform="translate(750, 165)" filter="url(#glow)">
+    <polygon points="0,-55 75,-20 0,15 -75,-20" fill="url(#neonGreen)" opacity="0.95"/>
+    <polygon points="-75,-20 0,15 0,85 -75,50" fill="#047857" opacity="0.9"/>
+    <polygon points="0,15 75,-20 75,50 0,85" fill="#065f46" opacity="0.9"/>
+    <text x="0" y="-16" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">STUDIO TOOLS</text>
+    <text x="0" y="108" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">3. CANVAS + AUDIO</text>
+  </g>
+
+  <!-- Top Holographic Title -->
+  <text x="450" y="38" fill="#f8fafc" font-family="monospace" font-size="16" font-weight="bold" letter-spacing="3" text-anchor="middle">KIDS TONE PRO :: 3D SYSTEM TOPOLOGY</text>
+</svg>
