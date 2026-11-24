@@ -135,6 +135,59 @@
     min-height: 220px !important;
   }
 </style>
+<style id="kidsToneProUpgradeV2">
+  :fullscreen .yt-direct-open-btn,
+  :fullscreen .yt-next-btn,
+  :-webkit-full-screen .yt-direct-open-btn,
+  :-webkit-full-screen .yt-next-btn {
+    display: none !important;
+  }
+  .kt-exit-fs-btn {
+    display: none;
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 100000;
+    background: rgba(15, 23, 42, 0.88);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  :fullscreen .kt-exit-fs-btn,
+  :-webkit-full-screen .kt-exit-fs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .kt-pro-bar {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 8px 16px 4px;
+    scrollbar-width: none;
+  }
+  .kt-pro-bar::-webkit-scrollbar { display: none; }
+  .kt-chip {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #0f172a;
+    cursor: pointer;
+  }
+  .kt-chip.active {
+    background: linear-gradient(90deg, #ff0055, #ff7b00);
+    color: #ffffff;
+    border-color: transparent;
+  }
+</style>
 </head>
 <body>
 
@@ -876,6 +929,80 @@
       lucide.createIcons();
     });
   </script>
+<script id="kidsToneProFeaturesScript">
+(function() {
+  // Filter out invalid/non-embeddable IDs from fetched video lists
+  const origJson = Response.prototype.json;
+  Response.prototype.json = function() {
+    return origJson.apply(this, arguments).then(data => {
+      if (data && Array.isArray(data.videos)) {
+        const blockedTitles = /not available in your country|video unavailable|private video|deleted video/i;
+        data.videos = data.videos.filter(v => {
+          const id = v && (v.ytid || v.videoId || v.id);
+          const title = (v && v.title) || '';
+          return id && typeof id === 'string' && id.trim().length >= 8 && id !== 'undefined' && !blockedTitles.test(title);
+        });
+      }
+      return data;
+    });
+  };
+
+  // Add Exit Fullscreen button & quick Kids Pro filter bar on home screen
+  window.addEventListener('DOMContentLoaded', () => {
+    if (!document.getElementById('ktExitFsBtn')) {
+      const exitBtn = document.createElement('button');
+      exitBtn.id = 'ktExitFsBtn';
+      exitBtn.className = 'kt-exit-fs-btn';
+      exitBtn.type = 'button';
+      exitBtn.innerHTML = '✕ लहान स्क्रीन (Exit)';
+      exitBtn.onclick = function() {
+        if (document.fullscreenElement) {
+          document.exitFullscreen().catch(() => {});
+        } else if (document.webkitFullscreenElement) {
+          document.webkitExitFullscreen();
+        }
+        try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch(e) {}
+      };
+      document.body.appendChild(exitBtn);
+    }
+
+    // Unlock orientation cleanly when exiting fullscreen
+    const onFsChange = () => {
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (!isFs) {
+        try { screen.orientation && screen.orientation.unlock && screen.orientation.unlock(); } catch(e) {}
+      }
+    };
+    document.addEventListener('fullscreenchange', onFsChange);
+    document.addEventListener('webkitfullscreenchange', onFsChange);
+
+    // Insert Kids Pro Quick Bar below top tabs if not present
+    const showsSection = document.getElementById('section-shows');
+    if (showsSection && !document.getElementById('ktProQuickBar')) {
+      const bar = document.createElement('div');
+      bar.id = 'ktProQuickBar';
+      bar.className = 'kt-pro-bar';
+      bar.innerHTML = `
+        <button type="button" class="kt-chip active" data-q="kids cartoon hindi">✨ सर्व मस्त कार्टून</button>
+        <button type="button" class="kt-chip" data-q="motu patlu hindi episodes">🎭 मोटू पतलू</button>
+        <button type="button" class="kt-chip" data-q="chhota bheem hindi episodes">🦸 छोटा भीम</button>
+        <button type="button" class="kt-chip" data-q="doraemon hindi episodes">🤖 डोरेमोन</button>
+        <button type="button" class="kt-chip" data-q="kids rhymes songs hindi">🎵 गाणी व राइम्स</button>
+      `;
+      showsSection.parentNode.insertBefore(bar, showsSection);
+      bar.querySelectorAll('.kt-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          bar.querySelectorAll('.kt-chip').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          if (typeof loadLiveCartoons === 'function') {
+            loadLiveCartoons(btn.getAttribute('data-q'), true);
+          }
+        });
+      });
+    }
+  });
+})();
+</script>
 </body>
 </html>
 
@@ -1398,7 +1525,7 @@
                 <button onclick="selectShowCharacter('${c.id}')" class="flex flex-col items-center shrink-0 active:scale-90 transition">
                   <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr ${c.bg} ${active ? 'ring-4 ring-red-500 scale-105' : 'opacity-95'} shadow-md">
                     <div class="w-full h-full rounded-full bg-white overflow-hidden relative flex items-center justify-center">
-                      <img src="${c.img}" alt="${c.name}" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+                      <img src="${c.img}" alt="${c.name}" class="w-full h-full object-cover" onerror="this.outerHTML='<span class="text-xs font-extrabold text-white">KT</span>'" />
                       <span class="kids-font font-bold text-sm text-slate-700">${c.code}</span>
                     </div>
                   </div>
