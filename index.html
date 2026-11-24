@@ -1888,3 +1888,149 @@
   });
 })();
 </script>
+
+
+<style id="ktUltraFastAndBannerCSS">
+  #ktInstallBanner {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    background: linear-gradient(90deg, #0f172a, #1e293b);
+    color: #ffffff;
+    padding: 10px 14px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  #ktInstallBanner.show { display: flex; }
+  .kt-inst-btn {
+    background: linear-gradient(90deg, #ff0055, #ff7b00);
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .kt-inst-close {
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+  }
+</style>
+
+<script id="ktUltraFastAndBannerJS">
+(function() {
+  // 1. Keep character bubbles clean (MP, CB, DR)
+  try {
+    localStorage.removeItem("kidsToneBubbleThumbs");
+    if (typeof savedBubbleThumbs !== "undefined") {
+      Object.keys(savedBubbleThumbs).forEach(k => delete savedBubbleThumbs[k]);
+    }
+  } catch (e) {}
+
+  // 2. Instant LocalStorage API Cache (0ms load on revisit + background refresh)
+  const LS_PREFIX = "kt_fast_v3_";
+  const origFetch = window.fetch;
+  window.fetch = async function(input, init) {
+    const url = typeof input === "string" ? input : (input && input.url) || "";
+    if (url.includes("/api/videos?")) {
+      const cacheKey = LS_PREFIX + url;
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        origFetch(input, init)
+          .then(r => (r.ok ? r.text() : null))
+          .then(txt => {
+            if (txt && txt.length > 20) {
+              try { localStorage.setItem(cacheKey, txt); } catch (e) {}
+            }
+          })
+          .catch(() => {});
+        return new Response(cached, {
+          status: 200,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+      const res = await origFetch(input, init);
+      if (res.ok) {
+        res.clone().text().then(txt => {
+          if (txt && txt.length > 20) {
+            try { localStorage.setItem(cacheKey, txt); } catch (e) {}
+          }
+        }).catch(() => {});
+      }
+      return res;
+    }
+    return origFetch(input, init);
+  };
+
+  // 3. Direct APK Download Top Banner (hidden inside WebView / installed app)
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true ||
+    /wv|WebView/i.test(navigator.userAgent);
+  const dismissed = sessionStorage.getItem("kt_banner_closed") === "1";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const cleanBubbles = () => {
+      document.querySelectorAll('#section-shows button img').forEach(img => {
+        const parent = img.parentElement;
+        if (parent && parent.className.includes("rounded-full")) {
+          const label = img.alt || "MP";
+          const code = label.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+          img.replaceWith(Object.assign(document.createElement("span"), {
+            className: "font-extrabold text-sm text-orange-600",
+            innerText: code || "MP"
+          }));
+        }
+      });
+    };
+    setInterval(cleanBubbles, 800);
+
+    if (isStandalone || dismissed || document.getElementById("ktInstallBanner")) return;
+
+    const banner = document.createElement("div");
+    banner.id = "ktInstallBanner";
+    banner.className = "show";
+    banner.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ff0055,#ff7b00);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0;">KT</div>
+        <div style="overflow:hidden;">
+          <div style="font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Kids Tone PRO App</div>
+          <div style="font-size:11px;color:#cbd5e1;">Download the Android APK for a faster experience</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <a id="ktDirectApkBtn" href="/KidsTonePro.apk" download="KidsTonePro.apk" class="kt-inst-btn">Download APK</a>
+        <button id="ktInstallCloseBtn" type="button" class="kt-inst-close" aria-label="Close">✕</button>
+      </div>
+    `;
+    document.body.prepend(banner);
+
+    document.getElementById("ktInstallCloseBtn").onclick = () => {
+      banner.classList.remove("show");
+      sessionStorage.setItem("kt_banner_closed", "1");
+    };
+
+    document.getElementById("ktDirectApkBtn").onclick = () => {
+      setTimeout(() => {
+        banner.classList.remove("show");
+        sessionStorage.setItem("kt_banner_closed", "1");
+      }, 600);
+    };
+  });
+})();
+</script>
