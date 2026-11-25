@@ -2165,4 +2165,112 @@
     }
   }, true);
 })();
+</script><!-- RK-MIDROLL-SKIP -->
+<script>
+(function() {
+  var midrollTimer = null;
+  var shownInCurrentSession = false;
+
+  function clearMidrollTimer() {
+    if (midrollTimer) {
+      clearTimeout(midrollTimer);
+      midrollTimer = null;
+    }
+  }
+
+  function openMidrollBox() {
+    if (shownInCurrentSession || document.getElementById("rkMidrollOverlay")) return;
+    shownInCurrentSession = true;
+
+    var host = document.getElementById("ytKidsIframeTarget")
+              || document.getElementById("kidsVideoBox")
+              || document.querySelector("iframe");
+    var parent = (host && host.parentElement) ? host.parentElement : document.body;
+
+    var prevPos = "";
+    if (parent !== document.body) {
+      prevPos = parent.style.position;
+      if (!prevPos || prevPos === "static") parent.style.position = "relative";
+    }
+
+    var overlay = document.createElement("div");
+    overlay.id = "rkMidrollOverlay";
+    var isBody = (parent === document.body);
+    overlay.style.cssText = (isBody ? "position:fixed;inset:0;" : "position:absolute;inset:0;")
+      + "background:rgba(8,12,24,0.92);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;color:#fff;font-family:sans-serif;text-align:center;";
+
+    var badge = document.createElement("div");
+    badge.textContent = "AD • SPONSORED BREAK";
+    badge.style.cssText = "font-size:11px;letter-spacing:1px;padding:4px 10px;border-radius:999px;background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);margin-bottom:10px;font-weight:700;";
+
+    var info = document.createElement("div");
+    info.textContent = "Video break in progress. You can skip in 5 seconds.";
+    info.style.cssText = "font-size:13px;color:#e2e8f0;margin-bottom:14px;max-width:300px;";
+
+    var adSlot = document.createElement("div");
+    adSlot.id = "rkMidrollAdSlot";
+    adSlot.style.cssText = "width:100%;max-width:320px;min-height:90px;background:#111827;border:1px dashed rgba(148,163,184,0.35);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:10px;margin-bottom:14px;font-size:12px;color:#94a3b8;overflow:hidden;";
+    adSlot.textContent = "Loading sponsored content...";
+
+    var s = document.createElement("script");
+    s.src = "https://quge5.com/88/tag.min.js";
+    s.setAttribute("data-zone", "315322");
+    s.async = true;
+    s.setAttribute("data-cfasync", "false");
+    adSlot.appendChild(s);
+
+    var skipBtn = document.createElement("button");
+    var sec = 5;
+    skipBtn.textContent = "Skip Ad in " + sec + "s";
+    skipBtn.disabled = true;
+    skipBtn.style.cssText = "padding:9px 18px;border-radius:10px;border:none;font-size:13px;font-weight:700;background:#334155;color:#94a3b8;cursor:not-allowed;";
+
+    overlay.appendChild(badge);
+    overlay.appendChild(info);
+    overlay.appendChild(adSlot);
+    overlay.appendChild(skipBtn);
+    parent.appendChild(overlay);
+
+    var cd = setInterval(function() {
+      sec--;
+      if (sec > 0) {
+        skipBtn.textContent = "Skip Ad in " + sec + "s";
+      } else {
+        clearInterval(cd);
+        skipBtn.disabled = false;
+        skipBtn.textContent = "Skip Ad ▶";
+        skipBtn.style.background = "#0284c7";
+        skipBtn.style.color = "#ffffff";
+        skipBtn.style.cursor = "pointer";
+      }
+    }, 1000);
+
+    skipBtn.addEventListener("click", function() {
+      if (skipBtn.disabled) return;
+      clearInterval(cd);
+      if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      if (!isBody && parent) parent.style.position = prevPos;
+    });
+
+    // Allow next video play to schedule midroll again after 60s
+    setTimeout(function() { shownInCurrentSession = false; }, 60000);
+  }
+
+  function scheduleMidroll() {
+    clearMidrollTimer();
+    var old = document.getElementById("rkMidrollOverlay");
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+    // Trigger mid-video break after 35 seconds of watching
+    midrollTimer = setTimeout(openMidrollBox, 35000);
+  }
+
+  document.addEventListener("click", function(e) {
+    var t = e.target;
+    if (!t || (t.closest && (t.closest("#rkMidrollOverlay") || t.closest("#rkSkipAdBox")))) return;
+    var card = t.closest && t.closest("[data-video-id], .video-card, .episode-card, .yt-card, article");
+    if (card) {
+      scheduleMidroll();
+    }
+  }, true);
+})();
 </script>
