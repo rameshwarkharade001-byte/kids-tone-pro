@@ -291,5 +291,29 @@
     renderChips();
     render();
   </script>
+
+<!-- RK-ADMOB-BRIDGE -->
+<script>
+  window.RKAdMob = {
+    showBanner: function(placement) {
+      try {
+        if (window.AndroidAdMob && typeof window.AndroidAdMob.showBanner === "function") {
+          window.AndroidAdMob.showBanner(placement || "yourtube_bottom");
+        }
+      } catch (e) {}
+    },
+    showInterstitial: function(placement) {
+      try {
+        if (window.AndroidAdMob && typeof window.AndroidAdMob.showInterstitial === "function") {
+          window.AndroidAdMob.showInterstitial(placement || "yourtube_interstitial");
+        }
+      } catch (e) {}
+    }
+  };
+  window.addEventListener("DOMContentLoaded", function() {
+    window.RKAdMob.showBanner("yourtube_home");
+  });
+</script>
+
 </body>
 </html>
