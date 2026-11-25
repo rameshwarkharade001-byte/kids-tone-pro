@@ -2087,3 +2087,32 @@
   window.__RK_ADS_PAUSED__ = true;
 })();
 </script>
+<!-- RK-TIMED-VIGNETTE -->
+<script>
+(function() {
+  var INITIAL_DELAY_MS = 90000;
+  var COOLDOWN_MS = 180000;
+  var KEY = "rk_vignette_12330958_ts";
+  var loaded = false;
+
+  function canLoad() {
+    var now = Date.now();
+    var last = Number(localStorage.getItem(KEY) || "0");
+    return (now - last) >= COOLDOWN_MS;
+  }
+
+  function loadZone12330958() {
+    if (loaded || !canLoad()) return;
+    loaded = true;
+    localStorage.setItem(KEY, String(Date.now()));
+    var s = document.createElement("script");
+    s.dataset.zone = "12330958";
+    s.src = "https://n6wxm.com/vignette.min.js";
+    (document.body || document.documentElement).appendChild(s);
+  }
+
+  setTimeout(function() {
+    if (canLoad()) loadZone12330958();
+  }, INITIAL_DELAY_MS);
+})();
+</script>
