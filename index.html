@@ -2060,4 +2060,21 @@
   document.addEventListener("fullscreenchange", onFsChange);
   document.addEventListener("webkitfullscreenchange", onFsChange);
 })();
+</script><!-- RK-REMOVE-APK-BANNER -->
+<script>
+(function() {
+  function removeApkBanner() {
+    var nodes = document.querySelectorAll('div, section, header, aside');
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      if (el.innerText && el.innerText.indexOf('Download the Android APK') !== -1 && el.innerText.length < 200) {
+        el.style.display = 'none';
+        el.remove();
+      }
+    }
+  }
+  removeApkBanner();
+  document.addEventListener('DOMContentLoaded', removeApkBanner);
+  setTimeout(removeApkBanner, 500);
+})();
 </script>
