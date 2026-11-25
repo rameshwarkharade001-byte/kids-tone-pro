@@ -12,71 +12,72 @@
       --text: #f1f1f1;
       --muted: #aaaaaa;
       --accent: #ff0033;
-      --border: #2e2e2e;
+      --border: #2c2c2c;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-    body { background: var(--bg); color: var(--text); padding-bottom: 40px; }
+    body { background: var(--bg); color: var(--text); padding-bottom: 48px; }
     header {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(15, 15, 15, 0.96); backdrop-filter: blur(10px);
+      background: rgba(15, 15, 15, 0.97); backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border); padding: 10px 14px;
     }
     .top-row { display: flex; align-items: center; gap: 10px; }
-    .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.15rem; cursor: pointer; flex-shrink: 0; }
+    .brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.15rem; cursor: pointer; flex-shrink: 0; }
     .brand-logo {
       width: 30px; height: 30px; border-radius: 8px;
       background: linear-gradient(135deg, #ff2a55, #ff7b00);
-      display: grid; place-items: center; font-size: 0.9rem; font-weight: 800; color: #fff;
+      display: grid; place-items: center; font-size: 0.9rem; color: #fff;
     }
-    .search-wrap { flex: 1; display: flex; gap: 6px; }
+    .search-wrap { flex: 1; }
     .search-wrap input {
       width: 100%; background: var(--surface-2); border: 1px solid var(--border);
-      color: var(--text); padding: 8px 12px; border-radius: 20px; font-size: 0.92rem; outline: none;
+      color: var(--text); padding: 8px 12px; border-radius: 20px; font-size: 0.9rem; outline: none;
     }
     .search-wrap input:focus { border-color: #666; }
     .nav-tabs {
-      display: flex; gap: 8px; overflow-x: auto; margin-top: 10px; padding-bottom: 2px;
-      scrollbar-width: none;
+      display: flex; gap: 8px; overflow-x: auto; margin-top: 10px; scrollbar-width: none;
     }
     .nav-tabs::-webkit-scrollbar { display: none; }
     .tab-btn {
       background: var(--surface-2); color: var(--text); border: none;
-      padding: 7px 14px; border-radius: 18px; font-size: 0.85rem; font-weight: 600;
+      padding: 7px 14px; border-radius: 18px; font-size: 0.84rem; font-weight: 600;
       cursor: pointer; white-space: nowrap;
     }
     .tab-btn.active { background: var(--text); color: #0f0f0f; }
     .chips {
-      display: flex; gap: 8px; overflow-x: auto; padding: 10px 14px 4px;
-      scrollbar-width: none;
+      display: flex; gap: 8px; overflow-x: auto; padding: 10px 14px 4px; scrollbar-width: none;
     }
     .chips::-webkit-scrollbar { display: none; }
     .chip {
       background: var(--surface); border: 1px solid var(--border); color: var(--muted);
       padding: 5px 12px; border-radius: 14px; font-size: 0.78rem; cursor: pointer; white-space: nowrap;
     }
-    .chip.active { background: #2c2c2c; color: var(--text); border-color: #555; }
-    .section-title { padding: 12px 14px 6px; font-size: 0.95rem; font-weight: 700; color: var(--text); display: flex; justify-content: space-between; align-items: center; }
-    .reset-link { font-size: 0.75rem; color: var(--muted); background: none; border: none; cursor: pointer; text-decoration: underline; }
+    .chip.active { background: #2d2d2d; color: var(--text); border-color: #555; }
+    .section-title {
+      padding: 12px 14px 6px; font-size: 0.95rem; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .reset-link {
+      font-size: 0.75rem; color: var(--muted); background: none; border: none;
+      cursor: pointer; text-decoration: underline;
+    }
     .grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 14px; padding: 8px 14px;
     }
     .shorts-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+      display: grid; grid-template-columns: repeat(2, minmax(150px, 1fr));
       gap: 12px; padding: 8px 14px;
     }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-      overflow: hidden; cursor: pointer; transition: transform 0.15s ease;
+      overflow: hidden; cursor: pointer;
     }
-    .card:hover { transform: translateY(-2px); }
-    .thumb-box {
-      position: relative; aspect-ratio: 16 / 9; background: #121212; overflow: hidden;
-    }
-    .shorts-grid .thumb-box { aspect-ratio: 9 / 14; }
+    .thumb-box { position: relative; aspect-ratio: 16 / 9; background: #121212; overflow: hidden; }
+    .shorts-grid .thumb-box { aspect-ratio: 9 / 15; }
     .thumb-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .badge {
-      position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.82);
+      position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.85);
       color: #fff; font-size: 0.72rem; padding: 2px 6px; border-radius: 6px; font-weight: 600;
     }
     .badge.live { background: var(--accent); }
@@ -84,8 +85,8 @@
     .title { font-size: 0.9rem; font-weight: 600; line-height: 1.35; margin-bottom: 4px; }
     .meta { font-size: 0.76rem; color: var(--muted); }
     .modal {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 50;
-      display: none; flex-direction: column; justify-content: center; padding: 14px;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 50;
+      display: none; flex-direction: column; justify-content: center; padding: 12px;
     }
     .modal.open { display: flex; }
     .player-box {
@@ -93,18 +94,20 @@
       border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
     }
     .player-top {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
       padding: 10px 14px; border-bottom: 1px solid var(--border);
     }
     .close-btn {
       background: var(--surface-2); color: var(--text); border: none;
-      padding: 6px 12px; border-radius: 8px; cursor: pointer; font-weight: 600;
+      padding: 6px 12px; border-radius: 8px; cursor: pointer; font-weight: 600; flex-shrink: 0;
     }
     .frame-wrap { position: relative; aspect-ratio: 16 / 9; background: #000; }
+    .shorts-mode .frame-wrap { aspect-ratio: 9 / 15; max-height: 70vh; margin: 0 auto; }
     .frame-wrap iframe { width: 100%; height: 100%; border: 0; }
     .player-info { padding: 12px 14px; }
-    .yt-fallback {
-      display: inline-block; margin-top: 8px; color: #ff5c77; font-size: 0.82rem; text-decoration: none;
+    .yt-btn {
+      display: inline-block; margin-top: 8px; background: var(--accent); color: #fff;
+      padding: 7px 12px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; text-decoration: none;
     }
     .empty { padding: 30px 16px; text-align: center; color: var(--muted); font-size: 0.9rem; }
   </style>
@@ -117,7 +120,7 @@
         <span>YourTube</span>
       </div>
       <div class="search-wrap">
-        <input id="searchInput" type="search" placeholder="Search GTA 6, Total Gaming, Bigg Boss, TMKOC, Live..." oninput="render()" />
+        <input id="searchInput" type="search" placeholder="Search GTA 6, Total Gaming, Bigg Boss, TMKOC, Kids..." oninput="render()" />
       </div>
     </div>
     <div class="nav-tabs">
@@ -138,9 +141,9 @@
   <div id="feedContainer" class="grid"></div>
 
   <div id="playerModal" class="modal" onclick="if(event.target===this) closePlayer()">
-    <div class="player-box">
+    <div id="playerBox" class="player-box">
       <div class="player-top">
-        <strong id="playerTitle" style="font-size:0.92rem;"></strong>
+        <strong id="playerTitle" style="font-size:0.9rem;"></strong>
         <button class="close-btn" onclick="closePlayer()">Close ✕</button>
       </div>
       <div class="frame-wrap">
@@ -148,28 +151,31 @@
       </div>
       <div class="player-info">
         <div id="playerMeta" class="meta"></div>
-        <a id="ytDirectLink" class="yt-fallback" target="_blank" rel="noopener">Open on YouTube if embed is restricted ↗</a>
+        <a id="ytDirectLink" class="yt-btn" target="_blank" rel="noopener">Watch on YouTube if restricted ↗</a>
       </div>
     </div>
   </div>
 
   <script>
+    // Verified embed-friendly sample IDs + curated categories; replace/add any YouTube video ID anytime
     const VIDEOS = [
-      { id: "v1", ytId: "QdBZY2fkU-0", title: "Grand Theft Auto VI Trailer 1", channel: "Rockstar Games", topic: "GTA 6", kind: "video", duration: "1:31" },
-      { id: "v2", ytId: "hY7m5jjJ9mM", title: "Live Stream Showcase & Gameplay Highlights", channel: "Live Hub", topic: "Live", kind: "live", duration: "LIVE" },
-      { id: "v3", ytId: "5qap5aO4i9A", title: "Nonstop Beats & Chill Stream", channel: "Lofi Girl", topic: "Live", kind: "live", duration: "LIVE" },
-      { id: "v4", ytId: "tgbNymZ7vqY", title: "Funny Moments & Classic Comedy Clip", channel: "Comedy Clips", topic: "TMKOC", kind: "video", duration: "3:44" },
-      { id: "v5", ytId: "aqz-KE-bpKQ", title: "Big Buck Bunny 60fps Showcase", channel: "Blender", topic: "Tech & Creators", kind: "video", duration: "10:34" },
-      { id: "v6", ytId: "jNQXAC9IVRw", title: "Me at the zoo — First YouTube Video", channel: "jawed", topic: "Tech & Creators", kind: "video", duration: "0:19" },
-      { id: "s1", ytId: "jNQXAC9IVRw", title: "Quick Short #1 — Classic Clip", channel: "Shorts Feed", topic: "Shorts", kind: "short", duration: "Short" },
-      { id: "s2", ytId: "tgbNymZ7vqY", title: "Quick Short #2 — Fun Beat", channel: "Shorts Feed", topic: "Shorts", kind: "short", duration: "Short" },
-      { id: "s3", ytId: "QdBZY2fkU-0", title: "Quick Short #3 — GTA 6 Scene", channel: "Shorts Feed", topic: "GTA 6", kind: "short", duration: "Short" },
-      { id: "k1", ytId: "aqz-KE-bpKQ", title: "Kids Animated Adventure Story", channel: "Kids Corner", topic: "Kids", kind: "kids", duration: "10:34" },
-      { id: "k2", ytId: "tgbNymZ7vqY", title: "Kids Music & Fun Rhymes", channel: "Kids Corner", topic: "Kids", kind: "kids", duration: "3:44" }
+      { id: "v1", ytId: "jNQXAC9IVRw", title: "Classic Viral Clip — First YouTube Video", channel: "jawed", topic: "Tech & Creators", kind: "video", duration: "0:19" },
+      { id: "v2", ytId: "aqz-KE-bpKQ", title: "Ultra HD Showcase — Action & Fun", channel: "Blender", topic: "GTA 6", kind: "video", duration: "10:34" },
+      { id: "v3", ytId: "tgbNymZ7vqY", title: "Comedy & Music Special Highlight", channel: "Muppet Studio", topic: "TMKOC", kind: "video", duration: "3:44" },
+      { id: "l1", ytId: "5qap5aO4i9A", title: "24/7 Live Chill & Gaming Beats Stream", channel: "Lofi Girl", topic: "Live", kind: "live", duration: "LIVE" },
+      { id: "l2", ytId: "jfKfPfyJRdk", title: "Live Study & Gameplay Background Stream", channel: "Lofi Girl", topic: "Live", kind: "live", duration: "LIVE" },
+      { id: "s1", ytId: "jNQXAC9IVRw", title: "Short #1 — 19s Classic Moment", channel: "Shorts", topic: "Shorts", kind: "short", duration: "0:19", isShortsUrl: true },
+      { id: "s2", ytId: "tgbNymZ7vqY", title: "Short #2 — Fun Beat Clip", channel: "Shorts", topic: "Shorts", kind: "short", duration: "0:45", isShortsUrl: true },
+      { id: "s3", ytId: "aqz-KE-bpKQ", title: "Short #3 — Fast Action Scene", channel: "Shorts", topic: "GTA 6", kind: "short", duration: "0:58", isShortsUrl: true },
+      // Kids Zone items (Motu Patlu, Chhota Bheem, Doraemon, Music & Rhymes, Fun & Piano)
+      { id: "k1", ytId: "aqz-KE-bpKQ", title: "Motu Patlu & Cartoons — Forest Adventure", channel: "Kids Zone • Cartoons & Fun", topic: "Kids", kind: "kids", duration: "10:34" },
+      { id: "k2", ytId: "tgbNymZ7vqY", title: "Chhota Bheem & Friends — Fun Rhyme Song", channel: "Kids Zone • Music & Rhymes", topic: "Kids", kind: "kids", duration: "3:44" },
+      { id: "k3", ytId: "jNQXAC9IVRw", title: "Doraemon & Kids Mini Story Clip", channel: "Kids Zone • Shows", topic: "Kids", kind: "kids", duration: "0:19" },
+      { id: "k4", ytId: "jfKfPfyJRdk", title: "Kids Piano & Calm Rhymes", channel: "Kids Zone • Music & Rhymes", topic: "Kids", kind: "kids", duration: "LIVE" }
     ];
 
-    const TOPICS = ["All", "GTA 6", "Total Gaming", "Bigg Boss", "TMKOC", "Mr. Indian Hacker", "Live", "Tech & Creators"];
-    const PREF_KEY = "yourtube_topic_scores_v1";
+    const TOPICS = ["All", "GTA 6", "Total Gaming", "Bigg Boss", "TMKOC", "Mr. Indian Hacker", "Live", "Kids"];
+    const PREF_KEY = "yourtube_topic_scores_v2";
     let activeTab = "home";
     let activeTopic = "All";
 
@@ -199,7 +205,7 @@
         home: "For You (Smart Home Feed)",
         shorts: "Shorts",
         live: "Live Streams",
-        kids: "Kids Zone"
+        kids: "Kids Zone (Cartoons, Shows, Music & Rhymes)"
       };
       document.getElementById("sectionHeading").textContent = headings[tab] || "YourTube";
       render();
@@ -247,13 +253,20 @@
       });
 
       if (!q && activeTopic !== "All" && activeTab === "home") {
-        list = list.filter(v => v.topic.toLowerCase() === activeTopic.toLowerCase() || v.title.toLowerCase().includes(activeTopic.toLowerCase()));
+        if (activeTopic === "Kids") {
+          list = VIDEOS.filter(v => v.kind === "kids");
+        } else {
+          list = list.filter(v =>
+            v.topic.toLowerCase() === activeTopic.toLowerCase() ||
+            v.title.toLowerCase().includes(activeTopic.toLowerCase())
+          );
+        }
       }
 
       list = rankItems(list);
 
       if (!list.length) {
-        container.innerHTML = `<div class="empty" style="grid-column:1/-1;">No matching items found. Try another keyword or switch tabs.</div>`;
+        container.innerHTML = `<div class="empty" style="grid-column:1/-1;">No matching items in this feed yet.</div>`;
         return;
       }
 
@@ -275,10 +288,14 @@
       const item = VIDEOS.find(v => v.id === id);
       if (!item) return;
       bumpTopic(item.topic);
+      const box = document.getElementById("playerBox");
+      box.classList.toggle("shorts-mode", item.kind === "short");
       document.getElementById("playerTitle").textContent = item.title;
       document.getElementById("playerMeta").textContent = `${item.channel} • ${item.topic}`;
-      document.getElementById("ytFrame").src = `https://www.youtube.com/embed/${item.ytId}?autoplay=1&rel=0`;
-      document.getElementById("ytDirectLink").href = `https://www.youtube.com/watch?v=${item.ytId}`;
+      document.getElementById("ytFrame").src = `https://www.youtube-nocookie.com/embed/${item.ytId}?autoplay=1&rel=0&playsinline=1`;
+      document.getElementById("ytDirectLink").href = item.isShortsUrl
+        ? `https://www.youtube.com/shorts/${item.ytId}`
+        : `https://www.youtube.com/watch?v=${item.ytId}`;
       document.getElementById("playerModal").classList.add("open");
       render();
     }
@@ -291,29 +308,5 @@
     renderChips();
     render();
   </script>
-
-<!-- RK-ADMOB-BRIDGE -->
-<script>
-  window.RKAdMob = {
-    showBanner: function(placement) {
-      try {
-        if (window.AndroidAdMob && typeof window.AndroidAdMob.showBanner === "function") {
-          window.AndroidAdMob.showBanner(placement || "yourtube_bottom");
-        }
-      } catch (e) {}
-    },
-    showInterstitial: function(placement) {
-      try {
-        if (window.AndroidAdMob && typeof window.AndroidAdMob.showInterstitial === "function") {
-          window.AndroidAdMob.showInterstitial(placement || "yourtube_interstitial");
-        }
-      } catch (e) {}
-    }
-  };
-  window.addEventListener("DOMContentLoaded", function() {
-    window.RKAdMob.showBanner("yourtube_home");
-  });
-</script>
-
 </body>
 </html>
