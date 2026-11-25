@@ -2077,4 +2077,92 @@
   document.addEventListener('DOMContentLoaded', removeApkBanner);
   setTimeout(removeApkBanner, 500);
 })();
+</script><!-- RK-MONETAG-SMART -->
+<script>
+(function() {
+  var videoCount = 0;
+  var tagLoaded = false;
+
+  function loadMonetagZone() {
+    if (tagLoaded) return;
+    tagLoaded = true;
+    var s = document.createElement("script");
+    s.src = "https://quge5.com/88/tag.min.js";
+    s.setAttribute("data-zone", "315322");
+    s.async = true;
+    s.setAttribute("data-cfasync", "false");
+    document.head.appendChild(s);
+    // Reset after 20s so subsequent 2-video cycles can also trigger smoothly
+    setTimeout(function() { tagLoaded = false; }, 20000);
+  }
+
+  function showSoftSkipOverlay(onContinue) {
+    if (document.getElementById("rkSkipAdBox")) {
+      if (onContinue) onContinue();
+      return;
+    }
+    var box = document.createElement("div");
+    box.id = "rkSkipAdBox";
+    box.style.cssText = "position:fixed;inset:0;background:rgba(10,15,28,0.88);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:sans-serif;";
+
+    var card = document.createElement("div");
+    card.style.cssText = "background:#141c2f;color:#fff;border:1px solid rgba(56,189,248,0.35);border-radius:16px;padding:22px;max-width:340px;width:100%;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,0.5);";
+
+    var title = document.createElement("div");
+    title.textContent = "Sponsored Break";
+    title.style.cssText = "font-size:15px;font-weight:700;color:#38bdf8;margin-bottom:8px;";
+
+    var desc = document.createElement("div");
+    desc.textContent = "2 videos watched! Your next video will start in a moment.";
+    desc.style.cssText = "font-size:13px;color:#cbd5e1;margin-bottom:16px;line-height:1.4;";
+
+    var btn = document.createElement("button");
+    var sec = 5;
+    btn.textContent = "Skip in " + sec + "s";
+    btn.disabled = true;
+    btn.style.cssText = "width:100%;padding:11px 14px;border:none;border-radius:10px;font-size:14px;font-weight:700;background:#334155;color:#94a3b8;cursor:not-allowed;";
+
+    card.appendChild(title);
+    card.appendChild(desc);
+    card.appendChild(btn);
+    box.appendChild(card);
+    document.body.appendChild(box);
+
+    loadMonetagZone();
+
+    var timer = setInterval(function() {
+      sec--;
+      if (sec > 0) {
+        btn.textContent = "Skip in " + sec + "s";
+      } else {
+        clearInterval(timer);
+        btn.disabled = false;
+        btn.textContent = "Skip Ad & Play Video ▶";
+        btn.style.background = "#0284c7";
+        btn.style.color = "#ffffff";
+        btn.style.cursor = "pointer";
+      }
+    }, 1000);
+
+    btn.addEventListener("click", function() {
+      if (btn.disabled) return;
+      clearInterval(timer);
+      if (box && box.parentNode) box.parentNode.removeChild(box);
+      if (onContinue) onContinue();
+    });
+  }
+
+  // Trigger every 2nd video selection without blocking user flow permanently
+  document.addEventListener("click", function(e) {
+    var target = e.target;
+    if (!target || (target.closest && target.closest("#rkSkipAdBox"))) return;
+    var card = target.closest && target.closest("[data-video-id], .video-card, .episode-card, .yt-card, article");
+    if (card) {
+      videoCount++;
+      if (videoCount % 2 === 0) {
+        showSoftSkipOverlay(null);
+      }
+    }
+  }, true);
+})();
 </script>
