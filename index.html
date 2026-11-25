@@ -2039,3 +2039,25 @@
 </script>
 
 
+<!-- RK-FULLSCREEN-V2 -->
+<script>
+(function() {
+  if (window.RKApp) return; // Native App handles orientation directly
+  function getFsEl() {
+    return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+  }
+  function onFsChange() {
+    if (getFsEl()) {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function(){});
+      }
+    } else {
+      if (screen.orientation && screen.orientation.unlock) {
+        try { screen.orientation.unlock(); } catch(e) {}
+      }
+    }
+  }
+  document.addEventListener("fullscreenchange", onFsChange);
+  document.addEventListener("webkitfullscreenchange", onFsChange);
+})();
+</script>
