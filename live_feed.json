@@ -1,0 +1,17 @@
+[
+  {
+    "tag": "LIVE FROM GITHUB",
+    "title": "RK Tech PRO v1.0 Native Engine",
+    "desc": "100% Native Android App compiled directly in Termux. Zero WebView, works offline & syncs live from GitHub."
+  },
+  {
+    "tag": "UPDATE",
+    "title": "Instant Remote Control Active",
+    "desc": "Edit live_feed.json on GitHub anytime to push new announcements, links or content to all users instantly."
+  },
+  {
+    "tag": "OFFLINE TOOLS",
+    "title": "Synth Piano & Neon Draw Pad",
+    "desc": "Switch tabs below to play real-time AudioTrack piano or sketch on the hardware-accelerated Canvas offline."
+  }
+]
