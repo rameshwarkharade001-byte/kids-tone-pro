@@ -96,7 +96,7 @@
     width: 100vh !important;
     height: 100vw !important;
     max-width: none !important;
-    transform: translate(-50%, -50%) rotate(90deg) !important;
+    /* disabled forced 90deg rotate */
     z-index: 999999 !important;
     background: #000 !important;
   }
@@ -111,7 +111,7 @@
   }
 </style>
 <script id="cleanNativeYTScript">
-  function onNativeYTFullscreenOnly() {
+  function onNativeYTFullscreenOnly() { return;
     const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
     const iframe = document.getElementById('ytKidsIframeTarget');
     const box = document.getElementById('kidsVideoWrapper') || document.getElementById('kidsVideoBox') || (iframe && iframe.parentElement);
