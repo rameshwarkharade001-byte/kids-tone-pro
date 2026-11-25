@@ -2077,110 +2077,22 @@
   document.addEventListener('DOMContentLoaded', removeApkBanner);
   setTimeout(removeApkBanner, 500);
 })();
-</script><!-- RK-MONETAG-SMART -->
+</script><!-- RK-SAFE-MIDBREAK -->
 <script>
 (function() {
-  var videoCount = 0;
-  var tagLoaded = false;
+  var breakTimer = null;
+  var shownOnce = false;
 
-  function loadMonetagZone() {
-    if (tagLoaded) return;
-    tagLoaded = true;
-    var s = document.createElement("script");
-    s.src = "https://quge5.com/88/tag.min.js";
-    s.setAttribute("data-zone", "315322");
-    s.async = true;
-    s.setAttribute("data-cfasync", "false");
-    document.head.appendChild(s);
-    // Reset after 20s so subsequent 2-video cycles can also trigger smoothly
-    setTimeout(function() { tagLoaded = false; }, 20000);
-  }
-
-  function showSoftSkipOverlay(onContinue) {
-    if (document.getElementById("rkSkipAdBox")) {
-      if (onContinue) onContinue();
-      return;
-    }
-    var box = document.createElement("div");
-    box.id = "rkSkipAdBox";
-    box.style.cssText = "position:fixed;inset:0;background:rgba(10,15,28,0.88);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:sans-serif;";
-
-    var card = document.createElement("div");
-    card.style.cssText = "background:#141c2f;color:#fff;border:1px solid rgba(56,189,248,0.35);border-radius:16px;padding:22px;max-width:340px;width:100%;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,0.5);";
-
-    var title = document.createElement("div");
-    title.textContent = "Sponsored Break";
-    title.style.cssText = "font-size:15px;font-weight:700;color:#38bdf8;margin-bottom:8px;";
-
-    var desc = document.createElement("div");
-    desc.textContent = "2 videos watched! Your next video will start in a moment.";
-    desc.style.cssText = "font-size:13px;color:#cbd5e1;margin-bottom:16px;line-height:1.4;";
-
-    var btn = document.createElement("button");
-    var sec = 5;
-    btn.textContent = "Skip in " + sec + "s";
-    btn.disabled = true;
-    btn.style.cssText = "width:100%;padding:11px 14px;border:none;border-radius:10px;font-size:14px;font-weight:700;background:#334155;color:#94a3b8;cursor:not-allowed;";
-
-    card.appendChild(title);
-    card.appendChild(desc);
-    card.appendChild(btn);
-    box.appendChild(card);
-    document.body.appendChild(box);
-
-    loadMonetagZone();
-
-    var timer = setInterval(function() {
-      sec--;
-      if (sec > 0) {
-        btn.textContent = "Skip in " + sec + "s";
-      } else {
-        clearInterval(timer);
-        btn.disabled = false;
-        btn.textContent = "Skip Ad & Play Video ▶";
-        btn.style.background = "#0284c7";
-        btn.style.color = "#ffffff";
-        btn.style.cursor = "pointer";
-      }
-    }, 1000);
-
-    btn.addEventListener("click", function() {
-      if (btn.disabled) return;
-      clearInterval(timer);
-      if (box && box.parentNode) box.parentNode.removeChild(box);
-      if (onContinue) onContinue();
-    });
-  }
-
-  // Trigger every 2nd video selection without blocking user flow permanently
-  document.addEventListener("click", function(e) {
-    var target = e.target;
-    if (!target || (target.closest && target.closest("#rkSkipAdBox"))) return;
-    var card = target.closest && target.closest("[data-video-id], .video-card, .episode-card, .yt-card, article");
-    if (card) {
-      videoCount++;
-      if (videoCount % 2 === 0) {
-        showSoftSkipOverlay(null);
-      }
-    }
-  }, true);
-})();
-</script><!-- RK-MIDROLL-SKIP -->
-<script>
-(function() {
-  var midrollTimer = null;
-  var shownInCurrentSession = false;
-
-  function clearMidrollTimer() {
-    if (midrollTimer) {
-      clearTimeout(midrollTimer);
-      midrollTimer = null;
+  function clearBreak() {
+    if (breakTimer) {
+      clearTimeout(breakTimer);
+      breakTimer = null;
     }
   }
 
-  function openMidrollBox() {
-    if (shownInCurrentSession || document.getElementById("rkMidrollOverlay")) return;
-    shownInCurrentSession = true;
+  function showInPlayerBreak() {
+    if (shownOnce || document.getElementById("rkSafeBreakBox")) return;
+    shownOnce = true;
 
     var host = document.getElementById("ytKidsIframeTarget")
               || document.getElementById("kidsVideoBox")
@@ -2193,83 +2105,65 @@
       if (!prevPos || prevPos === "static") parent.style.position = "relative";
     }
 
-    var overlay = document.createElement("div");
-    overlay.id = "rkMidrollOverlay";
     var isBody = (parent === document.body);
-    overlay.style.cssText = (isBody ? "position:fixed;inset:0;" : "position:absolute;inset:0;")
-      + "background:rgba(8,12,24,0.92);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;color:#fff;font-family:sans-serif;text-align:center;";
+    var box = document.createElement("div");
+    box.id = "rkSafeBreakBox";
+    box.style.cssText = (isBody ? "position:fixed;inset:0;" : "position:absolute;inset:0;")
+      + "background:rgba(15,23,42,0.92);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;color:#fff;font-family:sans-serif;text-align:center;";
 
-    var badge = document.createElement("div");
-    badge.textContent = "AD • SPONSORED BREAK";
-    badge.style.cssText = "font-size:11px;letter-spacing:1px;padding:4px 10px;border-radius:999px;background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.35);margin-bottom:10px;font-weight:700;";
+    var title = document.createElement("div");
+    title.textContent = "Kids Tone PRO Break";
+    title.style.cssText = "font-size:15px;font-weight:700;color:#38bdf8;margin-bottom:6px;";
 
-    var info = document.createElement("div");
-    info.textContent = "Video break in progress. You can skip in 5 seconds.";
-    info.style.cssText = "font-size:13px;color:#e2e8f0;margin-bottom:14px;max-width:300px;";
+    var msg = document.createElement("div");
+    msg.textContent = "1 minute watch break. Tap Skip after 5 seconds to continue.";
+    msg.style.cssText = "font-size:13px;color:#e2e8f0;margin-bottom:14px;max-width:300px;";
 
-    var adSlot = document.createElement("div");
-    adSlot.id = "rkMidrollAdSlot";
-    adSlot.style.cssText = "width:100%;max-width:320px;min-height:90px;background:#111827;border:1px dashed rgba(148,163,184,0.35);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:10px;margin-bottom:14px;font-size:12px;color:#94a3b8;overflow:hidden;";
-    adSlot.textContent = "Loading sponsored content...";
-
-    var s = document.createElement("script");
-    s.src = "https://quge5.com/88/tag.min.js";
-    s.setAttribute("data-zone", "315322");
-    s.async = true;
-    s.setAttribute("data-cfasync", "false");
-    adSlot.appendChild(s);
-
-    var skipBtn = document.createElement("button");
+    var btn = document.createElement("button");
     var sec = 5;
-    skipBtn.textContent = "Skip Ad in " + sec + "s";
-    skipBtn.disabled = true;
-    skipBtn.style.cssText = "padding:9px 18px;border-radius:10px;border:none;font-size:13px;font-weight:700;background:#334155;color:#94a3b8;cursor:not-allowed;";
+    btn.textContent = "Skip in " + sec + "s";
+    btn.disabled = true;
+    btn.style.cssText = "padding:9px 18px;border-radius:10px;border:none;font-size:13px;font-weight:700;background:#334155;color:#94a3b8;cursor:not-allowed;";
 
-    overlay.appendChild(badge);
-    overlay.appendChild(info);
-    overlay.appendChild(adSlot);
-    overlay.appendChild(skipBtn);
-    parent.appendChild(overlay);
+    box.appendChild(title);
+    box.appendChild(msg);
+    box.appendChild(btn);
+    parent.appendChild(box);
 
     var cd = setInterval(function() {
       sec--;
       if (sec > 0) {
-        skipBtn.textContent = "Skip Ad in " + sec + "s";
+        btn.textContent = "Skip in " + sec + "s";
       } else {
         clearInterval(cd);
-        skipBtn.disabled = false;
-        skipBtn.textContent = "Skip Ad ▶";
-        skipBtn.style.background = "#0284c7";
-        skipBtn.style.color = "#ffffff";
-        skipBtn.style.cursor = "pointer";
+        btn.disabled = false;
+        btn.textContent = "Skip ▶";
+        btn.style.background = "#0284c7";
+        btn.style.color = "#ffffff";
+        btn.style.cursor = "pointer";
       }
     }, 1000);
 
-    skipBtn.addEventListener("click", function() {
-      if (skipBtn.disabled) return;
+    btn.addEventListener("click", function() {
+      if (btn.disabled) return;
       clearInterval(cd);
-      if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      if (box && box.parentNode) box.parentNode.removeChild(box);
       if (!isBody && parent) parent.style.position = prevPos;
     });
 
-    // Allow next video play to schedule midroll again after 60s
-    setTimeout(function() { shownInCurrentSession = false; }, 60000);
-  }
-
-  function scheduleMidroll() {
-    clearMidrollTimer();
-    var old = document.getElementById("rkMidrollOverlay");
-    if (old && old.parentNode) old.parentNode.removeChild(old);
-    // Trigger mid-video break after 35 seconds of watching
-    midrollTimer = setTimeout(openMidrollBox, 35000);
+    setTimeout(function() { shownOnce = false; }, 120000);
   }
 
   document.addEventListener("click", function(e) {
     var t = e.target;
-    if (!t || (t.closest && (t.closest("#rkMidrollOverlay") || t.closest("#rkSkipAdBox")))) return;
+    if (!t || (t.closest && t.closest("#rkSafeBreakBox"))) return;
     var card = t.closest && t.closest("[data-video-id], .video-card, .episode-card, .yt-card, article");
     if (card) {
-      scheduleMidroll();
+      clearBreak();
+      var old = document.getElementById("rkSafeBreakBox");
+      if (old && old.parentNode) old.parentNode.removeChild(old);
+      // Trigger after 60 seconds (1 minute) of watching
+      breakTimer = setTimeout(showInPlayerBreak, 60000);
     }
   }, true);
 })();
