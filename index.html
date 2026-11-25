@@ -308,5 +308,2180 @@
     renderChips();
     render();
   </script>
+
+<script>
+/* RK-LEGACY-KIDSTONE-ZONE */
+(function() {
+  const LEGACY_KIDS_DOC = `<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta name="monetag" content="4201f490572da9f87c8fd4d523a060e9">
+  <script>(function(s){s.dataset.zone='12330958',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))<\/script>
+  <meta name="monetag" content="97d565e4a97631c7b6cc04e8fff83d8f">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Kids Tone - YouTube Kids Edition</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"><\/script>
+
+  <!-- Google Fonts: Fredoka (Playful Kids Font) & Nunito -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Vector Icons -->
+  <script src="https://unpkg.com/lucide@latest"><\/script>
+
+  <style>
+    :root {
+      --yt-red: #FF0033;
+      --yt-yellow: #FFB800;
+      --yt-blue: #00A8FF;
+      --yt-green: #00C853;
+      --bg-cream: #F4F7FC;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      background-image:
+        radial-gradient(circle at 8% 8%, rgba(255, 184, 0, 0.14) 0%, transparent 35%),
+        radial-gradient(circle at 92% 15%, rgba(0, 168, 255, 0.14) 0%, transparent 35%),
+        radial-gradient(circle at 50% 90%, rgba(255, 0, 51, 0.08) 0%, transparent 45%);
+      color: #1E293B;
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding-bottom: 90px;
+      overflow-x: hidden;
+    }
+
+    .kids-font {
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    .yt-card {
+      background: #FFFFFF;
+      border-radius: 22px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+      border: 2px solid #FFFFFF;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .yt-card:active {
+      transform: scale(0.96);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .tab-pill-active {
+      background: #FF0033;
+      color: #FFFFFF;
+      box-shadow: 0 6px 16px rgba(255, 0, 51, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .skeleton-pulse {
+      background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+<style id="cleanNativeYTStyle">
+  .yt-native-landscape {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 100vh !important;
+    height: 100vw !important;
+    max-width: none !important;
+    /* disabled forced 90deg rotate */
+    z-index: 999999 !important;
+    background: #000 !important;
+  }
+  @media (orientation: landscape) {
+    .yt-native-landscape {
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      transform: none !important;
+    }
+  }
+</style>
+<script id="cleanNativeYTScript">
+  function onNativeYTFullscreenOnly() { return;
+    const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    const iframe = document.getElementById('ytKidsIframeTarget');
+    const box = document.getElementById('kidsVideoWrapper') || document.getElementById('kidsVideoBox') || (iframe && iframe.parentElement);
+    if (!box) return;
+    if (fsEl) {
+      if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      box.classList.add('yt-native-landscape');
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(() => {});
+      }
+    }
+  }
+  document.addEventListener('fullscreenchange', onNativeYTFullscreenOnly);
+  document.addEventListener('webkitfullscreenchange', onNativeYTFullscreenOnly);
+<\/script>
+<style id="forceVideoBoxVisible">
+  #ytKidsIframeTarget, #ytKidsIframeTarget iframe {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 220px !important;
+  }
+</style>
+
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+<link rel="dns-prefetch" href="https://i.ytimg.com">
+
+</head>
+<body>
+
+  <!-- YOUTUBE KIDS STYLE TOP HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md px-4 py-3 shadow-sm border-b border-slate-100">
+    <div class="flex items-center justify-between max-w-5xl mx-auto">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-2.5" onclick="resetToHome()">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-red-500 via-rose-500 to-amber-500 flex items-center justify-center shadow-md shadow-red-500/30 rotate-[-3deg]">
+          <i data-lucide="play" class="w-6 h-6 text-white fill-white ml-0.5"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <h1 class="kids-font text-2xl font-bold text-slate-900 tracking-tight">Kids Tone</h1>
+            <span class="px-2 py-0.5 rounded-lg bg-amber-400 text-slate-950 kids-font text-[10px] font-bold uppercase">KIDS</span>
+          </div>
+          <p class="text-[11px] font-bold text-slate-400 -mt-1">Safe Cartoons & Learning</p>
+        </div>
+      </div>
+
+      <!-- Age Profile & Search Buttons -->
+      <div class="flex items-center gap-2">
+        <!-- Timer Pill -->
+        <div id="timerBadge" class="hidden px-3 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-800 text-xs font-extrabold flex items-center gap-1">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-600"></i>
+          <span id="timerDisplay">30:00</span>
+        </div>
+
+        <!-- Age Group Pill -->
+        <button onclick="cycleAgeProfile()" id="ageProfileBtn" class="px-3 py-1.5 rounded-full bg-sky-100 text-sky-700 border border-sky-200 kids-font text-xs font-bold flex items-center gap-1 shadow-sm active:scale-95 transition">
+          <i data-lucide="smile" class="w-4 h-4 text-sky-500"></i>
+          <span id="ageLabel">All Ages</span>
+        </button>
+
+        <!-- Search Icon -->
+        <button onclick="playPop(); toggleSearchDrawer()" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 active:scale-90 transition">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- EXPANDABLE SEARCH INPUT -->
+    <div id="searchDrawer" class="hidden max-w-5xl mx-auto pt-3">
+      <form onsubmit="handleLiveSearch(event)" class="relative flex gap-2">
+        <div class="relative flex-1">
+          <input
+            type="text"
+            id="liveSearchInput"
+            placeholder="मोटू पतलू, छोटा भीम, ऑगी, चिकी चुम शोधा..."
+            class="w-full bg-slate-100 border-2 border-sky-300 rounded-2xl py-2.5 pl-10 pr-4 text-sm font-bold text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-red-400"
+          />
+          <i data-lucide="search" class="w-4 h-4 text-sky-500 absolute left-3.5 top-3.5"></i>
+        </div>
+        <button type="submit" class="px-4 py-2.5 rounded-2xl bg-red-500 text-white kids-font text-sm font-bold shadow-md shadow-red-500/25 active:scale-95">
+          Go
+        </button>
+      </form>
+    </div>
+
+    <!-- YOUTUBE KIDS CATEGORY TABS (No Shorts!) -->
+    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pt-3 max-w-5xl mx-auto">
+      <button onclick="switchMainSection('shows', this)" class="main-tab tab-pill-active px-4 py-2 rounded-full kids-font text-sm font-semibold flex items-center gap-1.5 shrink-0 transition">
+        <i data-lucide="tv" class="w-4 h-4"></i>
+        <span>Shows</span>
+      </button>
+
+      <button onclick="switchMainSection('music', this)" class="main-tab bg-slate-100 text-slate-600 px-4 py-2 rounded-full kids-font text-sm font-semibold flex items-center gap-1.5 shrink-0 transition">
+        <i data-lucide="music" class="w-4 h-4 text-pink-500"></i>
+        <span>Music & Rhymes</span>
+      </button>
+
+      <button onclick="switchMainSection('explore', this)" class="main-tab bg-slate-100 text-slate-600 px-4 py-2 rounded-full kids-font text-sm font-semibold flex items-center gap-1.5 shrink-0 transition">
+        <i data-lucide="compass" class="w-4 h-4 text-emerald-500"></i>
+        <span>Explore & Learn</span>
+      </button>
+
+      <button onclick="switchMainSection('parents', this)" class="main-tab bg-slate-100 text-slate-600 px-4 py-2 rounded-full kids-font text-sm font-semibold flex items-center gap-1.5 shrink-0 transition">
+        <i data-lucide="lock" class="w-4 h-4 text-amber-500"></i>
+        <span>Parents</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="max-w-5xl mx-auto">
+    <section id="section-shows" class="content-section block"></section>
+    <section id="section-music" class="content-section hidden"></section>
+    <section id="section-explore" class="content-section hidden"></section>
+    <section id="section-parents" class="content-section hidden"></section>
+  </main>
+
+  <!-- PART 2 CORE SCRIPT: Audio, Age Profiles & Navigation -->
+  <script>
+    lucide.createIcons();
+
+    // Playful Bubble Pop Sound (Web Audio API)
+    const popCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playPop() {
+      if (popCtx.state === 'suspended') popCtx.resume();
+      const osc = popCtx.createOscillator();
+      const gain = popCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(580, popCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(980, popCtx.currentTime + 0.07);
+      gain.gain.setValueAtTime(0.1, popCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, popCtx.currentTime + 0.07);
+      osc.connect(gain);
+      gain.connect(popCtx.destination);
+      osc.start();
+      osc.stop(popCtx.currentTime + 0.08);
+    }
+
+    // Age Profiles (Just like YouTube Kids: Preschool, Younger, Older)
+    const ageModes = [
+      { id: 'all', label: 'All Ages', queryBoost: '' },
+      { id: 'preschool', label: 'Preschool (2-4)', queryBoost: 'nursery rhymes chiki chum' },
+      { id: 'younger', label: 'Younger (5-8)', queryBoost: 'motu patlu chhota bheem oggy' },
+      { id: 'older', label: 'Older (9-12)', queryBoost: 'vir robot boy gattu battu taarak mehta' }
+    ];
+    let currentAgeIdx = 0;
+
+    function cycleAgeProfile() {
+      playPop();
+      currentAgeIdx = (currentAgeIdx + 1) % ageModes.length;
+      const mode = ageModes[currentAgeIdx];
+      document.getElementById('ageLabel').innerText = mode.label;
+      if (typeof loadLiveCartoons === 'function') {
+        loadLiveCartoons(mode.id === 'all' ? 'all' : mode.queryBoost, mode.id !== 'all');
+      }
+    }
+
+    function toggleSearchDrawer() {
+      const drawer = document.getElementById('searchDrawer');
+      drawer.classList.toggle('hidden');
+      if (!drawer.classList.contains('hidden')) {
+        document.getElementById('liveSearchInput').focus();
+      }
+    }
+
+    function switchMainSection(secName, btn) {
+      playPop();
+      document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
+      document.getElementById('section-' + secName).classList.remove('hidden');
+
+      document.querySelectorAll('.main-tab').forEach(t => {
+        t.classList.remove('tab-pill-active');
+        t.classList.add('bg-slate-100', 'text-slate-600');
+      });
+      btn.classList.add('tab-pill-active');
+      btn.classList.remove('bg-slate-100', 'text-slate-600');
+
+      if (secName === 'music' && typeof loadMusicSection === 'function') loadMusicSection();
+      if (secName === 'explore' && typeof loadExploreSection === 'function') loadExploreSection();
+      if (secName === 'parents' && typeof renderParentsZone === 'function') renderParentsZone();
+    }
+
+    function resetToHome() {
+      playPop();
+      const firstTab = document.querySelector('.main-tab');
+      switchMainSection('shows', firstTab);
+      if (typeof selectShowCharacter === 'function') selectShowCharacter('all');
+    }
+  <\/script>
+
+  <!-- PART 3: LIVE YOUTUBE KIDS SERVER FEED & CHARACTER ENGINE -->
+  <script>
+    const showsCharacters = [
+      { id: 'all', name: 'All Shows', bg: 'from-red-500 to-amber-500', code: 'ALL' },
+      { id: 'motu', name: 'Motu Patlu', bg: 'from-amber-400 to-orange-600', code: 'MP' },
+      { id: 'bheem', name: 'Chhota Bheem', bg: 'from-orange-500 to-red-600', code: 'CB' },
+      { id: 'oggy', name: 'Oggy', bg: 'from-sky-400 to-blue-600', code: 'OG' },
+      { id: 'vir', name: 'Vir Robot Boy', bg: 'from-rose-500 to-pink-600', code: 'VR' },
+      { id: 'gattu', name: 'Gattu Battu', bg: 'from-emerald-400 to-teal-600', code: 'GB' },
+      { id: 'pakdam', name: 'Pakdam Pakdai', bg: 'from-purple-500 to-indigo-600', code: 'PP' },
+      { id: 'shinchan', name: 'Shinchan', bg: 'from-red-500 to-yellow-500', code: 'SC' },
+      { id: 'taarak', name: 'Taarak Mehta', bg: 'from-yellow-400 to-amber-600', code: 'TM' }
+    ];
+
+    let selectedShow = 'all';
+    let currentFetchedList = [];
+
+    // Render Loading Skeletons while Server Fetches Live YouTube Videos
+    function getSkeletonCards() {
+      return Array(6).fill(0).map(() => \`
+        <div class="yt-card overflow-hidden p-2.5">
+          <div class="w-full aspect-video rounded-2xl skeleton-pulse"></div>
+          <div class="h-4 w-3/4 rounded-lg skeleton-pulse mt-3"></div>
+          <div class="h-3 w-1/3 rounded-lg skeleton-pulse mt-2"></div>
+        </div>
+      \`).join('');
+    }
+
+    // Build Video Cards Grid (Official YouTube Kids Style)
+    function buildYtKidsGrid(videos, badgeText) {
+      if (!videos || videos.length === 0) {
+        return \`<div class="yt-card p-8 text-center text-slate-500 font-bold">व्हिडिओ लोड होत आहेत किंवा इंटरनेट तपासा...</div>\`;
+      }
+
+      return \`
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          \${videos.map(v => \`
+            <div onclick="launchKidsPlayer('\${v.ytId}', '\${v.title.replace(/'/g, "\\\\'")}', '\${badgeText}')" class="yt-card overflow-hidden cursor-pointer group">
+              <div class="relative aspect-video bg-slate-200 overflow-hidden">
+                <img 
+                  src="https://i.ytimg.com/vi/\${v.ytid}/mqdefault.jpg" 
+                  alt="\${v.title}" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-300" 
+                  loading="lazy"
+                />
+                <span class="absolute bottom-2.5 right-2.5 bg-slate-900/85 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg">
+                  \${v.duration || 'HD'}
+                </span>
+                <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition">
+                  <div class="w-14 h-14 rounded-full bg-red-600/95 flex items-center justify-center shadow-xl border-2 border-white">
+                    <i data-lucide="play" class="w-7 h-7 text-white fill-white ml-0.5"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-3.5">
+                <div class="flex items-center gap-1.5 mb-1">
+                  <span class="px-2 py-0.5 rounded-md bg-sky-100 text-sky-700 text-[10px] font-extrabold uppercase tracking-wide">
+                    \${badgeText}
+                  </span>
+                  <span class="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5">
+                    <i data-lucide="check-circle-2" class="w-3 h-3"></i> Kids Safe
+                  </span>
+                </div>
+                <h3 class="kids-font text-base font-semibold text-slate-800 line-clamp-2 leading-snug">
+                  \${v.title}
+                </h3>
+              </div>
+            </div>
+          \`).join('')}
+        </div>
+      \`;
+    }
+
+    // Fetch Live Videos from Python Flask Server (/api/videos)
+    async function loadLiveCartoons(param, isCustomQuery = false) {
+      const showsEl = document.getElementById('section-shows');
+
+      // Render Character Bubbles Row
+      let bubblesHtml = \`
+        <div class="px-4 pt-4">
+          <div class="flex gap-3.5 overflow-x-auto no-scrollbar pb-2">
+            \${showsCharacters.map(c => {
+              const active = !isCustomQuery && selectedShow === c.id;
+              return \`
+                <button onclick="selectShowCharacter('\${c.id}')" class="flex flex-col items-center shrink-0 active:scale-90 transition">
+                  <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr \${c.bg} \${active ? 'ring-4 ring-red-500 scale-105' : 'opacity-90'} shadow-md">
+                    <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
+                      <span class="kids-font font-bold text-lg bg-gradient-to-tr \${c.bg} bg-clip-text text-transparent">\${c.code}</span>
+                    </div>
+                  </div>
+                  <span class="text-xs mt-1.5 font-extrabold \${active ? 'text-red-600' : 'text-slate-600'}">\${c.name}</span>
+                </button>
+              \`;
+            }).join('')}
+          </div>
+        </div>
+      \`;
+
+      const headingTitle = isCustomQuery
+        ? \`Results for "\${param}"\`
+        : (showsCharacters.find(x => x.id === selectedShow)?.name || 'All Cartoon Shows');
+
+      showsEl.innerHTML = bubblesHtml + \`
+        <div class="px-4 pt-3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="kids-font text-xl font-bold text-slate-800">\${headingTitle}</h2>
+            <span class="text-xs font-extrabold text-sky-600 bg-sky-100 px-3 py-1 rounded-full">Live YouTube Kids</span>
+          </div>
+          <div id="showsGridTarget">\${getSkeletonCards()}</div>
+        </div>
+      \`;
+      lucide.createIcons();
+
+      try {
+        const apiUrl = isCustomQuery
+          ? \`/api/videos?q=\${encodeURIComponent(param)}\`
+          : \`/api/videos?category=\${encodeURIComponent(param)}\`;
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        currentFetchedList = data.videos || [];
+        document.getElementById('showsGridTarget').innerHTML = buildYtKidsGrid(
+          currentFetchedList,
+          isCustomQuery ? 'Kids Search' : headingTitle
+        );
+        lucide.createIcons();
+      } catch (err) {
+        document.getElementById('showsGridTarget').innerHTML = \`
+          <div class="yt-card p-6 text-center text-rose-600 font-bold">
+            सर्व्हर कनेक्ट होत आहे... कृपया <code>python server.py</code> चालू असल्याची खात्री करा.
+          </div>
+        \`;
+      }
+    }
+
+    function selectShowCharacter(catId) {
+      playPop();
+      selectedShow = catId;
+      loadLiveCartoons(catId, false);
+    }
+
+    function handleLiveSearch(e) {
+      e.preventDefault();
+      const q = document.getElementById('liveSearchInput').value.trim();
+      if (!q) return;
+      playPop();
+      const firstTab = document.querySelector('.main-tab');
+      switchMainSection('shows', firstTab);
+      loadLiveCartoons(q, true);
+    }
+
+    // Load Music & Rhymes Tab (Chiki Chum, ChuChu TV, Hindi Nursery Rhymes)
+    async function loadMusicSection() {
+      const musicEl = document.getElementById('section-music');
+      musicEl.innerHTML = \`
+        <div class="px-4 pt-4">
+          <div class="rounded-3xl p-5 mb-5 bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500 text-white shadow-lg">
+            <h2 class="kids-font text-2xl font-bold">Chiki Chum & Kids Rhymes</h2>
+            <p class="text-xs font-bold text-white/90 mt-0.5">लहान मुलांसाठी बडबडगीते, ABC गाणी आणि डान्स व्हिडिओ</p>
+          </div>
+          <div id="musicGridTarget">\${getSkeletonCards()}</div>
+        </div>
+      \`;
+      lucide.createIcons();
+
+      const res = await fetch('/api/videos?category=rhymes');
+      const data = await res.json();
+      currentFetchedList = data.videos || [];
+      document.getElementById('musicGridTarget').innerHTML = buildYtKidsGrid(currentFetchedList, 'Kids Rhymes');
+      lucide.createIcons();
+    }
+
+    // Load Explore & Learn Tab (Moral Stories, Science & Craft for Kids)
+    async function loadExploreSection() {
+      const expEl = document.getElementById('section-explore');
+      expEl.innerHTML = \`
+        <div class="px-4 pt-4">
+          <div class="rounded-3xl p-5 mb-5 bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 text-white shadow-lg">
+            <h2 class="kids-font text-2xl font-bold">Explore, Stories & Learning</h2>
+            <p class="text-xs font-bold text-white/90 mt-0.5">पचतंत्र गोष्टी, विज्ञान प्रयोग आणि जनरल नॉलेज कार्टून्स</p>
+          </div>
+          <div id="exploreGridTarget">\${getSkeletonCards()}</div>
+        </div>
+      \`;
+      lucide.createIcons();
+
+      const res = await fetch('/api/videos?q=' + encodeURIComponent('Hindi Moral Stories Panchatantra Kids Learning'));
+      const data = await res.json();
+      currentFetchedList = data.videos || [];
+      document.getElementById('exploreGridTarget').innerHTML = buildYtKidsGrid(currentFetchedList, 'Kids Learning');
+      lucide.createIcons();
+    }
+
+    // Boot Initial Shows Feed
+    loadLiveCartoons('all', false);
+  <\/script>
+
+  <!-- PART 4: YOUTUBE KIDS PRO IN-APP PLAYER + CHILD LOCK -->
+  <div id="kidsPlayerModal" class="fixed inset-0 z-50 bg-[#F4F7FC] hidden flex flex-col">
+    <!-- Bright YouTube Kids Player Header -->
+    <div id="kidsPlayerHeader" class="bg-white px-4 py-3 flex items-center justify-between shadow-sm border-b border-slate-100">
+      <button onclick="exitKidsPlayer()" class="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center shadow-md shadow-red-500/30 active:scale-90 transition">
+        <i data-lucide="arrow-left" class="w-6 h-6"></i>
+      </button>
+
+      <div class="flex items-center gap-2">
+        <span id="playerBadgeLabel" class="px-3 py-1 rounded-full bg-sky-100 text-sky-700 kids-font text-xs font-bold uppercase">
+          CARTOON SHOW
+        </span>
+      </div>
+
+      <!-- Child Touch Lock Button -->
+      <button onclick="activateKidsLock()" class="px-3.5 py-2 rounded-full bg-amber-400 text-slate-950 kids-font text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition">
+        <i data-lucide="lock" class="w-4 h-4"></i>
+        <span>Screen Lock</span>
+      </button>
+    </div>
+
+    <!-- Video Screen Wrapper -->
+    <div class="relative w-full max-w-4xl mx-auto aspect-video bg-black shadow-xl">
+      <div id="ytKidsIframeTarget" class="w-full h-full"></div>
+
+      <!-- Silent Auto-Skip Toast (No Ugly Browser Alert Box!) -->
+      <div id="autoSkipToast" class="hidden absolute bottom-3 left-3 right-3 z-20 bg-slate-900/90 text-white px-4 py-2 rounded-2xl text-xs font-bold flex items-center justify-between">
+        <span>Loading next playable cartoon episode...</span>
+        <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-amber-400"></i>
+      </div>
+
+      <!-- Child Lock Shield Overlay -->
+      <div id="kidsTouchShield" class="hidden absolute inset-0 z-30 bg-transparent flex items-start justify-end p-3">
+        <button onclick="handleUnlockTap()" class="px-3.5 py-2 rounded-full bg-red-600 text-white kids-font text-xs font-bold shadow-lg flex items-center gap-1.5 animate-bounce">
+          <i data-lucide="unlock" class="w-4 h-4"></i>
+          <span id="unlockHintText">Tap 3x to Unlock</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Playing Title & Up Next Safe Kids Videos -->
+    <div id="kidsPlayerBottomArea" class="flex-1 overflow-y-auto px-4 pt-4 pb-8 max-w-4xl mx-auto w-full">
+      <h2 id="activeCartoonTitle" class="kids-font text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+        Loading Cartoon...
+      </h2>
+
+      <div class="mt-5">
+        <h3 class="kids-font text-base font-bold text-slate-700 mb-3 flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
+          <span>Watch Next (Safe For Kids)</span>
+        </h3>
+        <div id="upNextKidsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Official YouTube IFrame Player API -->
+  <script src="https://www.youtube.com/iframe_api"><\/script>
+
+  <script>
+    let ytKidsPlayer = null;
+    let activePlayingId = '';
+    let activePlayingCategory = 'Cartoons';
+    let screenLockedState = false;
+    let tapUnlockCounter = 0;
+    let tapResetTimer = null;
+
+    function launchKidsPlayer(ytId, title, categoryLabel) {
+      playPop();
+      activePlayingId = ytId;
+      if (!ytId || ytId === 'undefined' || ytId === 'null') {
+        const list = (typeof currentFetchedList !== 'undefined' && Array.isArray(currentFetchedList)) ? currentFetchedList : [];
+        const matched = list.find(item => item && title && item.title === title && (item.ytid || item.videoId || item.id));
+        const fallback = matched || list.find(item => item && (item.ytid || item.videoId || item.id));
+        ytId = fallback ? (fallback.ytid || fallback.videoId || fallback.id) : '';
+      }
+
+      activePlayingCategory = categoryLabel || 'Cartoons';
+
+      const modal = document.getElementById('kidsPlayerModal');
+      modal.classList.remove('hidden');
+      document.getElementById('activeCartoonTitle').innerText = title;
+      document.getElementById('playerBadgeLabel').innerText = activePlayingCategory;
+      document.getElementById('autoSkipToast').classList.add('hidden');
+
+      const target = document.getElementById('ytKidsIframeTarget');
+      if (target) {
+        target.innerHTML = \`<iframe id="directYtFrame" src="https://www.youtube-nocookie.com/embed/\${encodeURIComponent(ytId)}?autoplay=1&mute=0&rel=0&playsinline=1&fs=1" style="width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>\`;
+      }
+
+      renderWatchNextList(ytId);
+      const modalEl = document.getElementById('kidsPlayerModal');
+      if (modalEl && !document.getElementById('ktRestorePortraitBtn')) {
+        const pBtn = document.createElement('button');
+        pBtn.id = 'ktRestorePortraitBtn';
+        pBtn.type = 'button';
+        pBtn.innerText = '↕ उभी स्क्रीन';
+        pBtn.style.cssText = 'position:fixed;bottom:14px;right:14px;z-index:100001;background:#0f172a;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:8px 12px;border-radius:999px;font-size:11px;font-weight:800;cursor:pointer;';
+        pBtn.onclick = function(e) { e.stopPropagation(); restorePortraitMode(); };
+        modalEl.appendChild(pBtn);
+      }
+    
+
+      setTimeout(() => {
+        const w = document.getElementById('kidsVideoWrapper') || document.getElementById('ytKidsIframeTarget')?.parentElement;
+        if (w && ytId && !w.querySelector('.yt-direct-open-btn')) {
+          
+        }
+        const box = document.getElementById('ytKidsIframeTarget');
+        if (box && ytId) {
+          box.innerHTML = \`<iframe src="https://www.youtube-nocookie.com/embed/\${encodeURIComponent(ytId)}?autoplay=1&mute=0&rel=0&playsinline=1&fs=1" style="position:relative;z-index:50;width:100%;height:230px;border:0;display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>\`;
+        }
+      }, 50);
+      lucide.createIcons();
+    }
+
+    function playNextAvailableCartoon() {
+      if (!currentFetchedList || currentFetchedList.length === 0) return;
+      const idx = currentFetchedList.findIndex(item => item.ytId === activePlayingId);
+      const nextIdx = (idx + 1) % currentFetchedList.length;
+      const nextItem = currentFetchedList[nextIdx];
+      if (nextItem && nextItem.ytId !== activePlayingId) {
+        launchKidsPlayer(nextItem.ytId, nextItem.title, activePlayingCategory);
+      }
+    }
+
+    function exitKidsPlayer() {
+      if (screenLockedState) return;
+      playPop();
+      const tStop = document.getElementById('ytKidsIframeTarget');
+      if (tStop) tStop.innerHTML = '';
+      document.getElementById('kidsPlayerModal').classList.add('hidden');
+    }
+
+    function activateKidsLock() {
+      playPop();
+      screenLockedState = true;
+      tapUnlockCounter = 0;
+      document.getElementById('kidsTouchShield').classList.remove('hidden');
+      document.getElementById('kidsPlayerHeader').classList.add('opacity-25', 'pointer-events-none');
+      document.getElementById('kidsPlayerBottomArea').classList.add('opacity-25', 'pointer-events-none');
+    }
+
+    function handleUnlockTap() {
+      tapUnlockCounter++;
+      clearTimeout(tapResetTimer);
+      tapResetTimer = setTimeout(() => {
+        tapUnlockCounter = 0;
+        document.getElementById('unlockHintText').innerText = 'Tap 3x to Unlock';
+      }, 1300);
+
+      if (tapUnlockCounter < 3) {
+        document.getElementById('unlockHintText').innerText = \`Tap \${3 - tapUnlockCounter} more times\`;
+      } else {
+        playPop();
+        screenLockedState = false;
+        tapUnlockCounter = 0;
+        document.getElementById('unlockHintText').innerText = 'Tap 3x to Unlock';
+        document.getElementById('kidsTouchShield').classList.add('hidden');
+        document.getElementById('kidsPlayerHeader').classList.remove('opacity-25', 'pointer-events-none');
+        document.getElementById('kidsPlayerBottomArea').classList.remove('opacity-25', 'pointer-events-none');
+      }
+    }
+
+    function renderWatchNextList(currentId) {
+      const target = document.getElementById('upNextKidsGrid');
+      const items = (currentFetchedList || []).filter(v => v.ytId !== currentId).slice(0, 10);
+
+      target.innerHTML = items.map(v => \`
+        <div onclick="launchKidsPlayer('\${v.ytId}', '\${v.title.replace(/'/g, "\\\\'")}', '\${activePlayingCategory}')" class="yt-card p-2.5 flex gap-3 items-center cursor-pointer">
+          <div class="relative w-32 h-20 rounded-xl overflow-hidden bg-slate-200 shrink-0">
+            <img src="https://i.ytimg.com/vi/\${v.ytid}/mqdefault.jpg" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/15">
+              <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center">
+                <i data-lucide="play" class="w-4 h-4 text-white fill-white ml-0.5"></i>
+              </div>
+            </div>
+          </div>
+          <div class="min-w-0">
+            <span class="text-[10px] font-extrabold text-sky-600 uppercase">\${activePlayingCategory}</span>
+            <h4 class="kids-font text-sm font-semibold text-slate-800 line-clamp-2 mt-0.5 leading-snug">\${v.title}</h4>
+          </div>
+        </div>
+      \`).join('');
+    }
+  <\/script>
+
+  <!-- PART 5: YOUTUBE KIDS PARENTS ZONE, SEARCH LOCK & SCREEN TIME LIMIT -->
+  <!-- Full-Screen Time's Up Overlay -->
+  <div id="ytTimeUpOverlay" class="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-md hidden flex flex-col items-center justify-center p-6 text-center text-white">
+    <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-amber-400 to-red-500 flex items-center justify-center shadow-2xl mb-4">
+      <i data-lucide="moon" class="w-10 h-10 text-white"></i>
+    </div>
+    <h2 class="kids-font text-3xl font-bold text-amber-300">Time's Up!</h2>
+    <p class="text-sm font-semibold text-slate-300 mt-2 max-w-xs">
+      आजचा कार्टून पाहण्याचा वेळ संपला आहे. आता अभ्यास किंवा झोपेची वेळ!
+    </p>
+
+    <div class="bg-white text-slate-900 rounded-3xl p-5 mt-6 w-full max-w-xs shadow-2xl">
+      <p class="text-xs font-extrabold text-sky-600 uppercase">Parents Only: Solve to Unlock</p>
+      <p id="ytLockMathQ" class="kids-font text-2xl font-bold text-slate-900 my-2">12 + 8 = ?</p>
+      <input type="number" id="ytLockMathAns" placeholder="उत्तर टाका..." class="w-full bg-slate-100 border-2 border-slate-300 rounded-xl px-3 py-2 text-center font-extrabold text-lg focus:outline-none focus:border-red-500" />
+      <button onclick="unlockTimeUpScreen()" class="w-full mt-3 py-2.5 rounded-xl bg-red-600 text-white kids-font font-bold text-sm shadow-md active:scale-95 transition">
+        Unlock Kids Tone
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let isParentVerified = false;
+    let num1 = 0, num2 = 0;
+    let kidsTimerRef = null;
+    let secondsLeft = 0;
+    let isKidsSearchAllowed = true;
+
+    function makeParentMath() {
+      num1 = Math.floor(Math.random() * 14) + 6;
+      num2 = Math.floor(Math.random() * 12) + 5;
+      return \`\${num1} + \${num2} = ?\`;
+    }
+
+    function renderParentsZone() {
+      const pEl = document.getElementById('section-parents');
+
+      if (!isParentVerified) {
+        const question = makeParentMath();
+        pEl.innerHTML = \`
+          <div class="px-4 pt-6 flex justify-center">
+            <div class="yt-card p-6 w-full max-w-md text-center">
+              <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto mb-3">
+                <i data-lucide="shield-check" class="w-9 h-9"></i>
+              </div>
+              <h2 class="kids-font text-2xl font-bold text-slate-900">Grown-Ups Only</h2>
+              <p class="text-xs font-bold text-slate-500 mt-1">सेटिंग्ज बदलण्यासाठी खालील गणित सोडवा:</p>
+
+              <div class="my-5 py-3.5 rounded-2xl bg-slate-100 border-2 border-slate-200">
+                <span class="kids-font text-2xl font-bold text-red-600">\${question}</span>
+              </div>
+
+              <input type="number" id="parentMathField" placeholder="येथे उत्तर लिहा..." class="w-full bg-slate-50 border-2 border-sky-300 rounded-2xl py-3 px-4 text-center font-extrabold text-slate-900 text-lg focus:outline-none focus:border-red-500" />
+
+              <button onclick="verifyParentAccess()" class="w-full mt-4 py-3 rounded-2xl bg-red-600 text-white kids-font font-bold text-base shadow-lg shadow-red-500/30 active:scale-95 transition">
+                Enter Settings
+              </button>
+            </div>
+          </div>
+        \`;
+      } else {
+        pEl.innerHTML = \`
+          <div class="px-4 pt-4 max-w-2xl mx-auto space-y-4">
+            <div class="yt-card p-4 flex items-center justify-between">
+              <div>
+                <h2 class="kids-font text-xl font-bold text-slate-900">Parents Controls</h2>
+                <p class="text-xs font-bold text-slate-500">YouTube Kids सुरक्षा व वेळ नियंत्रण</p>
+              </div>
+              <button onclick="exitParentAccess()" class="px-3.5 py-2 rounded-xl bg-rose-100 text-rose-700 kids-font text-xs font-bold active:scale-95">
+                Lock Settings
+              </button>
+            </div>
+
+            <!-- Screen Time Limit Timer -->
+            <div class="yt-card p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <i data-lucide="clock" class="w-5 h-5 text-amber-500"></i>
+                <h3 class="kids-font text-lg font-bold text-slate-800">Screen Time Timer</h3>
+              </div>
+              <p class="text-xs font-bold text-slate-500 mb-3">वेळ संपताच ॲप आपोआप लॉक होईल:</p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <button onclick="setKidsTimer(15)" class="py-2.5 rounded-xl bg-sky-100 text-sky-800 kids-font text-xs font-bold active:scale-95">15 Mins</button>
+                <button onclick="setKidsTimer(30)" class="py-2.5 rounded-xl bg-sky-100 text-sky-800 kids-font text-xs font-bold active:scale-95">30 Mins</button>
+                <button onclick="setKidsTimer(45)" class="py-2.5 rounded-xl bg-sky-100 text-sky-800 kids-font text-xs font-bold active:scale-95">45 Mins</button>
+                <button onclick="clearKidsTimer()" class="py-2.5 rounded-xl bg-rose-100 text-rose-700 kids-font text-xs font-bold active:scale-95">Off Timer</button>
+              </div>
+            </div>
+
+            <!-- Search Enable / Disable Toggle (Just like YouTube Kids) -->
+            <div class="yt-card p-5 flex items-center justify-between">
+              <div>
+                <h3 class="kids-font text-base font-bold text-slate-800">Allow Kids Search</h3>
+                <p class="text-xs font-bold text-slate-500">बंद केल्यास मुले फक्त होम स्क्रीनवरील कार्टून्स पाहू शकतील</p>
+              </div>
+              <button onclick="toggleSearchPermission()" class="px-4 py-2 rounded-xl \${isKidsSearchAllowed ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-700'} kids-font text-xs font-bold active:scale-95">
+                \${isKidsSearchAllowed ? 'Search: ON' : 'Search: OFF'}
+              </button>
+            </div>
+          </div>
+        \`;
+      }
+      lucide.createIcons();
+    }
+
+    function verifyParentAccess() {
+      const val = parseInt(document.getElementById('parentMathField').value);
+      if (val === (num1 + num2)) {
+        playPop();
+        isParentVerified = true;
+        renderParentsZone();
+      } else {
+        document.getElementById('parentMathField').value = '';
+        document.getElementById('parentMathField').placeholder = 'चुकीचे उत्तर! पुन्हा टाका';
+      }
+    }
+
+    function exitParentAccess() {
+      playPop();
+      isParentVerified = false;
+      renderParentsZone();
+    }
+
+    function toggleSearchPermission() {
+      playPop();
+      isKidsSearchAllowed = !isKidsSearchAllowed;
+      const searchBtn = document.querySelector('header button[onclick*="toggleSearchDrawer"]');
+      if (searchBtn) {
+        searchBtn.style.display = isKidsSearchAllowed ? 'flex' : 'none';
+      }
+      if (!isKidsSearchAllowed) {
+        document.getElementById('searchDrawer').classList.add('hidden');
+      }
+      renderParentsZone();
+    }
+
+    function setKidsTimer(mins) {
+      playPop();
+      clearInterval(kidsTimerRef);
+      secondsLeft = mins * 60;
+      const badge = document.getElementById('timerBadge');
+      badge.classList.remove('hidden');
+      refreshTimerLabel();
+
+      kidsTimerRef = setInterval(() => {
+        secondsLeft--;
+        refreshTimerLabel();
+        if (secondsLeft <= 0) {
+          clearInterval(kidsTimerRef);
+          badge.classList.add('hidden');
+          showTimeUpScreen();
+        }
+      }, 1000);
+    }
+
+    function clearKidsTimer() {
+      playPop();
+      clearInterval(kidsTimerRef);
+      document.getElementById('timerBadge').classList.add('hidden');
+    }
+
+    function refreshTimerLabel() {
+      const m = Math.floor(secondsLeft / 60);
+      const s = secondsLeft % 60;
+      document.getElementById('timerDisplay').innerText = \`\${String(m).padStart(2, '0')}:\${String(s).padStart(2, '0')}\`;
+    }
+
+    function showTimeUpScreen() {
+      screenLockedState = false;
+      exitKidsPlayer();
+      document.getElementById('ytLockMathQ').innerText = makeParentMath();
+      document.getElementById('ytTimeUpOverlay').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function unlockTimeUpScreen() {
+      const val = parseInt(document.getElementById('ytLockMathAns').value);
+      if (val === (num1 + num2)) {
+        playPop();
+        document.getElementById('ytTimeUpOverlay').classList.add('hidden');
+        document.getElementById('ytLockMathAns').value = '';
+      } else {
+        document.getElementById('ytLockMathAns').value = '';
+        document.getElementById('ytLockMathAns').placeholder = 'पुन्हा प्रयत्न करा!';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  <\/script>
+<!-- PART 2 UPGRADE: 30 CARTOONS + FAVORITES + WATCH HISTORY + STAR REWARDS -->
+  <script>
+    // 1. Expanded 28+ Cartoon Shows List
+    const superShowsList = [
+      { id: 'all', name: 'All Shows', bg: 'from-red-500 to-amber-500', code: 'ALL' },
+      { id: 'motu', name: 'Motu Patlu', bg: 'from-amber-400 to-orange-600', code: 'MP' },
+      { id: 'bheem', name: 'Chhota Bheem', bg: 'from-orange-500 to-red-600', code: 'CB' },
+      { id: 'doraemon', name: 'Doraemon', bg: 'from-sky-500 to-blue-700', code: 'DR' },
+      { id: 'shinchan', name: 'Shinchan', bg: 'from-red-500 to-yellow-500', code: 'SC' },
+      { id: 'oggy', name: 'Oggy', bg: 'from-cyan-400 to-blue-600', code: 'OG' },
+      { id: 'masha', name: 'Masha & Bear', bg: 'from-pink-500 to-rose-600', code: 'MB' },
+      { id: 'singham', name: 'Little Singham', bg: 'from-amber-500 to-red-700', code: 'LS' },
+      { id: 'rudra', name: 'Rudra', bg: 'from-purple-500 to-pink-600', code: 'RD' },
+      { id: 'vir', name: 'Vir Robot Boy', bg: 'from-rose-500 to-pink-600', code: 'VR' },
+      { id: 'gattu', name: 'Gattu Battu', bg: 'from-emerald-400 to-teal-600', code: 'GB' },
+      { id: 'pakdam', name: 'Pakdam Pakdai', bg: 'from-indigo-500 to-purple-700', code: 'PP' },
+      { id: 'roll21', name: 'Roll No 21', bg: 'from-blue-500 to-cyan-600', code: 'R21' },
+      { id: 'hattori', name: 'Ninja Hattori', bg: 'from-blue-600 to-indigo-800', code: 'NH' },
+      { id: 'taarak', name: 'Taarak Mehta', bg: 'from-yellow-400 to-amber-600', code: 'TM' },
+      { id: 'paw', name: 'Paw Patrol', bg: 'from-sky-400 to-red-500', code: 'PW' },
+      { id: 'mickey', name: 'Mickey Mouse', bg: 'from-red-600 to-slate-800', code: 'MM' },
+      { id: 'spongebob', name: 'SpongeBob', bg: 'from-yellow-400 to-amber-500', code: 'SB' },
+      { id: 'ben10', name: 'Ben 10', bg: 'from-green-500 to-emerald-700', code: 'B10' },
+      { id: 'mrbean', name: 'Mr Bean', bg: 'from-stone-500 to-amber-700', code: 'BN' },
+      { id: 'tomjerry', name: 'Tom & Jerry', bg: 'from-slate-500 to-orange-600', code: 'TJ' },
+      { id: 'krishna', name: 'Little Krishna', bg: 'from-sky-400 to-indigo-600', code: 'LK' },
+      { id: 'ganesh', name: 'Bal Ganesh', bg: 'from-orange-400 to-amber-600', code: 'BG' },
+      { id: 'akbar', name: 'Akbar Birbal', bg: 'from-teal-500 to-emerald-700', code: 'AB' },
+      { id: 'tenali', name: 'Tenali Rama', bg: 'from-amber-500 to-yellow-600', code: 'TR' },
+      { id: 'peppa', name: 'Peppa Pig', bg: 'from-pink-400 to-rose-500', code: 'PG' },
+      { id: 'marathi', name: 'Marathi Balgeet', bg: 'from-orange-500 to-amber-500', code: 'MR' },
+      { id: 'rhymes', name: 'Chiki Chum', bg: 'from-fuchsia-500 to-pink-600', code: 'CC' }
+    ];
+
+    // Persistent Favorites, History & Star Rewards
+    let favCartoons = JSON.parse(localStorage.getItem('kidsToneFavs') || '[]');
+    let watchHistory = JSON.parse(localStorage.getItem('kidsToneHistory') || '[]');
+    let kidsStars = parseInt(localStorage.getItem('kidsToneStars') || '5');
+
+    // Inject Star Counter Badge & Favorites Tab into Header
+    (function injectProHeaderControls() {
+      const rightHeader = document.querySelector('header .flex.items-center.gap-2');
+      if (rightHeader && !document.getElementById('starCounterPill')) {
+        const starPill = document.createElement('div');
+        starPill.id = 'starCounterPill';
+        starPill.className = 'px-2.5 py-1.5 rounded-full bg-yellow-100 border border-yellow-300 text-amber-800 kids-font text-xs font-bold flex items-center gap-1 shadow-sm';
+        starPill.innerHTML = \`<i data-lucide="star" class="w-3.5 h-3.5 text-amber-500 fill-amber-400"></i><span id="starCountNum">\${kidsStars}</span>\`;
+        rightHeader.prepend(starPill);
+      }
+
+      const tabsBar = document.querySelector('header .overflow-x-auto');
+      if (tabsBar && !document.getElementById('favTabBtn')) {
+        const favBtn = document.createElement('button');
+        favBtn.id = 'favTabBtn';
+        favBtn.className = 'main-tab bg-slate-100 text-slate-600 px-4 py-2 rounded-full kids-font text-sm font-semibold flex items-center gap-1.5 shrink-0 transition';
+        favBtn.innerHTML = \`<i data-lucide="heart" class="w-4 h-4 text-rose-500 fill-rose-500"></i><span>Favorites</span>\`;
+        favBtn.onclick = function() { switchMainSection('favorites', favBtn); };
+        tabsBar.insertBefore(favBtn, tabsBar.lastElementChild);
+
+        const mainEl = document.querySelector('main');
+        const favSec = document.createElement('section');
+        favSec.id = 'section-favorites';
+        favSec.className = 'content-section hidden';
+        mainEl.appendChild(favSec);
+      }
+    })();
+
+    // Play Magic Star Chime Sound
+    function playStarChime() {
+      if (popCtx.state === 'suspended') popCtx.resume();
+      [660, 880, 1120].forEach((freq, i) => {
+        const osc = popCtx.createOscillator();
+        const gain = popCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, popCtx.currentTime + i * 0.06);
+        gain.gain.setValueAtTime(0.1, popCtx.currentTime + i * 0.06);
+        gain.gain.exponentialRampToValueAtTime(0.001, popCtx.currentTime + i * 0.06 + 0.14);
+        osc.connect(gain);
+        gain.connect(popCtx.destination);
+        osc.start(popCtx.currentTime + i * 0.06);
+        osc.stop(popCtx.currentTime + i * 0.06 + 0.15);
+      });
+    }
+
+    function toggleFavoriteCartoon(e, ytId, title, badgeText) {
+      e.stopPropagation();
+      const idx = favCartoons.findIndex(x => x.ytId === ytId);
+      if (idx > -1) {
+        playPop();
+        favCartoons.splice(idx, 1);
+      } else {
+        playStarChime();
+        favCartoons.unshift({ ytId, title, badgeText, duration: 'FAV' });
+      }
+      localStorage.setItem('kidsToneFavs', JSON.stringify(favCartoons));
+      document.querySelectorAll(\`.fav-heart-\${ytId}\`).forEach(icon => {
+        if (idx > -1) {
+          icon.classList.remove('text-rose-500', 'fill-rose-500');
+          icon.classList.add('text-white');
+        } else {
+          icon.classList.remove('text-white');
+          icon.classList.add('text-rose-500', 'fill-rose-500');
+        }
+      });
+      if (!document.getElementById('section-favorites').classList.contains('hidden')) {
+        renderFavoritesAndHistory();
+      }
+    }
+
+    // Override Card Renderer with Heart Button
+    renderVideoCardsHTML = function(videos, badgeText) {
+      return videos.map(v => {
+        const isFav = favCartoons.some(f => f.ytId === v.ytId);
+        const safeTitle = v.title.replace(/'/g, "\\\\'");
+        return \`
+          <div onclick="launchKidsPlayer('\${v.ytId}', '\${safeTitle}', '\${badgeText}')" class="yt-card overflow-hidden cursor-pointer group">
+            <div class="relative aspect-video bg-slate-200 overflow-hidden">
+              <img src="https://i.ytimg.com/vi/\${v.ytid}/mqdefault.jpg" alt="\${v.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
+              
+              <!-- Heart Favorite Button -->
+              <button onclick="toggleFavoriteCartoon(event, '\${v.ytId}', '\${safeTitle}', '\${badgeText}')" class="absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-slate-900/65 backdrop-blur-sm flex items-center justify-center active:scale-90 transition">
+                <i data-lucide="heart" class="fav-heart-\${v.ytId} w-4 h-4 \${isFav ? 'text-rose-500 fill-rose-500' : 'text-white'}"></i>
+              </button>
+
+              <span class="absolute bottom-2.5 right-2.5 bg-slate-900/85 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg">\${v.duration || 'HD'}</span>
+              <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition">
+                <div class="w-14 h-14 rounded-full bg-red-600/95 flex items-center justify-center shadow-xl border-2 border-white">
+                  <i data-lucide="play" class="w-7 h-7 text-white fill-white ml-0.5"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-3.5">
+              <div class="flex items-center gap-1.5 mb-1">
+                <span class="px-2 py-0.5 rounded-md bg-sky-100 text-sky-700 text-[10px] font-extrabold uppercase">\${badgeText}</span>
+                <span class="text-[10px] font-bold text-emerald-600 flex items-center gap-0.5">
+                  <i data-lucide="check-circle-2" class="w-3 h-3"></i> Kids Safe
+                </span>
+              </div>
+              <h3 class="kids-font text-base font-semibold text-slate-800 line-clamp-2 leading-snug">\${v.title}</h3>
+            </div>
+          </div>
+        \`;
+      }).join('');
+    };
+
+    // Hook into launchKidsPlayer to save Watch History & Award Gold Stars!
+    const baseLaunchPlayer = launchKidsPlayer;
+    launchKidsPlayer = function(ytId, title, categoryLabel) {
+      baseLaunchPlayer(ytId, title, categoryLabel);
+      const t = document.getElementById('ytKidsIframeTarget');
+      if (t) {
+        t.style.minHeight = '220px';
+        t.innerHTML = \`<iframe src="https://www.youtube-nocookie.com/embed/\${encodeURIComponent(ytId)}?autoplay=1&mute=0&rel=0&playsinline=1&fs=1" style="width:100%;height:100%;min-height:220px;border:0;display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>\`;
+      }
+
+      // Save to Watch History
+      watchHistory = watchHistory.filter(h => h.ytId !== ytId);
+      watchHistory.unshift({ ytId, title, badgeText: categoryLabel, duration: 'Watched' });
+      watchHistory = watchHistory.slice(0, 12);
+      localStorage.setItem('kidsToneHistory', JSON.stringify(watchHistory));
+
+      // Award +1 Gold Star for watching!
+      kidsStars++;
+      localStorage.setItem('kidsToneStars', String(kidsStars));
+      const starNumEl = document.getElementById('starCountNum');
+      if (starNumEl) starNumEl.innerText = kidsStars;
+    };
+
+    // Render Favorites & Watch History Section
+    function renderFavoritesAndHistory() {
+      const favEl = document.getElementById('section-favorites');
+      favEl.innerHTML = \`
+        <div class="px-4 pt-4 space-y-6">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="kids-font text-xl font-bold text-slate-800 flex items-center gap-2">
+                <i data-lucide="heart" class="w-5 h-5 text-rose-500 fill-rose-500"></i>
+                <span>My Favorite Cartoons (\${favCartoons.length})</span>
+              </h2>
+            </div>
+            \${favCartoons.length > 0
+              ? \`<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">\${renderVideoCardsHTML(favCartoons, 'Favorite')}</div>\`
+              : \`<div class="yt-card p-6 text-center text-slate-500 font-bold text-sm">कोणत्याही कार्टूनवर ❤️ (Heart) दाबल्यास तो येथे सेव्ह होईल!</div>\`
+            }
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="kids-font text-xl font-bold text-slate-800 flex items-center gap-2">
+                <i data-lucide="history" class="w-5 h-5 text-sky-500"></i>
+                <span>Continue Watching (\${watchHistory.length})</span>
+              </h2>
+            </div>
+            \${watchHistory.length > 0
+              ? \`<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">\${renderVideoCardsHTML(watchHistory, 'Watched')}</div>\`
+              : \`<div class="yt-card p-6 text-center text-slate-500 font-bold text-sm">तुम्ही पाहिलेले कार्टून्स येथे आपोआप दिसतील.</div>\`
+            }
+          </div>
+        </div>
+      \`;
+      lucide.createIcons();
+    }
+
+    // Hook switchMainSection for Favorites tab
+    const prevSwitchSec = switchMainSection;
+    switchMainSection = function(secName, btn) {
+      prevSwitchSec(secName, btn);
+      if (secName === 'favorites') renderFavoritesAndHistory();
+    };
+
+    // Update megaShowsList reference to use 28+ Super Shows
+    megaShowsList.length = 0;
+    superShowsList.forEach(s => megaShowsList.push(s));
+
+    // Reload Initial Screen with 28+ Shows & Heart Buttons
+    loadLiveCartoons('all', false);
+    lucide.createIcons();
+  <\/script>
+
+  <!-- PART 3 UPGRADE: REAL CHARACTER IMAGES + FUNNY KIDS SECTION + BEDTIME NIGHT MODE -->
+  <style>
+    body.night-mode {
+      background-color: #0B1120 !important;
+      background-image: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 45%) !important;
+      color: #F8FAFC !important;
+    }
+    body.night-mode header {
+      background-color: rgba(15, 23, 42, 0.95) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    body.night-mode .yt-card {
+      background-color: #1E293B !important;
+      border-color: #334155 !important;
+    }
+    body.night-mode h1, body.night-mode h2, body.night-mode h3, body.night-mode h4 {
+      color: #F1F5F9 !important;
+    }
+  </style>
+
+  <script>
+    // 1. Character Visual Avatars (Real YouTube Show Thumbnails + Clean Fallback)
+    const characterVisuals = [
+      { id: 'all', name: 'All Shows', bg: 'from-red-500 to-amber-500', code: 'ALL', img: '/api/videos?thumb=M7lc1UVf-VE' },
+      { id: 'motu', name: 'Motu Patlu', bg: 'from-amber-400 to-orange-600', code: 'MP', img: '/api/videos?thumb=g7x5P_X2E2A' },
+      { id: 'bheem', name: 'Chhota Bheem', bg: 'from-orange-500 to-red-600', code: 'CB', img: '/api/videos?thumb=0K1H3q3R4L0' },
+      { id: 'doraemon', name: 'Doraemon', bg: 'from-sky-500 to-blue-700', code: 'DR', img: '/api/videos?thumb=aqz-KE-bpKQ' },
+      { id: 'shinchan', name: 'Shinchan', bg: 'from-red-500 to-yellow-500', code: 'SC', img: '/api/videos?thumb=EngW7tLk6R8' },
+      { id: 'oggy', name: 'Oggy', bg: 'from-cyan-400 to-blue-600', code: 'OG', img: '/api/videos?thumb=BstW5K1G57I' },
+      { id: 'funnykids', name: 'Funny Kids', bg: 'from-pink-500 to-amber-400', code: 'FK', img: '/api/videos?thumb=F4tHL8reNCs' },
+      { id: 'masha', name: 'Masha & Bear', bg: 'from-pink-500 to-rose-600', code: 'MB', img: '/api/videos?thumb=e_04ZrNroTo' },
+      { id: 'singham', name: 'Little Singham', bg: 'from-amber-500 to-red-700', code: 'LS', img: '/api/videos?thumb=u4_S0iT4F8c' },
+      { id: 'rudra', name: 'Rudra', bg: 'from-purple-500 to-pink-600', code: 'RD', img: '/api/videos?thumb=f4Q3dG9E_lI' },
+      { id: 'vir', name: 'Vir Robot Boy', bg: 'from-rose-500 to-pink-600', code: 'VR', img: '/api/videos?thumb=u4_S0iT4F8c' },
+      { id: 'gattu', name: 'Gattu Battu', bg: 'from-emerald-400 to-teal-600', code: 'GB', img: '/api/videos?thumb=f4Q3dG9E_lI' },
+      { id: 'pakdam', name: 'Pakdam Pakdai', bg: 'from-indigo-500 to-purple-700', code: 'PP', img: '/api/videos?thumb=BstW5K1G57I' },
+      { id: 'roll21', name: 'Roll No 21', bg: 'from-blue-500 to-cyan-600', code: 'R21', img: '/api/videos?thumb=75p-N9YKqNo' },
+      { id: 'hattori', name: 'Ninja Hattori', bg: 'from-blue-600 to-indigo-800', code: 'NH', img: '/api/videos?thumb=hq3yfQnllfQ' },
+      { id: 'taarak', name: 'Taarak Mehta', bg: 'from-yellow-400 to-amber-600', code: 'TM', img: '/api/videos?thumb=yCjJyiqpAuU' },
+      { id: 'paw', name: 'Paw Patrol', bg: 'from-sky-400 to-red-500', code: 'PW', img: '/api/videos?thumb=e_04ZrNroTo' },
+      { id: 'mickey', name: 'Mickey Mouse', bg: 'from-red-600 to-slate-800', code: 'MM', img: '/api/videos?thumb=hq3yfQnllfQ' },
+      { id: 'spongebob', name: 'SpongeBob', bg: 'from-yellow-400 to-amber-500', code: 'SB', img: '/api/videos?thumb=yCjJyiqpAuU' },
+      { id: 'ben10', name: 'Ben 10', bg: 'from-green-500 to-emerald-700', code: 'B10', img: '/api/videos?thumb=aqz-KE-bpKQ' },
+      { id: 'mrbean', name: 'Mr Bean', bg: 'from-stone-500 to-amber-700', code: 'BN', img: '/api/videos?thumb=EngW7tLk6R8' },
+      { id: 'tomjerry', name: 'Tom & Jerry', bg: 'from-slate-500 to-orange-600', code: 'TJ', img: '/api/videos?thumb=BstW5K1G57I' },
+      { id: 'krishna', name: 'Little Krishna', bg: 'from-sky-400 to-indigo-600', code: 'LK', img: '/api/videos?thumb=0K1H3q3R4L0' },
+      { id: 'ganesh', name: 'Bal Ganesh', bg: 'from-orange-400 to-amber-600', code: 'BG', img: '/api/videos?thumb=0K1H3q3R4L0' },
+      { id: 'akbar', name: 'Akbar Birbal', bg: 'from-teal-500 to-emerald-700', code: 'AB', img: '/api/videos?thumb=75p-N9YKqNo' },
+      { id: 'tenali', name: 'Tenali Rama', bg: 'from-amber-500 to-yellow-600', code: 'TR', img: '/api/videos?thumb=75p-N9YKqNo' },
+      { id: 'peppa', name: 'Peppa Pig', bg: 'from-pink-400 to-rose-500', code: 'PG', img: '/api/videos?thumb=e_04ZrNroTo' },
+      { id: 'toys', name: 'Toys & Craft', bg: 'from-violet-500 to-fuchsia-600', code: 'TY', img: '/api/videos?thumb=F4tHL8reNCs' },
+      { id: 'marathi', name: 'Marathi Balgeet', bg: 'from-orange-500 to-amber-500', code: 'MR', img: '/api/videos?thumb=F4tHL8reNCs' },
+      { id: 'rhymes', name: 'Chiki Chum', bg: 'from-fuchsia-500 to-pink-600', code: 'CC', img: '/api/videos?thumb=F4tHL8reNCs' }
+    ];
+
+    // 2. Add Night Mode Toggle & "Funny Kids" Tab in Header
+    (function setupV4Controls() {
+      const rightHeader = document.querySelector('header .flex.items-center.gap-2');
+      if (rightHeader && !document.getElementById('nightModeBtn')) {
+        const nightBtn = document.createElement('button');
+        nightBtn.id = 'nightModeBtn';
+        nightBtn.className = 'w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:scale-90 transition';
+        nightBtn.innerHTML = \`<i data-lucide="moon" class="w-4 h-4"></i>\`;
+        nightBtn.onclick = function() {
+          playPop();
+          document.body.classList.toggle('night-mode');
+          const isNight = document.body.classList.contains('night-mode');
+          nightBtn.innerHTML = isNight
+            ? \`<i data-lucide="sun" class="w-4 h-4 text-amber-400"></i>\`
+            : \`<i data-lucide="moon" class="w-4 h-4"></i>\`;
+          lucide.createIcons();
+        };
+        rightHeader.insertBefore(nightBtn, rightHeader.lastElementChild);
+      }
+
+      const tabsBar = document.querySelector('header .overflow-x-auto');
+      if (tabsBar && !document.getElementById('funnyTabBtn')) {
+        const funnyBtn = document.createElement('button');
+        funnyBtn.id = 'funnyTabBtn';
+        funnyBtn.className = 'main-tab bg-slate-100 text-slate-600 px-4 py-2 rounded-full kids-font text-sm font-semibold flex items-center gap-1.5 shrink-0 transition';
+        funnyBtn.innerHTML = \`<i data-lucide="laugh" class="w-4 h-4 text-amber-500"></i><span>Funny Kids</span>\`;
+        funnyBtn.onclick = function() { switchMainSection('funny', funnyBtn); };
+        tabsBar.insertBefore(funnyBtn, tabsBar.children[2]);
+
+        const mainEl = document.querySelector('main');
+        const funnySec = document.createElement('section');
+        funnySec.id = 'section-funny';
+        funnySec.className = 'content-section hidden';
+        mainEl.appendChild(funnySec);
+      }
+    })();
+
+    // 3. Load Funny Kids Comedy Section (Nastya, Diana, Vlad & Niki, Funny Kids Challenges)
+    async function loadFunnyKidsSection() {
+      const fEl = document.getElementById('section-funny');
+      fEl.innerHTML = \`
+        <div class="px-4 pt-4">
+          <div class="rounded-3xl p-5 mb-5 bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 text-white shadow-lg">
+            <h2 class="kids-font text-2xl font-bold">Funny Kids Comedy & Challenges</h2>
+            <p class="text-xs font-bold text-white/95 mt-0.5">लहान मुलांचे मजेदार कॉमेडी व्हिडिओ, खेळणी आणि फॅमिली चॅलेंजेस</p>
+          </div>
+          <div id="funnyGridTarget">\${getSkeletonCards()}</div>
+        </div>
+      \`;
+      lucide.createIcons();
+
+      const res = await fetch('/api/videos?category=funnykids&page=1');
+      const data = await res.json();
+      currentFetchedList = data.videos || [];
+      document.getElementById('funnyGridTarget').innerHTML = buildYtKidsGrid(currentFetchedList, 'Funny Kids');
+      lucide.createIcons();
+    }
+
+    const prevSwitchV4 = switchMainSection;
+    switchMainSection = function(secName, btn) {
+      prevSwitchV4(secName, btn);
+      if (secName === 'funny') loadFunnyKidsSection();
+    };
+
+    // 4. Override loadLiveCartoons so every Character Bubble displays its Real Cartoon Image!
+    loadLiveCartoons = async function(param, isCustomQuery = false) {
+      activeParam = param;
+      activeIsCustom = isCustomQuery;
+      currentPageNum = 1;
+      currentFetchedList = [];
+
+      const showsEl = document.getElementById('section-shows');
+      activeBadgeLabel = isCustomQuery ? \`Search: \${param}\` : (characterVisuals.find(x => x.id === selectedShow)?.name || 'All Shows');
+
+      let bubblesHtml = \`
+        <div class="px-4 pt-4">
+          <div class="flex gap-3.5 overflow-x-auto no-scrollbar pb-2">
+            \${characterVisuals.map(c => {
+              const active = !isCustomQuery && selectedShow === c.id;
+              return \`
+                <button onclick="selectShowCharacter('\${c.id}')" class="flex flex-col items-center shrink-0 active:scale-90 transition">
+                  <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr \${c.bg} \${active ? 'ring-4 ring-red-500 scale-105' : 'opacity-95'} shadow-md">
+                    <div class="w-full h-full rounded-full bg-white overflow-hidden relative flex items-center justify-center">
+                      MP</span>'" />
+                      <span class="kids-font font-bold text-sm text-slate-700">\${c.code}</span>
+                    </div>
+                  </div>
+                  <span class="text-xs mt-1.5 font-extrabold \${active ? 'text-red-600' : 'text-slate-700'}">\${c.name}</span>
+                </button>
+              \`;
+            }).join('')}
+          </div>
+        </div>
+      \`;
+
+      showsEl.innerHTML = bubblesHtml + \`
+        <div class="px-4 pt-3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="kids-font text-xl font-bold text-slate-800">\${activeBadgeLabel}</h2>
+            <span id="loadedCounterBadge" class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3 py-1 rounded-full">Infinite Episodes</span>
+          </div>
+          <div id="infiniteCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            \${getSkeletonCards()}
+          </div>
+          <div id="infiniteLoaderBar" class="py-8 text-center">
+            <button onclick="appendMoreEpisodes()" class="px-6 py-3 rounded-full bg-red-600 text-white kids-font text-sm font-bold shadow-lg shadow-red-500/30 active:scale-95 transition">
+              Load More Episodes
+            </button>
+          </div>
+        </div>
+      \`;
+      lucide.createIcons();
+      await appendMoreEpisodes(true);
+    };
+
+    // Update megaShowsList & automatically refresh each character's bubble photo with real live thumbnail!
+    megaShowsList.length = 0;
+    characterVisuals.forEach(s => megaShowsList.push(s));
+
+    const origAppend = appendMoreEpisodes;
+    appendMoreEpisodes = async function(isFirstLoad = false) {
+      await origAppend(isFirstLoad);
+      if (isFirstLoad && !activeIsCustom && currentFetchedList.length > 0) {
+        const charObj = characterVisuals.find(x => x.id === selectedShow);
+        if (charObj) {
+          charObj.img = \`/api/videos?thumb=\${currentFetchedList[0].ytId}\`;
+        }
+      }
+    };
+
+    loadLiveCartoons('all', false);
+    lucide.createIcons();
+  <\/script>
+
+  <!-- CLEAN FIX: SAFE BUBBLE AVATARS + AUTO REAL SHOW IMAGE CAPTURE -->
+  <script>
+    // Saved Real Show Avatars from Live Fetched Videos
+    let savedBubbleThumbs = JSON.parse(localStorage.getItem('kidsToneBubbleThumbs') || '{}');
+
+    // Override loadLiveCartoons cleanly without broken static IDs
+    loadLiveCartoons = async function(param, isCustomQuery = false) {
+      activeParam = param;
+      activeIsCustom = isCustomQuery;
+      currentPageNum = 1;
+      currentFetchedList = [];
+
+      const showsEl = document.getElementById('section-shows');
+      activeBadgeLabel = isCustomQuery ? \`Search: \${param}\` : (characterVisuals.find(x => x.id === selectedShow)?.name || 'All Shows');
+
+      let bubblesHtml = \`
+        <div class="px-4 pt-4">
+          <div class="flex gap-3.5 overflow-x-auto no-scrollbar pb-2">
+            \${characterVisuals.map(c => {
+              const active = !isCustomQuery && selectedShow === c.id;
+              const realThumb = savedBubbleThumbs[c.id];
+              return \`
+                <button onclick="selectShowCharacter('\${c.id}')" class="flex flex-col items-center shrink-0 active:scale-90 transition">
+                  <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr \${c.bg} \${active ? 'ring-4 ring-red-500 scale-105' : 'opacity-95'} shadow-md">
+                    <div class="w-full h-full rounded-full bg-white overflow-hidden flex items-center justify-center">
+                      \${realThumb
+                        ? \`<img src="\${realThumb}" alt="\${c.name}" class="w-full h-full object-cover" />\`
+                        : \`<span class="kids-font font-bold text-base bg-gradient-to-tr \${c.bg} bg-clip-text text-transparent">\${c.code}</span>\`
+                      }
+                    </div>
+                  </div>
+                  <span class="text-xs mt-1.5 font-extrabold \${active ? 'text-red-600' : 'text-slate-700'}">\${c.name}</span>
+                </button>
+              \`;
+            }).join('')}
+          </div>
+        </div>
+      \`;
+
+      showsEl.innerHTML = bubblesHtml + \`
+        <div class="px-4 pt-3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="kids-font text-xl font-bold text-slate-800">\${activeBadgeLabel}</h2>
+            <span id="loadedCounterBadge" class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3 py-1 rounded-full">Infinite Episodes</span>
+          </div>
+          <div id="infiniteCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            \${getSkeletonCards()}
+          </div>
+          <div id="infiniteLoaderBar" class="py-8 text-center">
+            <button onclick="appendMoreEpisodes()" class="px-6 py-3 rounded-full bg-red-600 text-white kids-font text-sm font-bold shadow-lg shadow-red-500/30 active:scale-95 transition">
+              Load More Episodes
+            </button>
+          </div>
+        </div>
+      \`;
+      lucide.createIcons();
+      await appendMoreEpisodes(true);
+
+      // Automatically save the real fetched cartoon image into that character's bubble!
+      if (!isCustomQuery && currentFetchedList.length > 0 && selectedShow !== 'all') {
+        const liveImgUrl = \`/api/videos?thumb=\${currentFetchedList[0].ytId}\`;
+        if (savedBubbleThumbs[selectedShow] !== liveImgUrl) {
+          savedBubbleThumbs[selectedShow] = liveImgUrl;
+          localStorage.setItem('kidsToneBubbleThumbs', JSON.stringify(savedBubbleThumbs));
+        }
+      }
+    };
+
+    // Start cleanly on All Shows
+    selectedShow = 'all';
+    loadLiveCartoons('all', false);
+  <\/script>
+
+  <!-- ULTIMATE V5.0 UPGRADE: HEADER FIX, VOICE SEARCH, SURPRISE WHEEL, DRAWING PAD & RAINBOW PIANO -->
+  <link rel="manifest" href="/manifest.json" />
+  <style>
+    /* Fix Header Alignment so "Kids Tone" never wraps onto two lines */
+    header h1.kids-font {
+      white-space: nowrap !important;
+      font-size: 1.25rem !important;
+    }
+    header .max-w-5xl.flex.items-center.justify-between {
+      gap: 6px !important;
+    }
+    @keyframes spinGlow {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(12deg) scale(1.08); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+    .magic-pulse {
+      animation: spinGlow 2.2s infinite ease-in-out;
+    }
+  </style>
+
+  <script>
+    // 1. Clean Up & Upgrade Top Header + Add Draw & Piano Tabs
+    (function upgradeUltimateUI() {
+      // Remove duplicate/old messy buttons if any and rebuild clean right-side controls
+      const topRow = document.querySelector('header > div:first-child');
+      if (topRow) {
+        const logoBlock = topRow.firstElementChild;
+        logoBlock.innerHTML = \`
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-red-500 via-rose-500 to-amber-500 flex items-center justify-center shadow-md shadow-red-500/30 shrink-0">
+            <i data-lucide="play" class="w-5 h-5 text-white fill-white ml-0.5"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-1">
+              <h1 class="kids-font text-xl font-bold text-slate-900 tracking-tight whitespace-nowrap">Kids Tone</h1>
+              <span class="px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950 kids-font text-[9px] font-bold uppercase">PRO</span>
+            </div>
+            <p class="text-[10px] font-bold text-slate-400 -mt-1 truncate">Cartoons & Fun</p>
+          </div>
+        \`;
+
+        const controlsBlock = topRow.children[1];
+        controlsBlock.className = "flex items-center gap-1.5 shrink-0";
+        controlsBlock.innerHTML = \`
+          <!-- Gold Star Counter -->
+          <div id="starCounterPill" class="px-2 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-800 kids-font text-xs font-bold flex items-center gap-1">
+            <i data-lucide="star" class="w-3.5 h-3.5 text-amber-500 fill-amber-400"></i>
+            <span id="starCountNum">\${kidsStars}</span>
+          </div>
+
+          <!-- Timer Pill (Shown when active) -->
+          <div id="timerBadge" class="hidden px-2 py-1 rounded-full bg-rose-100 border border-rose-300 text-rose-700 text-[11px] font-extrabold flex items-center gap-1">
+            <i data-lucide="clock" class="w-3 h-3"></i>
+            <span id="timerDisplay">30:00</span>
+          </div>
+
+          <!-- Magic Surprise Random Cartoon Button -->
+          <button onclick="playMagicSurpriseCartoon()" title="Surprise Cartoon!" class="magic-pulse w-9 h-9 rounded-full bg-gradient-to-tr from-amber-400 to-pink-500 text-white flex items-center justify-center shadow-md active:scale-90 transition">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Night Mode Toggle -->
+          <button id="nightModeBtn" onclick="toggleKidsNightMode()" class="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center active:scale-90 transition">
+            <i data-lucide="moon" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Search Drawer Toggle -->
+          <button onclick="playPop(); toggleSearchDrawer()" class="w-9 h-9 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center active:scale-90 transition">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        \`;
+      }
+
+      // Add Voice Search Mic Button inside Search Drawer
+      const searchForm = document.querySelector('#searchDrawer form');
+      if (searchForm && !document.getElementById('voiceMicBtn')) {
+        const micBtn = document.createElement('button');
+        micBtn.type = 'button';
+        micBtn.id = 'voiceMicBtn';
+        micBtn.onclick = startKidsVoiceSearch;
+        micBtn.className = 'px-3.5 py-2.5 rounded-2xl bg-sky-500 text-white flex items-center justify-center shadow-md active:scale-95 transition';
+        micBtn.innerHTML = \`<i data-lucide="mic" class="w-4 h-4"></i>\`;
+        searchForm.insertBefore(micBtn, searchForm.lastElementChild);
+      }
+
+      // Add "Draw & Paint" and "Kids Piano" Tabs to Navigation Bar
+      const tabsBar = document.querySelector('header .overflow-x-auto');
+      const mainEl = document.querySelector('main');
+      if (tabsBar && !document.getElementById('drawTabBtn')) {
+        const drawBtn = document.createElement('button');
+        drawBtn.id = 'drawTabBtn';
+        drawBtn.className = 'main-tab bg-slate-100 text-slate-600 px-4 py-2 rounded-full kids-font text-sm font-semibold flex items-center gap-1.5 shrink-0 transition';
+        drawBtn.innerHTML = \`<i data-lucide="palette" class="w-4 h-4 text-purple-500"></i><span>Draw & Color</span>\`;
+        drawBtn.onclick = function() { switchMainSection('draw', drawBtn); };
+        tabsBar.insertBefore(drawBtn, tabsBar.lastElementChild);
+
+        const drawSec = document.createElement('section');
+        drawSec.id = 'section-draw';
+        drawSec.className = 'content-section hidden';
+        mainEl.appendChild(drawSec);
+      }
+
+      if (tabsBar && !document.getElementById('pianoTabBtn')) {
+        const pianoBtn = document.createElement('button');
+        pianoBtn.id = 'pianoTabBtn';
+        pianoBtn.className = 'main-tab bg-slate-100 text-slate-600 px-4 py-2 rounded-full kids-font text-sm font-semibold flex items-center gap-1.5 shrink-0 transition';
+        pianoBtn.innerHTML = \`<i data-lucide="piano" class="w-4 h-4 text-sky-500"></i><span>Kids Piano</span>\`;
+        pianoBtn.onclick = function() { switchMainSection('piano', pianoBtn); };
+        tabsBar.insertBefore(pianoBtn, tabsBar.lastElementChild);
+
+        const pianoSec = document.createElement('section');
+        pianoSec.id = 'section-piano';
+        pianoSec.className = 'content-section hidden';
+        mainEl.appendChild(pianoSec);
+      }
+    })();
+
+    function toggleKidsNightMode() {
+      playPop();
+      document.body.classList.toggle('night-mode');
+      const isNight = document.body.classList.contains('night-mode');
+      const btn = document.getElementById('nightModeBtn');
+      if (btn) {
+        btn.innerHTML = isNight
+          ? \`<i data-lucide="sun" class="w-4 h-4 text-amber-400"></i>\`
+          : \`<i data-lucide="moon" class="w-4 h-4"></i>\`;
+        lucide.createIcons();
+      }
+    }
+
+    // 2. Magic Surprise Random Cartoon Feature!
+    function playMagicSurpriseCartoon() {
+      playStarChime();
+      if (currentFetchedList && currentFetchedList.length > 0) {
+        const randomVid = currentFetchedList[Math.floor(Math.random() * currentFetchedList.length)];
+        launchKidsPlayer(randomVid.ytId, randomVid.title, 'Magic Surprise');
+      } else {
+        selectShowCharacter('motu');
+      }
+    }
+
+    // 3. Kids Voice Search (Speak to Search Cartoons)
+    function startKidsVoiceSearch() {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRec) {
+        alert('तुमच्या ब्राउझरमध्ये Voice Search उपलब्ध नाही. कृपया नाव टाईप करा!');
+        return;
+      }
+      playPop();
+      const recognition = new SpeechRec();
+      recognition.lang = 'hi-IN';
+      const inputEl = document.getElementById('liveSearchInput');
+      inputEl.placeholder = 'बोला... (उदा. Motu Patlu, Chhota Bheem)...';
+
+      recognition.onresult = function(event) {
+        const spokenText = event.results[0][0].transcript;
+        inputEl.value = spokenText;
+        const firstTab = document.querySelector('.main-tab');
+        switchMainSection('shows', firstTab);
+        loadLiveCartoons(spokenText, true);
+      };
+      recognition.start();
+    }
+
+    // 4. Interactive Kids Drawing & Coloring Canvas
+    let brushColor = '#FF0033';
+    let brushSize = 8;
+    let isDrawingNow = false;
+
+    function renderDrawingPad() {
+      const dEl = document.getElementById('section-draw');
+      const paletteColors = ['#FF0033', '#FF8A00', '#FFD600', '#00C853', '#00A8FF', '#7C3AED', '#EC4899', '#1E293B', '#FFFFFF'];
+
+      dEl.innerHTML = \`
+        <div class="px-4 pt-4 max-w-2xl mx-auto">
+          <div class="yt-card p-4">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h2 class="kids-font text-xl font-bold text-slate-900">Magic Drawing Pad</h2>
+                <p class="text-xs font-bold text-slate-500">बोटाने सुंदर चित्र काढा आणि रंग भरा!</p>
+              </div>
+              <div class="flex gap-2">
+                <button onclick="clearKidsCanvas()" class="px-3 py-1.5 rounded-xl bg-rose-100 text-rose-700 kids-font text-xs font-bold active:scale-95">Clear</button>
+                <button onclick="saveKidsDrawing()" class="px-3 py-1.5 rounded-xl bg-emerald-500 text-white kids-font text-xs font-bold shadow active:scale-95">Save Art</button>
+              </div>
+            </div>
+
+            <!-- Color Palette -->
+            <div class="flex items-center justify-between gap-1.5 overflow-x-auto no-scrollbar pb-3">
+              \${paletteColors.map(col => \`
+                <button onclick="setBrushColor('\${col}')" style="background:\${col}" class="w-8 h-8 rounded-full border-2 border-slate-300 shrink-0 shadow-sm active:scale-90 transition"></button>
+              \`).join('')}
+            </div>
+
+            <!-- Touch Drawing Canvas -->
+            <div class="rounded-2xl overflow-hidden border-2 border-sky-200 bg-white touch-none">
+              <canvas id="kidsArtCanvas" class="w-full h-[52vh] block cursor-crosshair"></canvas>
+            </div>
+          </div>
+        </div>
+      \`;
+
+      const canvas = document.getElementById('kidsArtCanvas');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      function getCoords(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: clientX - rect.left, y: clientY - rect.top };
+      }
+
+      function startDraw(e) {
+        isDrawingNow = true;
+        const pos = getCoords(e);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      }
+      function moveDraw(e) {
+        if (!isDrawingNow) return;
+        e.preventDefault();
+        const pos = getCoords(e);
+        ctx.strokeStyle = brushColor;
+        ctx.lineWidth = brushColor === '#FFFFFF' ? 22 : brushSize;
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      }
+      function endDraw() { isDrawingNow = false; }
+
+      canvas.addEventListener('mousedown', startDraw);
+      canvas.addEventListener('mousemove', moveDraw);
+      window.addEventListener('mouseup', endDraw);
+      canvas.addEventListener('touchstart', startDraw, { passive: false });
+      canvas.addEventListener('touchmove', moveDraw, { passive: false });
+      canvas.addEventListener('touchend', endDraw);
+    }
+
+    function setBrushColor(c) {
+      playPop();
+      brushColor = c;
+    }
+
+    function clearKidsCanvas() {
+      playPop();
+      const canvas = document.getElementById('kidsArtCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function saveKidsDrawing() {
+      playStarChime();
+      const canvas = document.getElementById('kidsArtCanvas');
+      const link = document.createElement('a');
+      link.download = 'KidsTone_Drawing.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+
+    // 5. Rainbow Musical Kids Piano (Sa Re Ga Ma Pa Dha Ni Sa)
+    function renderKidsPiano() {
+      const pEl = document.getElementById('section-piano');
+      const notes = [
+        { name: 'SA', freq: 261.63, color: 'from-red-500 to-rose-600' },
+        { name: 'RE', freq: 293.66, color: 'from-orange-400 to-amber-600' },
+        { name: 'GA', freq: 329.63, color: 'from-yellow-400 to-amber-500' },
+        { name: 'MA', freq: 349.23, color: 'from-emerald-400 to-green-600' },
+        { name: 'PA', freq: 392.00, color: 'from-cyan-400 to-sky-600' },
+        { name: 'DHA', freq: 440.00, color: 'from-blue-500 to-indigo-600' },
+        { name: 'NI', freq: 493.88, color: 'from-purple-500 to-violet-700' },
+        { name: 'SA+', freq: 523.25, color: 'from-pink-500 to-rose-600' }
+      ];
+
+      pEl.innerHTML = \`
+        <div class="px-4 pt-4 max-w-2xl mx-auto">
+          <div class="yt-card p-5 text-center">
+            <h2 class="kids-font text-2xl font-bold text-slate-900">Rainbow Magic Piano</h2>
+            <p class="text-xs font-bold text-slate-500 mt-0.5 mb-5">रंगीबेरंगी बटने दाबून स्वतःचे संगीत बनवा!</p>
+
+            <div class="grid grid-cols-4 sm:grid-cols-8 gap-2.5 h-60">
+              \${notes.map(n => \`
+                <button onclick="playPianoTone(\${n.freq})" class="rounded-2xl bg-gradient-to-b \${n.color} text-white kids-font font-bold text-lg flex flex-col items-center justify-end pb-4 shadow-lg active:scale-95 transition">
+                  <span>\${n.name}</span>
+                </button>
+              \`).join('')}
+            </div>
+          </div>
+        </div>
+      \`;
+    }
+
+    function playPianoTone(freq) {
+      if (popCtx.state === 'suspended') popCtx.resume();
+      const osc = popCtx.createOscillator();
+      const gain = popCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, popCtx.currentTime);
+      gain.gain.setValueAtTime(0.22, popCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, popCtx.currentTime + 0.45);
+      osc.connect(gain);
+      gain.connect(popCtx.destination);
+      osc.start();
+      osc.stop(popCtx.currentTime + 0.46);
+    }
+
+    // Hook switchMainSection for Draw & Piano Tabs
+    const prevSwitchV5 = switchMainSection;
+    switchMainSection = function(secName, btn) {
+      prevSwitchV5(secName, btn);
+      if (secName === 'draw') renderDrawingPad();
+      if (secName === 'piano') renderKidsPiano();
+    };
+
+    lucide.createIcons();
+  <\/script>
+
+
+<script id="fixAppendMoreEpisodesFinal">
+(function() {
+  const fallbackList = [
+    { ytid: "aqz-KE-bpKQ", title: "Big Buck Bunny - Full Kids Cartoon Movie", duration: "10:34" },
+    { ytid: "tgbNymZ7vqY", title: "Funny Muppets Cartoon Comedy Show", duration: "04:46" },
+    { ytid: "YE7VzlLtp-4", title: "Kids Animated Fun Adventure", duration: "09:56" },
+    { ytid: "M7lc1UVf-VE", title: "Kids Tone Special Animated Clip", duration: "04:12" }
+  ];
+
+  const queryMap = {
+    all: "motu patlu chhota bheem doraemon hindi cartoon",
+    motu: "motu patlu hindi cartoon episodes",
+    bheem: "chhota bheem hindi cartoon episodes",
+    doraemon: "doraemon hindi cartoon episodes"
+  };
+
+  window.appendMoreEpisodes = async function(isFirstLoad = false) {
+    const grid = document.getElementById("infiniteCardsGrid");
+    const badge = document.getElementById("loadedCounterBadge");
+    if (!grid) return;
+
+    const param = (typeof activeParam !== "undefined" && activeParam) ? activeParam : "all";
+    const isCustom = (typeof activeIsCustom !== "undefined") ? activeIsCustom : false;
+    const q = isCustom ? param : (queryMap[param] || queryMap.all);
+    const page = (typeof currentPageNum !== "undefined") ? currentPageNum : 1;
+
+    let videos = [];
+    try {
+      const res = await fetch(\`/api/videos?q=\${encodeURIComponent(q)}&page=\${page}\`);
+      if (res.ok) {
+        const data = await res.json();
+        const raw = Array.isArray(data) ? data : (data.videos || data.items || []);
+        videos = raw.filter(v => v && (v.ytid || v.videoId || v.id)).map(v => ({
+          ytid: v.ytid || v.videoId || v.id,
+          title: v.title || "Kids Cartoon Episode",
+          duration: v.duration || "HD"
+        }));
+      }
+    } catch (e) {
+      console.error("API fetch failed, using fallback:", e);
+    }
+
+    if (videos.length === 0 && isFirstLoad) {
+      videos = fallbackList;
+    }
+
+    if (typeof currentFetchedList !== "undefined") {
+      if (isFirstLoad) currentFetchedList = videos;
+      else currentFetchedList = currentFetchedList.concat(videos);
+    }
+
+    const label = (typeof activeBadgeLabel !== "undefined" && activeBadgeLabel) ? activeBadgeLabel : "All Shows";
+    const cardsHtml = videos.map(v => {
+      const safeTitle = (v.title || "").replace(/'/g, "\\'").replace(/"/g, "&quot;");
+      return \`
+        <div onclick="if(typeof launchKidsPlayer==='function') launchKidsPlayer('\${v.ytid}','\${safeTitle}','\${label}');" class="yt-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden cursor-pointer">
+          <div class="relative aspect-video bg-slate-200">
+            <img src="https://i.ytimg.com/vi/\${v.ytid}/hqdefault.jpg" alt="\${safeTitle}" class="w-full h-full object-cover">
+            <span class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-bold px-2 py-0.5 rounded">\${v.duration}</span>
+          </div>
+          <div class="p-3">
+            <div class="text-xs font-extrabold text-sky-600 uppercase mb-1">\${label}</div>
+            <div class="font-bold text-slate-900 text-sm line-clamp-2">\${v.title}</div>
+          </div>
+        </div>\`;
+    }).join("");
+
+    if (isFirstLoad) grid.innerHTML = cardsHtml;
+    else grid.insertAdjacentHTML("beforeend", cardsHtml);
+
+    if (badge) {
+      const total = (typeof currentFetchedList !== "undefined" && currentFetchedList.length) ? currentFetchedList.length : videos.length;
+      badge.innerText = total + "+ Episodes";
+    }
+    if (typeof currentPageNum !== "undefined") currentPageNum++;
+  };
+
+  // Trigger clean reload right away
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      if (typeof appendMoreEpisodes === "function") appendMoreEpisodes(true);
+    }, 300);
+  });
+})();
+<\/script>
+
+
+<script id="youtubeSpeedAndInfiniteScroll">
+(function() {
+  const apiCache = new Map();
+  let isFetchingMore = false;
+  let seenIds = new Set();
+
+  const baseQueries = {
+    all: ["motu patlu chhota bheem doraemon hindi cartoon", "shinchan oggy rudra hindi cartoon", "hindi cartoon full episodes kids", "indian kids cartoon movie hindi"],
+    motu: ["motu patlu hindi cartoon episodes", "motu patlu comedy movie hindi", "motu patlu new episodes 2025", "motu patlu furfuri nagar"],
+    bheem: ["chhota bheem hindi cartoon episodes", "chhota bheem movie hindi", "chhota bheem new episodes", "mighty little bheem hindi"],
+    doraemon: ["doraemon hindi cartoon episodes", "doraemon new episodes hindi", "doraemon movie hindi", "doraemon nobita funny hindi"],
+    shinchan: ["shinchan hindi cartoon episodes", "shinchan funny episodes hindi"],
+    oggy: ["oggy and the cockroaches hindi episodes", "oggy funny hindi cartoon"]
+  };
+
+  async function fetchCachedVideos(q, page) {
+    const key = q + "::" + page;
+    if (apiCache.has(key)) return apiCache.get(key);
+    const res = await fetch(\`/api/videos?q=\${encodeURIComponent(q)}&page=\${page}\`);
+    if (!res.ok) return [];
+    const data = await res.json();
+    const raw = Array.isArray(data) ? data : (data.videos || data.items || []);
+    const clean = raw
+      .filter(v => v && (v.ytid || v.videoId || v.id))
+      .map(v => ({
+        ytid: v.ytid || v.videoId || v.id,
+        title: v.title || "Kids Cartoon Episode",
+        duration: v.duration || "HD"
+      }));
+    apiCache.set(key, clean);
+    return clean;
+  }
+
+  window.appendMoreEpisodes = async function(isFirstLoad = false) {
+    if (isFetchingMore && !isFirstLoad) return;
+    const grid = document.getElementById("infiniteCardsGrid");
+    const badge = document.getElementById("loadedCounterBadge");
+    if (!grid) return;
+
+    isFetchingMore = true;
+    const param = (typeof activeParam !== "undefined" && activeParam) ? activeParam : "all";
+    const isCustom = (typeof activeIsCustom !== "undefined") ? activeIsCustom : false;
+    const page = isFirstLoad ? 1 : ((typeof currentPageNum !== "undefined" && currentPageNum) ? currentPageNum : 2);
+
+    if (isFirstLoad) {
+      seenIds = new Set();
+      if (typeof currentPageNum !== "undefined") currentPageNum = 1;
+    }
+
+    const qList = baseQueries[param] || [param + " hindi cartoon episodes", param + " funny cartoon", param + " full movie hindi"];
+    const q = isCustom ? (page === 1 ? param : param + " episodes " + page) : qList[(page - 1) % qList.length];
+
+    let videos = [];
+    try {
+      videos = await fetchCachedVideos(q, page);
+    } catch (e) {}
+
+    // Remove duplicates
+    const freshVideos = videos.filter(v => {
+      if (seenIds.has(v.ytid)) return false;
+      seenIds.add(v.ytid);
+      return true;
+    });
+
+    if (typeof currentFetchedList !== "undefined") {
+      currentFetchedList = isFirstLoad ? freshVideos : currentFetchedList.concat(freshVideos);
+    }
+
+    const label = (typeof activeBadgeLabel !== "undefined" && activeBadgeLabel) ? activeBadgeLabel : "All Shows";
+    const cardsHtml = freshVideos.map(v => {
+      const safeTitle = (v.title || "").replace(/'/g, "\\'").replace(/"/g, "&quot;");
+      return \`
+        <div onclick="if(typeof launchKidsPlayer==='function') launchKidsPlayer('\${v.ytid}','\${safeTitle}','\${label}');" class="yt-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden cursor-pointer">
+          <div class="relative aspect-video bg-slate-200">
+            <img loading="lazy" src="https://i.ytimg.com/vi/\${v.ytid}/hqdefault.jpg" alt="\${safeTitle}" class="w-full h-full object-cover">
+            <span class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-bold px-2 py-0.5 rounded">\${v.duration}</span>
+          </div>
+          <div class="p-3">
+            <div class="text-xs font-extrabold text-sky-600 uppercase mb-1">\${label}</div>
+            <div class="font-bold text-slate-900 text-sm line-clamp-2">\${v.title}</div>
+          </div>
+        </div>\`;
+    }).join("");
+
+    if (isFirstLoad) grid.innerHTML = cardsHtml || grid.innerHTML;
+    else if (cardsHtml) grid.insertAdjacentHTML("beforeend", cardsHtml);
+
+    if (badge) {
+      badge.innerText = seenIds.size + "+ Episodes";
+    }
+    if (typeof currentPageNum !== "undefined") currentPageNum = page + 1;
+    isFetchingMore = false;
+  };
+
+  // Auto Infinite Scroll like YouTube
+  function setupAutoScroll() {
+    const loader = document.getElementById("infiniteLoaderBar");
+    if (!loader || loader.dataset.observed) return;
+    loader.dataset.observed = "1";
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isFetchingMore) {
+        appendMoreEpisodes(false);
+      }
+    }, { rootMargin: "350px" });
+    obs.observe(loader);
+  }
+
+  // Background prefetch popular shows so switching tabs is instant!
+  window.addEventListener("load", () => {
+    setInterval(setupAutoScroll, 1000);
+    setTimeout(() => {
+      ["motu", "bheem", "doraemon"].forEach((k, idx) => {
+        setTimeout(() => {
+          fetchCachedVideos(baseQueries[k][0], 1).catch(() => {});
+        }, (idx + 1) * 900);
+      });
+    }, 1500);
+  });
+})();
+<\/script>
+
+
+<style id="ktUltraFastAndBannerCSS">
+  #ktInstallBanner {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    background: linear-gradient(90deg, #0f172a, #1e293b);
+    color: #ffffff;
+    padding: 10px 14px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  #ktInstallBanner.show { display: flex; }
+  .kt-inst-btn {
+    background: linear-gradient(90deg, #ff0055, #ff7b00);
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .kt-inst-close {
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+  }
+</style>
+
+<script id="ktUltraFastAndBannerJS">
+(function() {
+  // 1. Keep character bubbles clean (MP, CB, DR)
+  try {
+    localStorage.removeItem("kidsToneBubbleThumbs");
+    if (typeof savedBubbleThumbs !== "undefined") {
+      Object.keys(savedBubbleThumbs).forEach(k => delete savedBubbleThumbs[k]);
+    }
+  } catch (e) {}
+
+  // 2. Instant LocalStorage API Cache (0ms load on revisit + background refresh)
+  const LS_PREFIX = "kt_fast_v3_";
+  const origFetch = window.fetch;
+  window.fetch = async function(input, init) {
+    const url = typeof input === "string" ? input : (input && input.url) || "";
+    if (url.includes("/api/videos?")) {
+      const cacheKey = LS_PREFIX + url;
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        origFetch(input, init)
+          .then(r => (r.ok ? r.text() : null))
+          .then(txt => {
+            if (txt && txt.length > 20) {
+              try { localStorage.setItem(cacheKey, txt); } catch (e) {}
+            }
+          })
+          .catch(() => {});
+        return new Response(cached, {
+          status: 200,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+      const res = await origFetch(input, init);
+      if (res.ok) {
+        res.clone().text().then(txt => {
+          if (txt && txt.length > 20) {
+            try { localStorage.setItem(cacheKey, txt); } catch (e) {}
+          }
+        }).catch(() => {});
+      }
+      return res;
+    }
+    return origFetch(input, init);
+  };
+
+  // 3. Direct APK Download Top Banner (hidden inside WebView / installed app)
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true ||
+    /wv|WebView/i.test(navigator.userAgent);
+  const dismissed = sessionStorage.getItem("kt_banner_closed") === "1";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const cleanBubbles = () => {
+      document.querySelectorAll('#section-shows button img').forEach(img => {
+        const parent = img.parentElement;
+        if (parent && parent.className.includes("rounded-full")) {
+          const label = img.alt || "MP";
+          const code = label.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+          img.replaceWith(Object.assign(document.createElement("span"), {
+            className: "font-extrabold text-sm text-orange-600",
+            innerText: code || "MP"
+          }));
+        }
+      });
+    };
+    setInterval(cleanBubbles, 800);
+
+    if (isStandalone || dismissed || document.getElementById("ktInstallBanner")) return;
+
+    const banner = document.createElement("div");
+    banner.id = "ktInstallBanner";
+    banner.className = "show";
+    banner.innerHTML = \`
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ff0055,#ff7b00);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0;">KT</div>
+        <div style="overflow:hidden;">
+          <div style="font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Kids Tone PRO App</div>
+          <div style="font-size:11px;color:#cbd5e1;">Download the Android APK for a faster experience</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <a id="ktDirectApkBtn" href="/KidsTonePro.apk" download="KidsTonePro.apk" class="kt-inst-btn">Download APK</a>
+        <button id="ktInstallCloseBtn" type="button" class="kt-inst-close" aria-label="Close">✕</button>
+      </div>
+    \`;
+    document.body.prepend(banner);
+
+    document.getElementById("ktInstallCloseBtn").onclick = () => {
+      banner.classList.remove("show");
+      sessionStorage.setItem("kt_banner_closed", "1");
+    };
+
+    document.getElementById("ktDirectApkBtn").onclick = () => {
+      setTimeout(() => {
+        banner.classList.remove("show");
+        sessionStorage.setItem("kt_banner_closed", "1");
+      }, 600);
+    };
+  });
+})();
+<\/script>
+
+
+<!-- RK-FULLSCREEN-V2 -->
+<script>
+(function() {
+  if (window.RKApp) return; // Native App handles orientation directly
+  function getFsEl() {
+    return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+  }
+  function onFsChange() {
+    if (getFsEl()) {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function(){});
+      }
+    } else {
+      if (screen.orientation && screen.orientation.unlock) {
+        try { screen.orientation.unlock(); } catch(e) {}
+      }
+    }
+  }
+  document.addEventListener("fullscreenchange", onFsChange);
+  document.addEventListener("webkitfullscreenchange", onFsChange);
+})();
+<\/script><!-- RK-REMOVE-APK-BANNER -->
+<script>
+(function() {
+  function removeApkBanner() {
+    var nodes = document.querySelectorAll('div, section, header, aside');
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      if (el.innerText && el.innerText.indexOf('Download the Android APK') !== -1 && el.innerText.length < 200) {
+        el.style.display = 'none';
+        el.remove();
+      }
+    }
+  }
+  removeApkBanner();
+  document.addEventListener('DOMContentLoaded', removeApkBanner);
+  setTimeout(removeApkBanner, 500);
+})();
+<\/script>
+
+
+
+<!-- RK-ALL-ADS-BLOCKED -->
+<script>
+(function() {
+  window.__RK_ADS_PAUSED__ = true;
+})();
+<\/script>
+<!-- RK-TIMED-VIGNETTE -->
+<script>
+(function() {
+  var INITIAL_DELAY_MS = 90000;
+  var COOLDOWN_MS = 180000;
+  var KEY = "rk_vignette_12330958_ts";
+  var loaded = false;
+
+  function canLoad() {
+    var now = Date.now();
+    var last = Number(localStorage.getItem(KEY) || "0");
+    return (now - last) >= COOLDOWN_MS;
+  }
+
+  function loadZone12330958() {
+    if (loaded || !canLoad()) return;
+    loaded = true;
+    localStorage.setItem(KEY, String(Date.now()));
+    var s = document.createElement("script");
+    s.dataset.zone = "12330958";
+    s.src = "https://n6wxm.com/vignette.min.js";
+    (document.body || document.documentElement).appendChild(s);
+  }
+
+  setTimeout(function() {
+    if (canLoad()) loadZone12330958();
+  }, INITIAL_DELAY_MS);
+})();
+<\/script>`;
+  const origSetTab = window.setTab;
+  const origRender = window.render;
+
+  function ensureKidsFrame() {
+    const feed = document.getElementById("feedContainer");
+    const chips = document.getElementById("chipsRow");
+    if (!feed) return null;
+    let frame = document.getElementById("legacyKidsFrame");
+    if (!frame) {
+      frame = document.createElement("iframe");
+      frame.id = "legacyKidsFrame";
+      frame.style.cssText = "width:100%;min-height:78vh;border:0;border-radius:12px;background:#fff;display:none;";
+      if (LEGACY_KIDS_DOC && LEGACY_KIDS_DOC.trim().length > 20) {
+        frame.srcdoc = LEGACY_KIDS_DOC;
+      }
+      feed.parentNode.insertBefore(frame, feed.nextSibling);
+    }
+    return { feed, chips, frame };
+  }
+
+  function syncKidsMode() {
+    const ctx = ensureKidsFrame();
+    if (!ctx) return;
+    const isKids = window.activeTab === "kids";
+    if (isKids && LEGACY_KIDS_DOC && LEGACY_KIDS_DOC.trim().length > 20) {
+      ctx.feed.style.display = "none";
+      if (ctx.chips) ctx.chips.style.display = "none";
+      ctx.frame.style.display = "block";
+    } else {
+      ctx.frame.style.display = "none";
+      if (ctx.chips) ctx.chips.style.display = "";
+      ctx.feed.style.display = "";
+    }
+  }
+
+  if (typeof origSetTab === "function") {
+    window.setTab = function(tab) {
+      window.activeTab = tab;
+      origSetTab(tab);
+      syncKidsMode();
+    };
+  }
+  if (typeof origRender === "function") {
+    window.render = function() {
+      origRender();
+      syncKidsMode();
+    };
+  }
+  window.addEventListener("DOMContentLoaded", syncKidsMode);
+  syncKidsMode();
+})();
+</script>
+
 </body>
 </html>
